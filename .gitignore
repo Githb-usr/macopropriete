@@ -1,0 +1,5 @@
+.env
+.vscode/
+config/__pycache__/
+get-pip.py
+venvp13/
