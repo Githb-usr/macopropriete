@@ -29,7 +29,7 @@ class ArticleUpdate(models.Model):
     """
     updater = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='article_updater')
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='updated_article')
-    update_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    update_date = models.DateTimeField(auto_now=True, null=True)
     update_reason = models.CharField(max_length=250)
 
 class ArticleDelete(models.Model):
@@ -38,7 +38,7 @@ class ArticleDelete(models.Model):
     """
     deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='article_deleter')
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='deleted_article')
-    delete_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    delete_date = models.DateTimeField(auto_now=True, null=True)
     delete_reason = models.CharField(max_length=250, null=False)
 
 class Faq(models.Model):
@@ -66,7 +66,7 @@ class FaqUpdate(models.Model):
     """
     updater = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='faq_updater')
     faq = models.ForeignKey(Faq, on_delete=models.CASCADE, related_name='updated_faq')
-    update_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    update_date = models.DateTimeField(auto_now=True, null=True)
     update_reason = models.CharField(max_length=250)
 
 class FaqDelete(models.Model):
@@ -75,7 +75,7 @@ class FaqDelete(models.Model):
     """
     deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='faq_deleter')
     faq = models.ForeignKey(Faq, on_delete=models.CASCADE, related_name='deleted_faq')
-    delete_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    delete_date = models.DateTimeField(auto_now=True, null=True)
     delete_reason = models.CharField(max_length=250, null=False)
 
 class Event(models.Model):
@@ -104,7 +104,7 @@ class EventUpdate(models.Model):
     """
     updater = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='event_updater')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='updated_event')
-    update_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    update_date = models.DateTimeField(auto_now=True, null=True)
     update_reason = models.CharField(max_length=250)
 
 class EventDelete(models.Model):
@@ -113,7 +113,7 @@ class EventDelete(models.Model):
     """
     deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='event_deleter')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='deleted_event')
-    delete_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    delete_date = models.DateTimeField(auto_now=True, null=True)
     delete_reason = models.CharField(max_length=250, null=False)
 
 class Incident(models.Model):
@@ -139,7 +139,7 @@ class IncidentDelete(models.Model):
     """
     deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='incident_deleter')
     incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='deleted_incident')
-    delete_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    delete_date = models.DateTimeField(auto_now=True, null=True)
     delete_reason = models.CharField(max_length=250, null=False)
 
 class IncidentTracking(models.Model):
@@ -195,5 +195,5 @@ class CommentDelete(models.Model):
     """
     deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='comment_deleter')
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='deleted_comment')
-    delete_date = models.DateTimeField(auto_now=True, null=True, default=None)
+    delete_date = models.DateTimeField(auto_now=True, null=True)
     delete_reason = models.CharField(max_length=250, null=False)

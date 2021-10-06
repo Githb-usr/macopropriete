@@ -4,6 +4,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from django.utils import timezone
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -50,7 +51,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Téléphone')
     avatar = models.ImageField(upload_to='users/avatars/')
     about = models.TextField(null=True, blank=True)
-    date_joinded = models.DateTimeField(auto_now=True, verbose_name='Inscription')
+    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
     last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     is_resident = models.BooleanField(default=True)
@@ -63,7 +64,7 @@ class User(AbstractUser):
 
     # Main Field for authentication
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'email']
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
         return self.username
