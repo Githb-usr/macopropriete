@@ -22,8 +22,8 @@ class Condominium(models.Model):
     name = models.CharField(max_length=30)
     number = models.CharField(max_length=10, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    share = models.CharField(max_length=15)
-    image = models.ImageField(upload_to='condominium/condominium/')
+    share = models.CharField(null=True, blank=True, max_length=15)
+    image = models.ImageField(null=True, blank=True, upload_to='condominium/condominium/')
 
     def __str__(self):
         return f'{self.name}'
@@ -47,8 +47,8 @@ class Lot(models.Model):
     lot_type = models.CharField(max_length=20, choices=LOT_TYPE)
     number = models.CharField(max_length=10)
     description = models.TextField(null=True, blank=True)
-    share = models.CharField(max_length=15)
-    image = models.ImageField(upload_to='condominium/lot/')
+    share = models.CharField(null=True, blank=True, max_length=15)
+    image = models.ImageField(null=True, blank=True, upload_to='condominium/lot/')
     condominium = models.ForeignKey(Condominium, on_delete=models.CASCADE, related_name='lot_condominium')
 
     def __str__(self):
@@ -72,7 +72,7 @@ class Zone(models.Model):
     code = models.CharField(max_length=10)
     name = models.CharField(max_length=30)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(upload_to='condominium/zone/')
+    image = models.ImageField(null=True, blank=True, upload_to='condominium/zone/')
 
     def __str__(self):
         return f'{self.name} ({self.code})'

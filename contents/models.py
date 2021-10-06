@@ -15,7 +15,14 @@ class Article(models.Model):
     creation_date = models.DateTimeField(auto_now=True, verbose_name='Création de l\'article')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_article')
-    status = models.CharField(blank=False, max_length=30)
+    # article status
+    ACTIVE = 'Active'
+    DELETED = 'Deleted'
+    ARTICLE_STATUS = [
+        (ACTIVE, 'Actif'),
+        (DELETED, 'Supprimé'),
+    ]
+    status = models.CharField(max_length=30, choices=ARTICLE_STATUS)
         
     def __str__(self):
         return f'{self.article_type} - {self.title}'
@@ -52,7 +59,14 @@ class Faq(models.Model):
     creation_date = models.DateTimeField(auto_now=True, verbose_name='Création de la question')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_faq')
-    status = models.CharField(blank=False, max_length=30)
+    # FAQ status
+    ACTIVE = 'Active'
+    DELETED = 'Deleted'
+    FAQ_STATUS = [
+        (ACTIVE, 'Actif'),
+        (DELETED, 'Supprimé'),
+    ]
+    status = models.CharField(max_length=30, choices=FAQ_STATUS)
     
     def __str__(self):
         return f'{self.faq_section} - {self.question}'
@@ -87,10 +101,17 @@ class Event(models.Model):
     image = models.ImageField(upload_to='contents/events/')
     creation_date = models.DateTimeField(auto_now=True, verbose_name='Création de l\'évènement')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
-    start_date = models.DateTimeField(auto_now=True, verbose_name='Début de l\'évènement')
-    end_date = models.DateTimeField(auto_now=True, verbose_name='Fin de l\'évènement')
+    start_date = models.DateTimeField(verbose_name='Début de l\'évènement')
+    end_date = models.DateTimeField(verbose_name='Fin de l\'évènement')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_events')
-    status = models.CharField(blank=False, max_length=30)
+    # Event status
+    ACTIVE = 'Active'
+    DELETED = 'Deleted'
+    EVENT_STATUS = [
+        (ACTIVE, 'Actif'),
+        (DELETED, 'Supprimé'),
+    ]
+    status = models.CharField(max_length=30, choices=EVENT_STATUS)
     
     def __str__(self):
         return f'Evènement - {self.title}'
@@ -167,7 +188,7 @@ class IncidentTracking(models.Model):
         return status
     
     class Meta:
-        verbose_name_plural = "status"
+        verbose_name_plural = "Incident status"
 
 class Comment(models.Model):
     """
@@ -180,7 +201,14 @@ class Comment(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='add_comments')
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='add_comments')
     incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='add_comments')
-    status = models.CharField(blank=False, max_length=30)
+    # article status
+    ACTIVE = 'Active'
+    DELETED = 'Deleted'
+    COMMENT_STATUS = [
+        (ACTIVE, 'Actif'),
+        (DELETED, 'Supprimé'),
+    ]
+    status = models.CharField(max_length=30, choices=COMMENT_STATUS)
     
     def __str__(self):
         return 'Commentaire de {}'.format(self.user)

@@ -23,17 +23,42 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
+    
+    def create_superuser(self, email, username, password=None, is_staff=True, is_superuser=True):
+        """
+        Managing the creation of a user from the registration form
+        """
+        if not email:
+            raise ValueError('Vous devez entrer un email valide')
+
+        superuser = self.model(
+            username=self.model.normalize_username(username),
+            email=self.normalize_email(email),
+            is_staff=is_staff,
+            is_superuser=is_superuser
+        )
+
+        superuser.set_password(password)
+        superuser.save(using=self._db)
+
+        return superuser
 
 class User(AbstractUser):
     """
     Model of the "users_user" table in the database
     """
-    username = models.CharField(max_length=30, unique=True, verbose_name='Pseudonyme')
     email = models.EmailField(
         max_length=255,
         unique=True,
         verbose_name='Adresse email',
         )
+    username = models.CharField(max_length=30, unique=True, verbose_name='Pseudonyme')
+    is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')
+    is_staff = models.BooleanField(default=False, verbose_name='Administrateur')
+    is_superuser = models.BooleanField(default=False, verbose_name='Super administrateur')
+    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
+    last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     OWNER_OCCUPIER = 'Owner occupier'
     OWNER_LESSOR = 'Owner lessor'
     TENANT = 'Tenant'
@@ -49,16 +74,10 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Nom')
     contact_email = models.EmailField(max_length=255, verbose_name='Adresse email de contact')
     phone_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Téléphone')
-    avatar = models.ImageField(upload_to='users/avatars/')
-    about = models.TextField(null=True, blank=True)
-    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
-    last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
-    is_resident = models.BooleanField(default=True)
-    is_union_council = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    avatar = models.ImageField(null=True, blank=True, upload_to='users/avatars/')
+    about = models.TextField(null=True, blank=True, verbose_name='A propos de moi')
+    is_resident = models.BooleanField(default=True, verbose_name='Résident')
+    is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
 
     objects = UserManager()
 
