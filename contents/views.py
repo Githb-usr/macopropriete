@@ -37,4 +37,19 @@ class FaqDetailView(DetailView):
     model = Faq
     template_name = 'contents/faq_detail.html'
     context_object_name = 'faq_detail'
+
+class EventListView(ListView):
+    model = Event
+    paginate_by = 5
+    template_name = 'contents/event_list.html'
+    context_object_name = 'event_list'
+
+class EventDetailView(DetailView):
+    model = Event
+    template_name = 'contents/event_detail.html'
+    context_object_name = 'event_detail'
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context

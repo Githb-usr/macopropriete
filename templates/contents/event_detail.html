@@ -1,0 +1,66 @@
+<!-- lachana/templates/contents/news_detail.html -->
+
+{% extends 'base_template.html' %}
+{% load static %}
+{% block header %}
+    <!-- Masthead-->
+    <header class="simple-header d-flex align-items-center">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
+                <div class="col">
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+{% block content %}
+<main class="container main-product_detail">
+    <!-- Breadcrumb -->
+    <div class="row breadcrumb">
+        <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
+            <li class="nav-item">
+                <a href="/" 
+                class="breadcrumb-link text-body">Accueil</a>>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'news-list' %}" 
+                class="breadcrumb-link text-body">Evènements</a>>
+            </li>
+            <li class="nav-item">
+                <span class="breadcrumb-link text-body">{{ event_detail.title }}</span>
+            </li>
+        </ul>
+    </div>
+    <!-- End breadcrumb -->
+    <section class="main-section">
+        <div class="row product-detail-infos justify-content-center text-muted">
+            <div class="event-detail-title">{{ event_detail.title }}</div>
+            <div class="event-detail-content">{{ event_detail.content }}</div>
+            <div class="news-detail-imgblock"><img src="{{ MEDIA_URL }}{{event_detail.image.url}}" class="event-detail-img" /></div>
+
+            <div class="event-detail-markers">Repères chronologiques</div>
+            <div class="news-detail-marker">Jour de l'évènement : {{ event_detail.start_date|date:"l j F Y" }}</div>
+            <div class="news-detail-marker">Début de l'évènement : {{ event_detail.start_date|time:"H:i" }}</div>
+            <div class="news-detail-marker">Fin de l'évènement : {{ event_detail.end_date|time:"H:i" }}</div>
+            <div class="news-detail-marker">Durée de l'évènement : {{ event_detail.start_date|timesince:event_detail.end_date }}</div>
+            {% if event_detail.start_date > now %}
+                <div class="news-detail-marker">L'évènement a lieu dans : {{ event_detail.start_date|timeuntil }}</div>
+            {% else %}
+                <div class="news-detail-marker">L'évènement s'est terminé il y a : {{ event_detail.end_date|timesince }}</div>
+            {% endif %}
+        </div>
+        <div class="row product_detail-links justify-content-center">
+            <div class="d-flex justify-content-left mt-4">
+                <a type="button" href="javascript:history.back()" target="_self"
+                    class="d-flex align-items-center btn btn-link btn-detail-detail text-white"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Voir touts les évènements">
+                    <i class="bi bi-skip-backward-circle card-footer-icon card-footer-icon-mgr"></i> Retour à la liste des évènements
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+{% block contact %}{% endblock contact %}
