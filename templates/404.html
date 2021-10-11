@@ -1,0 +1,29 @@
+<!-- lachana/templates/404.html -->
+
+{% extends 'base_template.html' %}
+{% load static %}
+{% block header %}
+    <!-- Masthead-->
+    <header class="simple-header d-flex align-items-center">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
+                <div class="col">
+                    <h1 class="fs-1 text-center">ERREUR 404 : page non trouvée !</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+{% block content %}
+<main class="container">
+    <section class="intro-section">
+        <div class="main-instructions d-flex justify-content-center">
+            <span class="font-weight-bold text-body text-danger">
+                Oups ! La page demandée n'a pas été trouvée...<br>
+                Vous pouvez revenir sur la page d'accueil en cliquant sur le logo ou le nom du site, en haut à gauche ^^
+            </span>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+{% block contact %}{% endblock contact %}
