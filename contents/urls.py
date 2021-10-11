@@ -6,6 +6,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path(route='news/', view=views.ArticleListView.as_view(template_name='contents/article_list.html'), name='article-list'),
-    path(route='news/<int:pk>/', view=views.ArticleDetailView.as_view(), name='article-detail'),
+    path(route='news/', view=views.NewsListView.as_view(), name='article-list'),
+    path(route='news/<int:pk>/', view=views.NewsDetailView.as_view(), name='article-detail'),
 ]

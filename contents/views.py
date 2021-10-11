@@ -16,21 +16,15 @@ import logging
 
 from contents.models import Article, Faq, Event
 
-class ArticleListView(ListView):
+class NewsListView(ListView):
 
     model = Article
     paginate_by = 5
+    template_name = 'contents/news_list.html'
+    context_object_name = 'news_list'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        return context
-
-class ArticleDetailView(DetailView):
+class NewsDetailView(DetailView):
 
     model = Article
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        return context
+    template_name = 'contents/news_detail.html'
+    context_object_name = 'news_detail'

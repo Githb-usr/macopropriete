@@ -8,7 +8,7 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
                 <div class="col">
-                    <h1 class="fs-1 text-center">Fiche détaillée du produit sélectionné</h1>
+                    <h1 class="fs-1 text-center">Actualité du {{ news_detail.creation_date }}</h1>
                 </div>
             </div>
         </div>
@@ -16,78 +16,38 @@
 {% endblock header %}
 {% block content %}
 <main class="container main-product_detail">
+    <!-- Breadcrumb -->
+    <div class="row breadcrumb">
+        <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
+            <li class="nav-item">
+                <a href="/" 
+                class="breadcrumb-link d-flex align-items-center btn btn-link text-white">Accueil</a>
+            </li>
+            <li class="nav-item breadcrumb-separator">></li>
+            <li class="nav-item">
+                <a href="{% url 'article-list' %}" 
+                class="breadcrumb-link d-flex align-items-center btn btn-link text-white">News</a>
+            </li>
+            <li class="nav-item breadcrumb-separator">></li>
+            <li class="nav-item">
+                <span class="breadcrumb-link d-flex align-items-center btn text-white">{{ news_detail.title }}</span>
+            </li>
+        </ul>
+    </div>
+    <!-- End breadcrumb -->
     <section class="main-section">
         <div class="row product-detail-infos justify-content-center text-muted">
-            <div class="col-lg-4 col-md-6 col-sm-12 product-detail-img">
-                <img src="{{ product_detail.image_url }}" alt="{{ product_detail.designation }}" class="product-detail-image img-fluid d-block align-middle" />
-            </div>
-            <div class="col-lg-7 col-sm-12 product-detail-data">
-                <div class="row">
-                    <h2 class="d-inline-flex align-middle font-weight-bold header-title text-capitalize">
-                        {{ product_detail.designation }}
-                    </h2>
-                    <div class="col-lg-6 col-sm-12 product-detail-identification">
-                        <p>Marque : {{ product_detail.brand }}</p>
-                        <p>EAN : {{ product_detail.barcode }}</p>
-                    </div>
-                </div>
-                <div class="row product-detail-nutriment">
-                    <div class="col-lg-8 col-sm-12">
-                        <h2 class="product-detail-nutriment-title">Repères nutritionnels pour 100g</h2>
-                        {% if product_detail.fat_level %}
-                            <div class="row product-detail-nutriment-row">
-                                <div class="col-2 {{ nutriment_data.fat.color }}"></div>
-                                <div class="col-10 pt-1">{{ product_detail.fat_value|floatformat }}g : matières grasses / lipides en {{ nutriment_data.fat.quantity }}</div>
-                            </div>
-                        {% endif %}
-                        {% if product_detail.saturated_fat_level %}
-                            <div class="row product-detail-nutriment-row">
-                                <div class="col-2 {{ nutriment_data.saturated_fat.color }}"></div>
-                                <div class="col-10 pt-1">{{ product_detail.saturated_fat_value|floatformat }}g : acides gras saturés en {{ nutriment_data.saturated_fat.quantity }}</div>
-                            </div>
-                        {% endif %}
-                        {% if product_detail.sugars_level %}
-                            <div class="row product-detail-nutriment-row">
-                                <div class="col-2 {{ nutriment_data.sugars.color }}"></div> 
-                                <div class="col-10 pt-1">{{ product_detail.sugars_value|floatformat }}g : sucres en {{ nutriment_data.sugars.quantity }}</div>
-                            </div>
-                        {% endif %}
-                        {% if product_detail.salt_level %}
-                            <div class="row product-detail-nutriment-row">
-                                <div class="col-2 {{ nutriment_data.salt.color }}"></div>
-                                <div class="col-10 pt-1">{{ product_detail.salt_value|floatformat }}g : sel en {{ nutriment_data.salt.quantity }}</div>
-                            </div>
-                        {% endif %}
-                    </div>
-                    <div class="col-lg-4 justify-content-center product-detail-nutriscore">
-                        {% if product_detail.nutriscore == "A" %}
-                            <img src="{% static 'dist/assets/img/nutriscore/nutriscore-a.svg' %}" alt="Nutriscore A" class="nutriscore-img"/>
-                        {% elif product_detail.nutriscore == "B" %}
-                            <img src="{% static 'dist/assets/img/nutriscore/nutriscore-b.svg' %}" alt="Nutriscore B" class="nutriscore-img"/>
-                        {% elif product_detail.nutriscore == "C" %}
-                            <img src="{% static 'dist/assets/img/nutriscore/nutriscore-c.svg' %}" alt="Nutriscore C" class="nutriscore-img"/>
-                        {% elif product_detail.nutriscore == "D" %}
-                            <img src="{% static 'dist/assets/img/nutriscore/nutriscore-d.svg' %}" alt="Nutriscore D" class="nutriscore-img"/>
-                        {% elif product_detail.nutriscore == "E" %}
-                            <img src="{% static 'dist/assets/img/nutriscore/nutriscore-e.svg' %}" alt="Nutriscore E" class="nutriscore-img"/>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+            <div class="news-detail-title">{{ news_detail.title }}</div>
+            <div class="news-detail-content">{{ news_detail.content }}</div>
+            <div class="news-detail-imgblock"><img src="{{ MEDIA_URL }}{{news_detail.image.url}}" class="news-detail-img" /></div>
         </div>
         <div class="row product_detail-links justify-content-center">
-            <div class="d-flex justify-content-center mt-4">
+            <div class="d-flex justify-content-left mt-4">
                 <a type="button" href="javascript:history.back()" target="_self"
                     class="d-flex align-items-center btn btn-link btn-detail-detail text-white"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Revenir à la page précédente">
-                    <i class="bi bi-skip-backward-circle card-footer-icon card-footer-icon-mgr"></i> Retour
-                </a>
-                <a type="button" href="{{ product_detail.url }}" target="_blank"
-                    class="d-flex align-items-center btn btn-link btn-detail-detail btn-off text-white"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir la fiche complète sur OpenFood Fact">
-                    <i class="bi bi-info-circle card-footer-icon card-footer-icon-mgr"></i> Voir sur Open Food Facts
+                    title="Voir toutes les news">
+                    <i class="bi bi-skip-backward-circle card-footer-icon card-footer-icon-mgr"></i> Retour à la liste des news
                 </a>
             </div>
         </div>
@@ -104,7 +64,7 @@
         {% endif %}
         <div class="row comment-area">
             <div class="col-lg-6 col-md-12 col-sm-1">
-                <h3 class="comment-form-title">Laisser un commentaire sur ce produit</h3>
+                <h3 class="comment-form-title">Laisser un commentaire sur cette news</h3>
                 <form class="comment-form">
                     {% csrf_token %}
                     <input type="hidden" name="product-id" value="{{ product_detail.id }}">

@@ -11,7 +11,7 @@ class Article(models.Model):
     """
     title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
     content = models.TextField(blank=False, verbose_name='Article')
-    image = models.ImageField(upload_to='contents/articles/')
+    image = models.ImageField(upload_to='contents')
     creation_date = models.DateTimeField(auto_now=True, verbose_name='Publication de l\'article')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_article')
@@ -29,6 +29,7 @@ class Article(models.Model):
     
     class Meta:
         verbose_name_plural = "articles"
+        ordering = ['-creation_date']
 
 class ArticleUpdate(models.Model):
     """

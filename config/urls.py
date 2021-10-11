@@ -15,13 +15,21 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views.generic import TemplateView
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('copropriete/', include('condominium.urls'), name='condominium'),
-    path('contenu/', include('contents.urls'), name='contents'),
+    path('', include('condominium.urls'), name='condominium'),
+    path('', include('contents.urls'), name='contents'),
     path('', include('pages.urls'), name='pages'),
     path('utilisateur/', include('users.urls'), name='users'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^medias/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
