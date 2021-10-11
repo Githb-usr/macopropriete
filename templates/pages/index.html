@@ -1,0 +1,35 @@
+<!-- lachana/templates/pages/index.html -->
+
+{% extends 'base_template.html' %}
+{% block header %}
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 h-25">
+            <div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center header-content-block">
+                <div class="col-lg-8 align-self-end index-title-block">
+                    <h1 class="fw-bold text-white">Copropriété Parc de la Chana</h1>
+                    <h2 class="text-white">Vous comptez pour la communauté !</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+{% block content %}
+{% load static %}
+    <main class="container">
+        <!-- About-->
+        <section class="page-section row" id="about">
+            <div class="text-center">
+                <img src="{% static 'dist/assets/logos/logo_lachana_old.jpg' %}" id="index-logo"/>
+            </div>
+            {% if messages %}
+                <div class="messages alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+                    {% for message in messages %}
+                        <i class="bi bi-check-circle-fill"></i>  {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </section>
+    </main>
+{% endblock content %}

@@ -9,10 +9,10 @@ class Article(models.Model):
     """
     Model of the "contents_article" table in the database
     """
-    title = models.CharField(blank=False, max_length=100)
-    content = models.TextField(blank=False)
-    image = models.ImageField(upload_to='contents/articles/')
-    creation_date = models.DateTimeField(auto_now=True, verbose_name='Création de l\'article')
+    title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
+    content = models.TextField(blank=False, verbose_name='Article')
+    image = models.ImageField(upload_to='contents')
+    creation_date = models.DateTimeField(auto_now=True, verbose_name='Publication de l\'article')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_article')
     # article status
@@ -25,10 +25,11 @@ class Article(models.Model):
     status = models.CharField(max_length=30, choices=ARTICLE_STATUS)
         
     def __str__(self):
-        return f'{self.article_type} - {self.title}'
+        return f'{self.title}'
     
     class Meta:
         verbose_name_plural = "articles"
+        ordering = ['-creation_date']
 
 class ArticleUpdate(models.Model):
     """
@@ -53,10 +54,10 @@ class Faq(models.Model):
     Model of the "contents_faq" table in the database
     """
     faq_section = models.CharField(max_length=30)
-    question = models.CharField(blank=False, max_length=250)
-    answer = models.TextField(blank=False)
+    question = models.CharField(blank=False, max_length=250, verbose_name='Question')
+    answer = models.TextField(blank=False, verbose_name='Réponse')
     image = models.ImageField(upload_to='contents/faqs/')
-    creation_date = models.DateTimeField(auto_now=True, verbose_name='Création de la question')
+    creation_date = models.DateTimeField(auto_now=True, verbose_name='Publication de la question')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_faq')
     # FAQ status
@@ -96,10 +97,10 @@ class Event(models.Model):
     """
     Model of the "contents_event" table in the database
     """
-    title = models.CharField(blank=False, max_length=100)
-    content = models.TextField(blank=False)
+    title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
+    content = models.TextField(blank=False, verbose_name='Evènement')
     image = models.ImageField(upload_to='contents/events/')
-    creation_date = models.DateTimeField(auto_now=True, verbose_name='Création de l\'évènement')
+    creation_date = models.DateTimeField(auto_now=True, verbose_name='Publication de l\'évènement')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     start_date = models.DateTimeField(verbose_name='Début de l\'évènement')
     end_date = models.DateTimeField(verbose_name='Fin de l\'évènement')
@@ -141,10 +142,10 @@ class Incident(models.Model):
     """
     Model of the "contents_incident" table in the database
     """
-    incident_type = models.CharField(max_length=30)
-    content = models.TextField(blank=False)
+    incident_type = models.CharField(max_length=30, verbose_name='Type d\'incident')
+    content = models.TextField(blank=False, verbose_name='Incident')
     image = models.ImageField(upload_to='contents/incidents/')
-    creation_date = models.DateTimeField(auto_now=True, verbose_name='Création de l\'incident')
+    creation_date = models.DateTimeField(auto_now=True, verbose_name='Publication de l\'incident')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_incident')
     zone = models.ForeignKey('condominium.Zone', on_delete=models.CASCADE, related_name='incident_zone')
     
@@ -194,8 +195,8 @@ class Comment(models.Model):
     """
     Model of the "contents_comment" table in the database
     """
-    content = models.TextField(blank=False, verbose_name='')
-    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Création du commentaire')
+    content = models.TextField(blank=False, verbose_name='Commentaire')
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication du commentaire')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='create_comments')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='add_comments')
