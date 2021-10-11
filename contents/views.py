@@ -17,14 +17,12 @@ import logging
 from contents.models import Article, Faq, Event
 
 class NewsListView(ListView):
-
     model = Article
     paginate_by = 5
     template_name = 'contents/news_list.html'
     context_object_name = 'news_list'
 
 class NewsDetailView(DetailView):
-
     model = Article
     template_name = 'contents/news_detail.html'
     context_object_name = 'news_detail'
