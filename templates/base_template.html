@@ -27,16 +27,16 @@
                 <!-- Navigation-->
                 <nav class="bg-primary text-white navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
                     <div class="container px-4 px-lg-3">
-                        <a class="navbar-brand" href="/"><img src="{% static 'dist/assets/img/logo.png' %}" alt="Logo La Chana" id="pb-img-logo" />Parc de la Chana</a>
+                        <a class="navbar-brand" href="/"><img src="{% static 'dist/assets/logos/logo-condominium.png' %}" alt="Logo Parc de la Chana" id="logo-condominium" /></a>
                         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarResponsive">
                             <div class="col-lg-3 col-sm-12" id="user-menu">
                                 <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
-                                    <li class="nav-item"><a href="{% url 'article-list' %}" class="nav-link"><i class="fas fa-newspaper" title="News"></i>NEWS</a></li>
-                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-question" title="FAQ"></i>FAQ</a></li>
-                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-calendar-alt" title="Evènements"></i>CALENDRIER</a></li>
-                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-user" title="Mon compte"></i>MON COMPTE</a></li>
-                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-power-off" title="Déconnexion"></i>QUITTER</a></li>
+                                    <li class="nav-item"><a href="{% url 'news-list' %}" class="nav-link"><i class="fas fa-newspaper" title="News"></i>Les<br/>news</a></li>
+                                    <li class="nav-item"><a href="{% url 'faq-list' %}" class="nav-link"><i class="fas fa-question" title="Questions/Réponses"></i>Questions<br/>Réponses</a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-calendar-alt" title="Evènements"></i>Le<br/>calendrier</a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-user" title="Mon compte"></i>Mon compte</a></li>
+                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-power-off" title="Déconnexion"></i>Quitter</a></li>
                                 </ul>
                             </div>
                         </div>

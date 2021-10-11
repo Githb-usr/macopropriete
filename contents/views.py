@@ -26,3 +26,15 @@ class NewsDetailView(DetailView):
     model = Article
     template_name = 'contents/news_detail.html'
     context_object_name = 'news_detail'
+
+class FaqListView(ListView):
+    model = Faq
+    paginate_by = 5
+    template_name = 'contents/faq_list.html'
+    context_object_name = 'faq_list'
+
+class FaqDetailView(DetailView):
+    model = Faq
+    template_name = 'contents/faq_detail.html'
+    context_object_name = 'faq_detail'
+    
