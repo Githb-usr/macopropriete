@@ -1,4 +1,4 @@
-<!-- purbeurre/food/templates/food/product_list.html -->
+<!-- lachana/templates/contents/news_detail.html -->
 
 {% extends 'base_template.html' %}
 {% load static %}
@@ -21,16 +21,14 @@
         <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
             <li class="nav-item">
                 <a href="/" 
-                class="breadcrumb-link d-flex align-items-center btn btn-link text-white">Accueil</a>
+                class="breadcrumb-link text-body">Accueil</a>>
             </li>
-            <li class="nav-item breadcrumb-separator">></li>
             <li class="nav-item">
-                <a href="{% url 'article-list' %}" 
-                class="breadcrumb-link d-flex align-items-center btn btn-link text-white">News</a>
+                <a href="{% url 'news-list' %}" 
+                class="breadcrumb-link text-body">News</a>>
             </li>
-            <li class="nav-item breadcrumb-separator">></li>
             <li class="nav-item">
-                <span class="breadcrumb-link d-flex align-items-center btn text-white">{{ news_detail.title }}</span>
+                <span class="breadcrumb-link text-body">{{ news_detail.title }}</span>
             </li>
         </ul>
     </div>
