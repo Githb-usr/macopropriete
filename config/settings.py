@@ -119,7 +119,7 @@ USE_L10N = True
 USE_TZ = True
 
 # User uploaded files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/dist')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'medias')
 MEDIA_URL = '/medias/'
 
 # Static files (CSS, JavaScript, Images)
