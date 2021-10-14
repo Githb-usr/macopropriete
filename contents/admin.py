@@ -6,28 +6,28 @@ class ArticleAdmin(admin.ModelAdmin):
     """
     Display of Article in the back office
     """
-    list_display = ('title', 'content', 'image', 'creation_date',
+    list_display = ('category', 'title', 'content', 'image', 'creation_date',
                     'last_edit', 'status',)
 
 class FaqAdmin(admin.ModelAdmin):
     """
     Display of FAQ in the back office
     """
-    list_display = ('faq_section', 'question', 'answer', 'image',
+    list_display = ('category', 'question', 'answer', 'image',
                     'creation_date', 'last_edit', 'status',)
 
 class EventAdmin(admin.ModelAdmin):
     """
     Display of Event in the back office
     """
-    list_display = ('title', 'content', 'image', 'creation_date',
+    list_display = ('category', 'title', 'content', 'image', 'creation_date',
                     'last_edit', 'start_date', 'end_date', 'status',)
 
 class IncidentAdmin(admin.ModelAdmin):
     """
     Display of Incident in the back office
     """
-    list_display = ('incident_type', 'content', 'image', 'creation_date',)
+    list_display = ('category', 'content', 'image', 'creation_date',)
 
 class IncidentTrackingAdmin(admin.ModelAdmin):
     """
