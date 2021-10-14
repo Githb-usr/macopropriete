@@ -27,6 +27,7 @@
         </ul>
     </div>
     <!-- End breadcrumb -->
+    {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
     {% if event_list is none %}
         <section class="intro-section">
             <div class="main-instructions d-flex justify-content-center">
@@ -56,6 +57,7 @@
             {% endfor %}
             </ul>
         </section>
+        {% include "pagination.html" with page_range=page_range_bottom pagination_css="pagination-bottom" %}
     {% endif %}
 </main>
 {% endblock content %}

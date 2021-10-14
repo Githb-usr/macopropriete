@@ -1,0 +1,45 @@
+<!-- purbeurre/food/templates/food/complex_pagination.html -->
+
+{% if page_obj.paginator.num_pages > 1 %}
+    <nav class="d-flex justify-content-center {{ pagination_css }}">
+        <span class="d-flex align-items-center step-links">
+            {% if page_obj.has_previous and page_obj.paginator.num_pages > 3 %}
+                {% if page_obj.paginator.num_pages > 8 %}
+                    <li class="page-item d-flex justify-content-center align-items-center">
+                        <a class="page-link" href="?query={{ query|urlencode }}&page=1">&lt;&lt;</a>
+                    </li>
+                {% endif %}
+                <li class="page-item d-flex justify-content-center align-items-center">
+                    <a class="page-link" href="?query={{ query|urlencode }}&page={{ page_obj.previous_page_number }}">&lt;</a>
+                </li>
+            {% endif %}
+            {% for i in page_range|default_if_none:page_obj.paginator.get_elided_page_range %}
+                {% if page_obj.number == i %}
+                    <li class="active page-item d-flex justify-content-center align-items-center">
+                        <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                    </li>
+                {% else %}
+                    {% if i == page_obj.paginator.ELLIPSIS %}
+                        <li class="page-item d-flex justify-content-center align-items-center">
+                            <span class="page-link">{{ i }}</span>
+                        </li>
+                    {% else %}
+                        <li class="page-item d-flex justify-content-center align-items-center">
+                            <a class="page-link" href="?query={{ query|urlencode }}&page={{ i }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next and page_obj.paginator.num_pages > 3 %}
+                <li class="page-item d-flex justify-content-center align-items-center">
+                    <a class="page-link" href="?query={{ query|urlencode }}&page={{ page_obj.next_page_number }}">&gt;</a>
+                </li>
+                {% if page_obj.paginator.num_pages > 8 %}
+                    <li class="page-item d-flex justify-content-center align-items-center">
+                        <a class="page-link" href="?query={{ query|urlencode }}&page={{ page_obj.paginator.num_pages }}">&gt;&gt;</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        </span>
+    </nav>
+{% endif %}
