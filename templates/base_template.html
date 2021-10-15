@@ -25,18 +25,53 @@
         <div class="body-block">
             {% block nav %}
                 <!-- Navigation-->
-                <nav class="bg-primary text-white navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-                    <div class="container px-4 px-lg-3">
-                        <a class="navbar-brand" href="/"><img src="{% static 'dist/assets/logos/logo-condominium.png' %}" alt="Logo Parc de la Chana" id="logo-condominium" /></a>
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navbarResponsive">
-                            <div class="col-lg-3 col-sm-12" id="user-menu">
-                                <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
-                                    <li class="nav-item"><a href="{% url 'news-list' %}" class="nav-link"><i class="fas fa-newspaper" title="News"></i>Les<br/>news</a></li>
-                                    <li class="nav-item"><a href="{% url 'faq-list' %}" class="nav-link"><i class="fas fa-question" title="Questions/Réponses"></i>Questions<br/>Réponses</a></li>
-                                    <li class="nav-item"><a href="{% url 'event-list' %}" class="nav-link"><i class="fas fa-calendar-alt" title="Evènements"></i>Les<br/>Evènements</a></li>
-                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-user" title="Mon compte"></i>Mon compte</a></li>
-                                    <li class="nav-item"><a class="nav-link"><i class="fas fa-power-off" title="Déconnexion"></i>Quitter</a></li>
+                <nav class="navbar container flex-column navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                    <div class="menu-line-1 row bg-primary text-white">
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="userNavbarResponsive">
+                            <div class="col-lg-5 col-sm-12" id="user-menu">
+                                <ul class="navbar-nav d-flex">
+                                    {% if user.is_staff %}
+                                    <li class="nav-item ml1">
+                                        <a href="/admin/" class="nav-link d-flex align-items-center"><i class="fas fa-cog" title="Administration du site"></i>Administration</a>
+                                    </li>
+                                    {% endif %}
+                                    <li class="nav-item ml1">
+                                        <a class="nav-link d-flex align-items-center"><i class="fas fa-user" title="Mon compte"></i>Mon compte</a>
+                                    </li>
+                                    <li class="nav-item ml1">
+                                        <a href="{% url 'logout' %}" class="nav-link d-flex align-items-center"><i class="fas fa-power-off" title="Déconnexion"></i>Déconnexion</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-line-2 row">
+                        <div class="navbar-logo">
+                            <a href="/"><img src="{% static 'dist/assets/logos/logo-condominium.png' %}" alt="Logo Parc de la Chana" id="logo-condominium" /></a>
+                        </div>
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#websiteNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="websiteNavbarResponsive">
+                            <div class="col-lg-7 col-sm-12" id="site-menu">
+                                <ul class="row navbar-nav d-flex">
+                                    <li class="col-3 nav-item ml2">
+                                        <a href="{% url 'news-list' %}" class="nav-link">
+                                            <img src="{% static 'dist/assets/icons/icon-news-black.png' %}" alt="Icone menu news" class="menu-icon" id="icon-news" />
+                                            <div class="menu-text">Les news</div>
+                                        </a>
+                                    </li>
+                                    <li class="col-3 nav-item ml2">
+                                        <a href="{% url 'faq-list' %}" class="nav-link">
+                                            <img src="{% static 'dist/assets/icons/icon-faq-black.png' %}" alt="Icone menu questions/réponses" class="menu-icon" id="icon-faq" />
+                                            <div class="menu-text">Vos questions</div>
+                                        </a>
+                                    </li>
+                                    <li class="col-3 nav-item ml2">
+                                        <a href="{% url 'event-list' %}" class="nav-link">
+                                            <img src="{% static 'dist/assets/icons/icon-event-black.png' %}" alt="Icone menu évènements" class="menu-icon" id="icon-event" />
+                                            <div class="menu-text">Les évènements</div>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
