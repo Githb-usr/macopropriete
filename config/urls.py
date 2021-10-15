@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include('condominium.urls'), name='condominium'),
     path('', include('contents.urls'), name='contents'),
     path('', include('pages.urls'), name='pages'),
-    path('utilisateur/', include('users.urls'), name='users'),
+    path('', include('users.urls'), name='users'),
 ]
 
 if settings.DEBUG:

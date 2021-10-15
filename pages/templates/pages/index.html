@@ -1,0 +1,57 @@
+<!-- lachana/templates/pages/index.html -->
+
+{% extends 'base_template.html' %}
+{% block content %}
+{% load static %}
+    <main class="container text-body">
+        <section class="page-section row" id="intro">
+            {% if messages %}
+                <div class="messages alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+                    {% for message in messages %}
+                        <i class="bi bi-check-circle-fill"></i>  {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="index-welcome row d-flex justify-content-between">
+                <div class="index-welcome-title col-lg-6">
+                    <h1>Bienvenue<br/>sur le site web de notre copropriété</h1>
+                </div>
+                <div id="index-carousel" class="index-welcome-carousel col-lg-5 d-flex carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'dist/assets/img/bulle1.png' %}" class="d-block w-100 index-bubble" alt="Le Tulipier">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Le Tulipier</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'dist/assets/img/bulle2.png' %}" class="d-block w-100 index-bubble" alt="Le Magnolia">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Le Magnolia</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'dist/assets/img/bulle3.png' %}" class="d-block w-100 index-bubble" alt="Le Sophora">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Le Sophora</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index-intro text-body">
+                    <p>
+                        Parce que nous partageons le même cadre de vie,<br>
+                        ce site a été créé pour apporter un nouveau lien<br>
+                        entre les habitants de la copropriété.<br>
+                        Vous y trouverez des réponses aux questions<br>
+                        que vous pouvez vous poser dans votre quotidien.
+                    </p>
+                    <button class="index-button btn">
+                        <a href="{% url 'intentions' %}">En savoir plus</a>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
