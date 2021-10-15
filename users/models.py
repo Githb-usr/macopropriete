@@ -52,7 +52,7 @@ class User(AbstractUser):
     email = models.EmailField(
         max_length=255,
         unique=True,
-        verbose_name='Adresse email',
+        verbose_name='',
         )
     username = models.CharField(max_length=30, unique=True, verbose_name='Pseudonyme')
     is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')

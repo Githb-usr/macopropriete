@@ -1,4 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from django.contrib import messages
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
+from global_login_required import login_not_required
+
+from users.forms import UserLoginForm
+from users.settings import LOGIN_ALERT_SUCCESS_MSG
 
 def ValidateUserAccountView(request):
     # récupérer le user à partir du pk
@@ -10,3 +19,8 @@ def ValidateUserAccountView(request):
     # rediriger vers la page de validation du compte
     # à partir de cette page, rediriger vers la page de login après qq secondes (JS)
     pass
+
+@login_not_required
+class UserLoginView(LoginView):
+    authentication_form = UserLoginForm
+    template_name = 'users/login.html'
