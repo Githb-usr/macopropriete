@@ -1,18 +1,6 @@
 <!-- lachana/templates/contents/news_list.html -->
 
 {% extends 'base_template.html' %}
-{% block header %}
-    <!-- Masthead-->
-    <header class="simple-header d-flex align-items-center">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
-                <div class="col">
-                    <h2 class="fs-2 text-center">L'actualité de la copropriété</h2>
-                </div>
-            </div>
-        </div>
-    </header>
-{% endblock header %}
 {% block content %}
 <main class="container text-body">
     <!-- Breadcrumb -->
@@ -27,6 +15,7 @@
         </ul>
     </div>
     <!-- End breadcrumb -->
+    {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
     {% if object_list is none %}
         <section class="intro-section">
             <div class="main-instructions d-flex justify-content-center">
@@ -54,6 +43,7 @@
             {% endfor %}
             </ul>
         </section>
+        {% include "pagination.html" with page_range=page_range_bottom pagination_css="pagination-bottom" %}
     {% endif %}
 </main>
 {% endblock content %}

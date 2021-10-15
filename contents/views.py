@@ -21,6 +21,13 @@ class NewsListView(ListView):
     paginate_by = 5
     template_name = 'contents/news_list.html'
     context_object_name = 'news_list'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page_number = self.request.GET.get('page', 1)
+        context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        return context
 
 class NewsDetailView(DetailView):
     model = Article
@@ -32,6 +39,13 @@ class FaqListView(ListView):
     paginate_by = 5
     template_name = 'contents/faq_list.html'
     context_object_name = 'faq_list'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page_number = self.request.GET.get('page', 1)
+        context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        return context
 
 class FaqDetailView(DetailView):
     model = Faq
@@ -43,6 +57,13 @@ class EventListView(ListView):
     paginate_by = 5
     template_name = 'contents/event_list.html'
     context_object_name = 'event_list'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page_number = self.request.GET.get('page', 1)
+        context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        return context
 
 class EventDetailView(DetailView):
     model = Event

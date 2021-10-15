@@ -1,8 +1,12 @@
-from django.shortcuts import render
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from django.views.generic.base import TemplateView
 
-def show_index(request):
-    """
-    We display the homepage of the application
-    :return: a template
-    """
-    return render(request, 'pages/index.html')
+class IndexView(TemplateView):
+    template_name = 'pages/index.html'
+
+class IntentionsView(TemplateView):
+    template_name = 'pages/intentions.html'
+
+class LegalNoticesView(TemplateView):
+    template_name = 'pages/legal_notices.html'

@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'global_login_required.GlobalLoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -119,7 +120,7 @@ USE_L10N = True
 USE_TZ = True
 
 # User uploaded files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/dist')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'medias')
 MEDIA_URL = '/medias/'
 
 # Static files (CSS, JavaScript, Images)
@@ -131,11 +132,20 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom user
 AUTH_USER_MODEL = 'users.User'
-LOGIN_URL = 'login_url'
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = 'login_url'
+LOGOUT_REDIRECT_URL = 'login'
+
+# Settings for Django Global Login Required Middleware
+PUBLIC_VIEWS = [
+    'users.views.UserLoginView',
+]
+
+PUBLIC_PATHS = [
+    '^%s.*' % MEDIA_URL, # allow public access to any media on your application
+    r'^/login/.', # allow public access to all django-allauth views
+]

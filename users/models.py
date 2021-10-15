@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils import timezone
+import uuid
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
@@ -47,10 +48,11 @@ class User(AbstractUser):
     """
     Model of the "users_user" table in the database
     """
+    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
     email = models.EmailField(
         max_length=255,
         unique=True,
-        verbose_name='Adresse email',
+        verbose_name='',
         )
     username = models.CharField(max_length=30, unique=True, verbose_name='Pseudonyme')
     is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')
@@ -78,6 +80,13 @@ class User(AbstractUser):
     about = models.TextField(null=True, blank=True, verbose_name='A propos de moi')
     is_resident = models.BooleanField(default=True, verbose_name='Résident')
     is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
+    PENDING = 'Pending'
+    VALIDATED = 'Validated'
+    USER_STATUS = [
+        (PENDING, 'En attente'),
+        (VALIDATED, 'Validé'),
+    ]
+    status = models.CharField(max_length=15, default=PENDING, choices=USER_STATUS, verbose_name='Statut')
 
     objects = UserManager()
 
