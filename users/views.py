@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
+from django.views.generic.base import TemplateView
 from global_login_required import login_not_required
 
 from users.forms import UserLoginForm
@@ -24,3 +25,6 @@ def ValidateUserAccountView(request):
 class UserLoginView(LoginView):
     authentication_form = UserLoginForm
     template_name = 'users/login.html'
+
+class DashboardView(TemplateView):
+    template_name = "users/dashboard.html"
