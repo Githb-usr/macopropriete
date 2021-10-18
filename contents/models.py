@@ -9,7 +9,7 @@ class Article(models.Model):
     """
     Model of the "contents_article" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     CONDOMINIUM = 'Condominium'
     MEETING = 'Meeting'
     MISCELLANEOUS='Miscellaneous'
@@ -67,7 +67,7 @@ class Faq(models.Model):
     """
     Model of the "contents_faq" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     BUILDINGS = 'Buildings'
     CAR_PARKS = 'Car parks'
     INDIVIDUAL_GARAGES = 'Individual garages'
@@ -124,7 +124,7 @@ class Event(models.Model):
     """
     Model of the "contents_event" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     PARTY = 'Party'
     MEETING = 'Meeting'
     MISCELLANEOUS='Miscellaneous'
@@ -183,7 +183,7 @@ class Incident(models.Model):
     """
     Model of the "contents_incident" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     ACCIDENT = 'Accident'
     BREAKDOWN = 'Breakdown'
     DAMAGE = 'Damage'
@@ -249,7 +249,7 @@ class Comment(models.Model):
     """
     Model of the "contents_comment" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     content = models.TextField(blank=False, verbose_name='Commentaire')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication du commentaire')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')

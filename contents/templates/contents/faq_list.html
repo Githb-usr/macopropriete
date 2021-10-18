@@ -28,7 +28,7 @@
         <section class="main-section">
             <ul>
             {% for faq in faq_list %}
-                <a href="{% url 'faq-detail' pk=faq.pk %}" class="text-body">
+                <a href="{% url 'faq-detail' faq.uuid %}" class="text-body">
                     <div class="content-list-item row">
                         <div class="content-list-imgblock col-1">
                             <img src="{{ MEDIA_URL }}{{faq.image.url}}" class="content-list-img" />

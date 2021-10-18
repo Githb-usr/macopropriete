@@ -28,7 +28,7 @@
         <section class="main-section">
             <ul>
             {% for event in event_list %}
-                <a href="{% url 'event-detail' pk=event.pk %}" class="text-body">
+                <a href="{% url 'event-detail' event.uuid %}" class="text-body">
                     <div class="content-list-item row">
                         <div class="content-list-imgblock col-1">
                             <img src="{{ MEDIA_URL }}{{event.image.url}}" class="content-list-img" />
