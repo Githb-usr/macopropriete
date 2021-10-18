@@ -9,7 +9,7 @@ class Article(models.Model):
     """
     Model of the "contents_article" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     CONDOMINIUM = 'Condominium'
     MEETING = 'Meeting'
     MISCELLANEOUS='Miscellaneous'
@@ -25,7 +25,7 @@ class Article(models.Model):
     category = models.CharField(max_length=30, choices=ARTICLE_CATEGORY, default=MISCELLANEOUS)
     title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
     content = models.TextField(blank=False, verbose_name='Article')
-    image = models.ImageField(upload_to='contents')
+    image = models.ImageField(upload_to='contents', null=True, blank=True)
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de l\'article')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_article')
@@ -67,7 +67,7 @@ class Faq(models.Model):
     """
     Model of the "contents_faq" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     BUILDINGS = 'Buildings'
     CAR_PARKS = 'Car parks'
     INDIVIDUAL_GARAGES = 'Individual garages'
@@ -83,7 +83,7 @@ class Faq(models.Model):
     category = models.CharField(max_length=30, choices=FAQ_CATEGORY, default=MISCELLANEOUS)
     question = models.CharField(blank=False, max_length=250, verbose_name='Question')
     answer = models.TextField(blank=False, verbose_name='Réponse')
-    image = models.ImageField(upload_to='contents/faqs/')
+    image = models.ImageField(upload_to='contents/faqs/', null=True, blank=True)
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de la question')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_faq')
@@ -124,7 +124,7 @@ class Event(models.Model):
     """
     Model of the "contents_event" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     PARTY = 'Party'
     MEETING = 'Meeting'
     MISCELLANEOUS='Miscellaneous'
@@ -140,7 +140,7 @@ class Event(models.Model):
     category = models.CharField(max_length=30, choices=EVENT_CATEGORY, default=MISCELLANEOUS)
     title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
     content = models.TextField(blank=False, verbose_name='Evènement')
-    image = models.ImageField(upload_to='contents/events/')
+    image = models.ImageField(upload_to='contents/events/', null=True, blank=True)
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de l\'évènement')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     start_date = models.DateTimeField(verbose_name='Début de l\'évènement')
@@ -183,7 +183,7 @@ class Incident(models.Model):
     """
     Model of the "contents_incident" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     ACCIDENT = 'Accident'
     BREAKDOWN = 'Breakdown'
     DAMAGE = 'Damage'
@@ -199,7 +199,7 @@ class Incident(models.Model):
     category = models.CharField(max_length=30, choices=INCIDENT_CATEGORY, default=MISCELLANEOUS, verbose_name='Type d\'incident')
     zone = models.ForeignKey('condominium.Zone', on_delete=models.CASCADE, related_name='incident_zone')
     content = models.TextField(blank=False, verbose_name='Incident')
-    image = models.ImageField(upload_to='contents/incidents/')
+    image = models.ImageField(upload_to='contents/incidents/', null=True, blank=True)
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de l\'incident')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Déclarant', related_name='create_incident')
     
@@ -249,7 +249,7 @@ class Comment(models.Model):
     """
     Model of the "contents_comment" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     content = models.TextField(blank=False, verbose_name='Commentaire')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication du commentaire')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')

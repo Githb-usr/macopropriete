@@ -1,6 +1,7 @@
 <!-- lachana/templates/contents/news_list.html -->
 
-{% extends 'base_template.html' %}
+{% extends 'base_private_template.html' %}
+{% load static %}
 {% block content %}
 <main class="container text-body">
     <!-- Breadcrumb -->
@@ -15,6 +16,9 @@
         </ul>
     </div>
     <!-- End breadcrumb -->
+    <div class="page-title-block">
+        <h1 class="page-title">Les news</h1>
+    </div>
     {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
     {% if object_list is none %}
         <section class="intro-section">
@@ -28,10 +32,12 @@
         <section class="main-section">
             <ul>
             {% for news in news_list %}
-                <a href="{% url 'news-detail' pk=news.pk %}" class="text-body">
+                <a href="{% url 'news-detail' news.uuid %}" class="text-body">
                     <div class="content-list-item row">
                         <div class="content-list-imgblock col-1">
-                            <img src="{{ MEDIA_URL }}{{news.image.url}}" class="content-list-img" />
+                            {% with 'dist/assets/img/'|add:'img-'|add:news.category|add:'.png' as image %}
+                                <img src="{% static image %}"  class="content-list-img" />
+                            {% endwith %}
                         </div>
                         <div class="content-list-contentblock col-11">
                             <div class="content-list-title">{{ news.title }} ({{ news.creation_date|date }})</div>

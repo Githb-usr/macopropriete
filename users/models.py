@@ -8,15 +8,14 @@ from django.utils import timezone
 import uuid
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self, email, password=None):
         """
-        Managing the creation of a user from the registration form
+        Managing the creation of a user
         """
         if not email:
             raise ValueError('Vous devez entrer un email valide')
 
         user = self.model(
-            username=self.model.normalize_username(username),
             email=self.normalize_email(email),
         )
 
@@ -27,13 +26,12 @@ class UserManager(BaseUserManager):
     
     def create_superuser(self, email, username, password=None, is_staff=True, is_superuser=True):
         """
-        Managing the creation of a user from the registration form
+        Managing the creation of a superuser
         """
         if not email:
             raise ValueError('Vous devez entrer un email valide')
 
         superuser = self.model(
-            username=self.model.normalize_username(username),
             email=self.normalize_email(email),
             is_staff=is_staff,
             is_superuser=is_superuser
@@ -48,13 +46,13 @@ class User(AbstractUser):
     """
     Model of the "users_user" table in the database
     """
-    exposed_id = models.UUIDField(default=uuid.uuid4, unique=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     email = models.EmailField(
         max_length=255,
         unique=True,
-        verbose_name='',
+        verbose_name='Adresse email',
         )
-    username = models.CharField(max_length=30, unique=True, verbose_name='Pseudonyme')
+    username = models.CharField(max_length=30, blank=True, null=True, unique=True, verbose_name='Pseudonyme')
     is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')
     is_staff = models.BooleanField(default=False, verbose_name='Administrateur')
     is_superuser = models.BooleanField(default=False, verbose_name='Super administrateur')
@@ -71,12 +69,12 @@ class User(AbstractUser):
         (TENANT, 'Locataire'),
         (SYNDIC, 'Syndic'),
     ]
-    user_type = models.CharField(max_length=20, choices=USER_TYPE)
+    user_type = models.CharField(max_length=20, choices=USER_TYPE, default='OWNER_OCCUPIER', verbose_name='Catégorie d\'utilisateur')
     first_name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Prénom')
     last_name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Nom')
-    contact_email = models.EmailField(max_length=255, verbose_name='Adresse email de contact')
+    contact_email = models.EmailField(max_length=255, blank=True, null=True, verbose_name='Adresse email de contact')
     phone_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Téléphone')
-    avatar = models.ImageField(null=True, blank=True, upload_to='users/avatars/')
+    avatar = models.ImageField(upload_to='users/', null=True, blank=True, verbose_name='Avatar')
     about = models.TextField(null=True, blank=True, verbose_name='A propos de moi')
     is_resident = models.BooleanField(default=True, verbose_name='Résident')
     is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
@@ -86,13 +84,13 @@ class User(AbstractUser):
         (PENDING, 'En attente'),
         (VALIDATED, 'Validé'),
     ]
-    status = models.CharField(max_length=15, default=PENDING, choices=USER_STATUS, verbose_name='Statut')
+    status = models.CharField(max_length=15, choices=USER_STATUS, default=PENDING, verbose_name='Statut')
 
     objects = UserManager()
 
     # Main Field for authentication
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.username
