@@ -149,3 +149,12 @@ PUBLIC_PATHS = [
     '^%s.*' % MEDIA_URL, # allow public access to any media on your application
     r'^/login/.', # allow public access to all django-allauth views
 ]
+
+# Settings for email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = env('EMAIL_PORT')
+RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
