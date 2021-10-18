@@ -21,7 +21,7 @@ class NewsListView(ListView):
     paginate_by = 5
     template_name = 'contents/news_list.html'
     context_object_name = 'news_list'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
@@ -34,12 +34,16 @@ class NewsDetailView(DetailView):
     template_name = 'contents/news_detail.html'
     context_object_name = 'news_detail'
 
+    def get_object(self, queryset=None):
+        # To use uuid in the route
+        return Article.objects.get(uuid=self.kwargs.get("uuid"))
+
 class FaqListView(ListView):
     model = Faq
     paginate_by = 5
     template_name = 'contents/faq_list.html'
     context_object_name = 'faq_list'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
@@ -52,12 +56,16 @@ class FaqDetailView(DetailView):
     template_name = 'contents/faq_detail.html'
     context_object_name = 'faq_detail'
 
+    def get_object(self, queryset=None):
+        # To use uuid in the route
+        return Faq.objects.get(uuid=self.kwargs.get("uuid"))
+
 class EventListView(ListView):
     model = Event
     paginate_by = 5
     template_name = 'contents/event_list.html'
     context_object_name = 'event_list'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
@@ -74,3 +82,7 @@ class EventDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
+
+    def get_object(self, queryset=None):
+        # To use uuid in the route
+        return Event.objects.get(uuid=self.kwargs.get("uuid"))

@@ -1,19 +1,17 @@
 <!-- lachan/users/templates/users/dashboard.html -->
-{% extends 'base_template.html' %}
+{% extends 'base_private_template.html' %}
 {% load static %}
 {% block content %}
 <main class="container">
-    <section class="intro-section">
-        <div class="main-instructions">
-            <p class="font-weight-bold text-body">
-                Vos informations personnelles enregistrées sur le site : 
-            </p>
-        </div>
-    </section>
+    <div class="page-title-block">
+        <h1 class="page-title">Mon compte</h1>
+    </div>
     <section class="main-section">
-        <div class="row dashboard-infos">
+        <div class="row dashboard-infos text-body">
             <div class="col-lg-2 col-sm-4 user-img d-flex align-items-center">
-                <img src="{% static 'dist/assets/img/default_user.png' %}" alt="{{user.username}}" class="user-image img-fluid d-block align-middle" />
+                {% if not user.image %}
+                    <img src="{{ MEDIA_URL }}users/default-user.png" alt="{{user.username}}" class="user-image img-fluid d-block align-middle" />
+                {% endif %}
             </div>
             <div class="col-lg-6 col-sm-12 user-data">
                 <li class="user-data-line">
@@ -39,4 +37,3 @@
     </section>
 </main>
 {% endblock content %}
-{% block contact %}{% endblock contact %}
