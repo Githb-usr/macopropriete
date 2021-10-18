@@ -1,6 +1,6 @@
 <!-- lachana/templates/contents/faq_list.html -->
 
-{% extends 'base_template.html' %}
+{% extends 'base_private_template.html' %}
 {% block content %}
 <main class="container text-body">
     <!-- Breadcrumb -->
@@ -10,11 +10,14 @@
                 <a href="/" class="breadcrumb-link text-body">Accueil</a>>
             </li>
             <li class="nav-item">
-                <span class="breadcrumb-link text-body">Questions/réponses</span>
+                <span class="breadcrumb-link text-body">Vos questions</span>
             </li>
         </ul>
     </div>
     <!-- End breadcrumb -->
+    <div class="page-title-block">
+        <h1 class="page-title">Vos questions</h1>
+    </div>
     {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
     {% if object_list is none %}
         <section class="intro-section">
