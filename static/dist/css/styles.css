@@ -52,10 +52,10 @@
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-rgb: 33, 37, 41;
-  --bs-font-sans-serif: "Montserrat", "Scope One", sans-serif, "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-sans-serif: "Montserrat", sans-serif, "Scope One", sans-serif, "Merriweather Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: Montserrat, Scope One, sans-serif, Merriweather Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --bs-body-font-family: Montserrat, sans-serif, Scope One, sans-serif, Merriweather Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -103,7 +103,7 @@ hr:not([size]) {
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "Montserrat", "Scope One", sans-serif, "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Montserrat", sans-serif, "Scope One", sans-serif, "Merriweather Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 500;
   line-height: 1.2;
 }
@@ -2988,7 +2988,7 @@ textarea.form-control-lg {
 
 .btn {
   display: inline-block;
-  font-family: "Montserrat", "Scope One", sans-serif, "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Montserrat", sans-serif, "Scope One", sans-serif, "Merriweather Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -5757,7 +5757,7 @@ textarea.form-control-lg {
   z-index: 1080;
   display: block;
   margin: 0;
-  font-family: "Montserrat", "Scope One", sans-serif, "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Montserrat", sans-serif, "Scope One", sans-serif, "Merriweather Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5859,7 +5859,7 @@ textarea.form-control-lg {
   z-index: 1070;
   display: block;
   max-width: 276px;
-  font-family: "Montserrat", "Scope One", sans-serif, "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Montserrat", sans-serif, "Scope One", sans-serif, "Merriweather Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -11312,8 +11312,9 @@ hr.divider-gray {
 #mainNav .navbar-nav .nav-item .nav-link {
   display: flex;
   text-align: center;
-  font-family: "Montserrat", "Scope One", sans-serif, "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Montserrat", sans-serif, "Scope One", sans-serif, "Merriweather Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
+  font-size: 0.9rem;
   padding: 0.75rem 0;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link:active {
@@ -11375,109 +11376,188 @@ hr.divider-gray {
   }
 }
 
-header.masthead {
-  padding-top: calc(7rem - 4.5rem);
-  padding-bottom: calc(7rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(243, 241, 234, 0.8) 0%, rgba(243, 241, 234, 0.8) 100%), url("../assets/img/background.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
-header.masthead h1, header.masthead .h1 {
-  font-size: 1.75rem;
-}
-@media (min-width: 992px) {
-  header.masthead {
-    height: 25vh;
-    min-height: 14rem;
-    padding-top: 4.5rem;
-    padding-bottom: 0;
-  }
-  header.masthead p {
-    font-size: 1.15rem;
-  }
-  header.masthead h1, header.masthead .h1 {
-    font-size: 2rem;
-  }
-}
-@media (min-width: 1200px) {
-  header.masthead h1, header.masthead .h1 {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-  }
-  header.masthead h2, header.masthead .h2 {
-    font-size: 1.5rem;
-  }
+section.main-section ul {
+  margin-top: 2rem;
+  padding-left: 0;
 }
 
-.product-detail-infos {
-  height: 100%;
-  font-weight: bold;
+div.content-list-item div.col-1 {
+  width: 13%;
 }
 
-.product-detail-img {
-  background-color: #fff;
-  height: 500px;
-  margin: 0 3rem 0 0;
-  padding: 1.5rem;
+div.content-list-item div.col-11 {
+  width: 87%;
 }
 
-.product-detail-image {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+.content-list-item {
+  margin-bottom: 2rem;
 }
 
-.product-detail-data {
-  margin: 0;
-  padding: 1.5rem 0 0 0;
+.content-list-item-block {
+  padding-left: 0;
 }
 
-.product-detail-identification p {
-  margin: 1rem 0;
+.content-list-item-img-block {
+  padding-right: 0;
 }
 
-.product-detail-nutriment {
-  padding-top: 1rem;
-  font-size: 1.1rem;
+.content-list-item-img {
+  width: 6rem;
 }
 
-.product-detail-nutriment .col-8, .product-detail-nutriment .col-3, .product-detail-data .col-6 {
-  margin: 0;
-  padding: 0;
+.content-list-item-date, .content-list-item-title {
+  color: #ADB386;
+  font-weight: bolder;
 }
 
-.product-detail-nutriment-title {
-  padding: 0 0 1.5rem 0;
-  font-size: 1.5rem;
-}
-
-.product-detail-nutriment-row {
-  margin-bottom: 1rem;
+.content-list-item-date {
   font-size: 1rem;
 }
 
-.nutriscore-img {
-  width: 100%;
+.content-list-item-title {
+  font-size: 2rem;
 }
 
-.product_detail-links a {
+hr.content-separator {
+  margin: 2rem 0;
+  height: 0.2rem;
+  color: #ADB386;
+  opacity: 1;
+}
+
+section.main-section hr.content-separator:last-child {
+  display: none;
+}
+
+.main-instructions p {
+  margin: 0;
+  padding: 1rem 0 0 0;
+  vertical-align: middle;
+}
+
+.faq-category-list {
+  display: grid;
+  height: 36rem;
+  grid-template-columns: repeat(3, 15rem);
+  grid-template-rows: repeat(2, 15rem);
+  grid-gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+.faq-category {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  font-weight: bolder;
+  color: #fff;
+}
+
+.faq-category-img {
+  width: 100%;
+  height: 100%;
+}
+
+.faq-category-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.8rem;
+}
+
+.pagination-top {
+  margin: 1rem 0 4rem 0;
+}
+
+.pagination-bottom {
+  margin: 4rem 0 1rem 0;
+}
+
+.pagination-top .page-link, .pagination-bottom .page-link {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.pagination-top a:hover, .pagination-bottom a:hover, .pagination-top a .current-page, .pagination-bottom a .current-page {
+  background-color: #ADB386;
+  color: #fff;
+}
+
+article.news-detail {
+  padding: 0;
+}
+
+.news-detail-date {
+  font-size: 1.2rem;
+  color: #65725E;
+}
+
+.news-detail-title {
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.news-detail-date, .news-detail-title, .news-detail-category {
+  font-weight: bolder;
+}
+
+.news-detail-category {
+  margin: 0.7rem 0 2rem 0;
+  padding: 0.3rem 0;
+  font-size: 1rem;
+  border-top: 2px solid #ADB386;
+  border-bottom: 2px solid #ADB386;
+}
+
+.news-detail-title, .news-detail-category {
+  color: #ADB386;
+}
+
+.news-detail-img-block {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.news-detail-img {
+  width: 60%;
+}
+
+.news-detail-btn a {
   display: block;
+  font-size: 0.9rem;
+  font-weight: bolder;
   color: #6c757d;
   text-decoration: none;
 }
-.product_detail-links .btn {
-  margin-right: 1rem;
+.news-detail-btn a.left-btn, .news-detail-btn a.right-btn {
+  width: 85%;
+  background-color: #65725E;
+  justify-content: space-between;
 }
-
-.btn-detail-detail {
+.news-detail-btn a.central-btn {
+  width: 100%;
+  padding: 0.5rem 0;
   background-color: #ADB386;
+  justify-content: center;
+}
+.news-detail-btn .btn {
+  border-radius: 1rem;
 }
 
-.card-footer-icon-mgr {
+.news-detail-btn-icon {
+  font-size: 1.1rem;
+}
+
+.news-detail-btn-icon-left {
   margin-right: 0.5rem;
+}
+
+.news-detail-icon-right {
+  margin-left: 0.5rem;
 }
 
 i.comment-message {
@@ -11544,142 +11624,187 @@ h3.comment-title, .comment-title.h3 {
   color: #fff;
 }
 
-.content-list-item {
-  margin-bottom: 2rem;
+.page-section {
+  padding: 0;
 }
 
-.content-list-img {
-  width: 6rem;
+.index-welcome {
+  margin-top: 0;
+  padding-right: 0;
 }
 
-hr.content-separator {
-  margin: 2rem 0;
-  height: 0.15rem;
+.index-welcome-title {
+  width: 50%;
   color: #ADB386;
-  opacity: 1;
 }
 
-.product-list-intro-section {
-  margin-bottom: 2rem;
-  font-size: 1.3rem;
+.index-welcome-title h1, .index-welcome-title .h1 {
+  color: #ADB386;
+  font-size: 4rem;
 }
 
-.initial-product-thumbnail {
-  height: 5rem;
-  margin-right: 1.5rem;
+.index-welcome-title h1, .index-welcome-title .h1, .index-welcome-text p {
+  margin-bottom: 3rem;
 }
 
-.main-instructions p {
-  margin: 0;
-  padding: 1rem 0 0 0;
-  vertical-align: middle;
+.index-welcome-text {
+  padding-right: 1rem;
 }
 
-.card-title {
-  margin: 0;
-  font-size: 1rem;
+.index-welcome-button {
+  background-color: #ADB386;
+  width: 10rem;
+  font-size: 200;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 1rem;
 }
 
-.product-img {
-  height: 19rem;
-  width: 100%;
+.index-welcome-carousel {
+  width: 50%;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.carousel {
+  position: static;
+}
+
+.index-slide-img {
+  width: 33%;
   -o-object-fit: contain;
      object-fit: contain;
-  margin: 0 auto;
-  padding: 1rem;
 }
 
-.card-footer {
-  background-color: #ADB386;
-  border-top: none;
-  padding: 0 0.8rem 0.8rem 0.8rem;
+.index-title-block {
+  margin-top: 2.5rem;
 }
 
-.card-footer .btn, .product-detail-btn {
-  width: 2.5rem;
-  height: 2.5rem;
-  margin: 0 0.5rem 0 0;
-  color: #f3f3f3;
-}
-
-.card-footer-icon {
-  font-size: 1.4rem;
-}
-
-.btn-locked {
-  background-color: lightgray;
-}
-
-.btn-locked i {
-  color: darkgray;
-}
-
-.pagination-top {
-  margin: 0 0 2rem 0;
-}
-
-.pagination-top .page-link, .pagination-bottom .page-link {
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem 0.85rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.pagination-top a:hover, .pagination-bottom a:hover, .pagination-top a .current-page, .pagination-bottom a .current-page {
-  background-color: #ADB386;
-  color: #fff;
-}
-
-.content-new-sticker {
-  position: absolute;
-  top: -1.5rem;
-  left: 92%;
-  width: 50px;
-  height: 50px;
-  border-radius: 30px;
-  padding-top: 0.1rem;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-}
-
-.dashboard-infos {
-  padding-left: 0;
-}
-
-.user-img {
-  border: 1px #212529 solid;
-  margin: 0 2rem 0 0.7rem;
-}
-
-.user-image {
-  height: 90%;
-  width: auto;
-  margin: 0 auto;
-  padding: 0.5rem;
-}
-
-.user-data {
+.intentions-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
 }
 
-.user-data-line {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 0.9rem;
+.intention {
+  width: 60%;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.dashboard-label {
-  width: 10.5rem;
-  font-weight: bold;
+.intention-logo-tree {
+  width: 12%;
+  margin: 1rem 0;
 }
 
-.last-block-element {
-  margin-bottom: 0;
+.intention-title-light {
+  color: #ADB386;
+}
+
+.intention-title-dark {
+  color: #65725E;
+}
+
+.intention-title-light, .intention-title-dark {
+  font-weight: bolder;
+}
+
+#legal-notices u {
+  font-style: italic;
+  text-decoration: none;
+}
+#legal-notices h2, #legal-notices .h2 {
+  font-size: 1.5rem;
+}
+#legal-notices a {
+  color: #65725E;
+  text-decoration: underline;
+}
+#legal-notices section:last-child {
   padding-bottom: 0;
+}
+
+.profile-header {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.profile-header-img-container {
+  width: 7.7rem;
+  height: 7.7rem;
+  border: 7px #65725E solid;
+  border-radius: 50%;
+}
+
+.profile-header-img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+
+h1.profile-header-title, .profile-header-title.h1 {
+  font-size: 2rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.profile-content {
+  align-items: center;
+}
+
+.current-connected-user-infos, .profile-label, .profile-label-about, .profile-separator, .profile-value .bi {
+  color: #ADB386;
+}
+
+.current-connected-user-infos {
+  font-style: italic;
+}
+
+.profile-label, .profile-label-about {
+  font-weight: bolder;
+}
+
+.profile-label {
+  margin-right: 0.3rem;
+}
+
+.profile-label-about {
+  margin-bottom: 0.5rem;
+}
+
+.profile-value .bi {
+  padding: 0 0.3rem 0 1rem;
+}
+
+.profile-logo-tree {
+  width: 12%;
+}
+
+hr.profile-separator {
+  height: 0.15rem;
+  opacity: 0.6;
+}
+
+.profile-btn {
+  padding: 0.5rem 0;
+  margin-top: 2rem;
+  background-color: #ADB386;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  font-weight: bolder;
+  color: #fff;
+}
+
+.profile-public-content, .profile-private-content {
+  width: 75%;
+}
+
+.profile-public-content {
+  margin-bottom: 2rem;
+}
+
+.profile-private-content {
+  margin-top: 3rem;
 }
 
 .main-login {
@@ -11776,7 +11901,7 @@ body {
 }
 
 .content-wrap {
-  width: 70%;
+  width: 60%;
   height: 100%;
   background-color: #fff;
   background-position: center;
@@ -11795,13 +11920,8 @@ main {
   margin: 0;
 }
 
-section, div, p, li {
-  font-family: "Montserrat";
-}
-
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  font-family: "Montserrat";
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 h3, .h3 {
@@ -11809,6 +11929,7 @@ h3, .h3 {
 }
 
 .text-body {
+  font-weight: 400;
   color: #4D4D4D;
 }
 
@@ -11867,7 +11988,7 @@ nav.container {
 
 .menu-line-1, .menu-line-2 {
   width: 100%;
-  padding: 0 14% 0 15%;
+  padding: 0 19% 0 20%;
 }
 
 .menu-line-1 {
@@ -11899,7 +12020,7 @@ div#websiteNavbarResponsive {
 
 div.navbar-logo {
   display: flex;
-  width: 12%;
+  width: 15%;
   padding: 0.5rem 0;
 }
 
@@ -11924,15 +12045,14 @@ a.nav-link:hover {
 }
 
 .menu-icon {
-  width: 2.9rem;
+  width: 2.8rem;
   display: block;
   margin: 0 0 0.5rem 0;
   text-align: center;
 }
 
 .menu-text {
-  font-family: "Montserrat";
-  font-size: 1rem;
+  font-size: 0.7rem;
   white-space: normal;
   margin: 0;
   text-align: center;
@@ -11980,82 +12100,22 @@ main section {
 
 div.page-title-block {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  text-align: center;
   margin-bottom: 2rem;
 }
 
 h1.page-title, .page-title.h1 {
   font-size: 3rem;
+}
+
+h2.page-subtitle, .page-subtitle.h2 {
+  font-size: 2rem;
+}
+
+h1.page-title, .page-title.h1, h2.page-subtitle, .page-subtitle.h2 {
   font-weight: bolder;
   color: #ADB386;
-}
-
-.page-section {
-  padding: 0;
-}
-
-.index-welcome {
-  margin-top: 0;
-  padding-right: 0;
-}
-
-.index-welcome-title {
-  width: 60%;
-  color: #ADB386;
-}
-
-.index-welcome-title h1, .index-welcome-title .h1 {
-  color: #ADB386;
-  font-size: 4rem;
-  font-weight: bolder;
-}
-
-.index-welcome-carousel {
-  width: 36%;
-}
-
-.carousel {
-  position: static;
-}
-
-.index-bubble {
-  width: 25%;
-  -o-object-fit: contain;
-     object-fit: contain;
-}
-
-.index-button {
-  background-color: #ADB386;
-  color: #fff;
-  border-radius: 1rem;
-}
-
-#page-contact {
-  background: #F3F1EA;
-  padding: 1rem;
-}
-
-#page-contact h2, #page-contact .h2 {
-  font-size: 1.8rem;
-}
-
-#contact-mail-link a, #contact-mail-link a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-.contact-intro {
-  font-size: 1.2rem;
-  padding: 1rem 0 1.5rem 0;
-}
-
-#contact-phone, #contact-mail {
-  margin-bottom: 1rem;
-}
-
-.index-title-block {
-  margin-top: 2.5rem;
 }
 
 div.breadcrumb {
@@ -12076,58 +12136,27 @@ div.breadcrumb {
 
 .breadcrumb-link {
   font-size: 0.8rem;
+  color: #ADB386;
   text-decoration: none;
   line-height: 1.5;
   text-align: center;
   margin-right: 0.3rem;
 }
 
-.intentions-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-.intention {
-  width: 60%;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.intention-title {
-  color: #ADB386;
-  font-weight: bolder;
-}
-
-#legal-notices u {
-  font-style: italic;
-  text-decoration: none;
-}
-#legal-notices h2, #legal-notices .h2 {
-  font-size: 1.5rem;
-}
-#legal-notices a {
-  color: #65725E;
-  text-decoration: underline;
-}
-#legal-notices section:last-child {
-  padding-bottom: 0;
-}
-
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 6rem;
+  height: 4rem;
+  padding: 0 21% 0 21%;
 }
 
 #footer-copyright {
-  margin-top: 1rem;
+  text-align: end;
 }
 
 footer, footer a {
-  font-size: large;
+  font-size: small;
 }
 
 .alert-success {
