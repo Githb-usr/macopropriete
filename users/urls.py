@@ -12,5 +12,5 @@ urlpatterns = [
     path(route='account/validation/success', view=AccountValidationSuccessView.as_view(), name='account-validation-success'),
     path(route='login/', view=UserLoginView.as_view(), name='login'),
     path(route='logout/', view=LogoutView.as_view(), name='logout'),
-    path(route='dashboard/', view=views.DashboardView.as_view(), name='dashboard'),
+    path(route='profile/<uuid:uuid>', view=views.Profile.as_view(), name='profile'),
 ]
