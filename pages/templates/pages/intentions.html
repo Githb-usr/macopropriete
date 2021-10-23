@@ -3,8 +3,12 @@
 {% block content %}
 {% load static %}
 <section class="intentions-section">
+    <div class="page-title-block">
+        <h1 class="page-title">Pourquoi ce site ?</h1>
+    </div>
     <div class="intention">
-        <h2 class="intention-title">
+        <img src="{% static 'dist/assets/logos/logo-tree-light.png' %}" alt="logo arbre" class="intention-logo-tree" />
+        <h2 class="intention-title-light">
             Un site pour créer de nouveaux liens
         </h2>
         <p class="intention-text text-body">
@@ -16,7 +20,8 @@
         </p>
     </div>
     <div class="intention">
-        <h2 class="intention-title">
+        <img src="{% static 'dist/assets/logos/logo-tree-dark.png' %}" alt="logo arbre" class="intention-logo-tree" />
+        <h2 class="intention-title-dark">
             Un site qui répond à des questions pratiques
         </h2>
         <p class="intention-text text-body">
@@ -28,7 +33,8 @@
         </p>
     </div>
     <div class="intention">
-        <h2 class="intention-title">
+        <img src="{% static 'dist/assets/logos/logo-tree-light.png' %}" alt="logo arbre" class="intention-logo-tree" />
+        <h2 class="intention-title-light">
             Un site qui ne coûte rien à la copropriété
         </h2>
         <p class="intention-text text-body">
