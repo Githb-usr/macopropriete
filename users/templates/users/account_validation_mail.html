@@ -29,17 +29,21 @@
         </div>
         <div class="account-validation-mail-text">
             <p>
-                Bonjour xxx,<br>
+                Bonjour {{ user_name }},<br>
                 Le Conseil Syndical vient de créer votre compte utilisateur sur le site de la copropriété.<br>
                 Votre identifiant, pour vous connecter au site, est votre adresse email (celle qui a reçu ce mail).<br>
-                Votre mot de passe...<br>
+                Votre mot de passe provisoire est <strong>{{ password }}</strong><br>
+                Attention, ce mot de passe est trop simple et peu sécurisé, il faudra le modifier une fois connecté à votre compte !
             </p>
             <p>
-                Pour valider ce compte et le rendre utilisable, merci de bien vouloir cliquer sur le lien ci-dessous :<br>
+                Pour valider ce compte et le rendre utilisable, merci de bien vouloir cliquer sur le lien ci-dessous :
+            </p>
+            <p>
+                <a href="http://{{ hostname }}/{{ validation_url }}/{{ user_uuid }}">Lien de validation de votre compte : cliquez ici</a>
+            </p>
+            <p>
+                Une fois votre compte validé, vous pouvez vous connecter au site et profiter des informations qui s'y trouvent !<br>
                 <br>
-                xxx<br>
-            </p>
-            <p>
                 A bientôt sur le site !<br>
                 Cordialement<br>
                 <br>

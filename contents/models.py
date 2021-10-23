@@ -10,11 +10,11 @@ class Article(models.Model):
     Model of the "contents_article" table in the database
     """
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    CONDOMINIUM = 'Condominium'
-    MEETING = 'Meeting'
-    MISCELLANEOUS='Miscellaneous'
-    WEBSITE = 'Website'
-    WORKS = 'Works'
+    CONDOMINIUM = 'CONDOMINIUM'
+    MEETING = 'MEETING'
+    MISCELLANEOUS = 'MISCELLANEOUS'
+    WEBSITE = 'WEBSITE'
+    WORKS = 'WORKS'
     ARTICLE_CATEGORY = [
         (CONDOMINIUM, 'Copropriété'),
         (MEETING, 'Réunion'),
@@ -30,8 +30,8 @@ class Article(models.Model):
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_article')
     # article status
-    ACTIVATED = 'Activated'
-    DELETED = 'Deleted'
+    ACTIVATED = 'ACTIVATED'
+    DELETED = 'DELETED'
     ARTICLE_STATUS = [
         (ACTIVATED, 'Actif'),
         (DELETED, 'Supprimé'),
@@ -68,11 +68,11 @@ class Faq(models.Model):
     Model of the "contents_faq" table in the database
     """
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    BUILDINGS = 'Buildings'
-    CAR_PARKS = 'Car parks'
-    INDIVIDUAL_GARAGES = 'Individual garages'
-    MISCELLANEOUS='Miscellaneous'
-    PARK = 'Park'
+    BUILDINGS = 'BUILDINGS'
+    CAR_PARKS = 'CAR PARKS'
+    INDIVIDUAL_GARAGES = 'INDIVIDUAL GARAGES'
+    MISCELLANEOUS = 'MISCELLANEOUS'
+    PARK = 'PARK'
     FAQ_CATEGORY = [
         (BUILDINGS, 'Les bâtiments'),
         (INDIVIDUAL_GARAGES, 'Les garages'),
@@ -88,8 +88,8 @@ class Faq(models.Model):
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_faq')
     # FAQ status
-    ACTIVATED = 'Activated'
-    DELETED = 'Deleted'
+    ACTIVATED = 'ACTIVATED'
+    DELETED = 'DELETED'
     FAQ_STATUS = [
         (ACTIVATED, 'Actif'),
         (DELETED, 'Supprimé'),
@@ -97,7 +97,7 @@ class Faq(models.Model):
     status = models.CharField(max_length=30, choices=FAQ_STATUS, default=ACTIVATED)
     
     def __str__(self):
-        return f'{self.faq_section} - {self.question}'
+        return f'{self.category} - {self.question}'
     
     class Meta:
         verbose_name_plural = "Faqs"
@@ -125,11 +125,11 @@ class Event(models.Model):
     Model of the "contents_event" table in the database
     """
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    PARTY = 'Party'
-    MEETING = 'Meeting'
-    MISCELLANEOUS='Miscellaneous'
-    WEBSITE = 'Website'
-    WORKS = 'Works'
+    PARTY = 'PARTY'
+    MEETING = 'MEETING'
+    MISCELLANEOUS = 'MISCELLANEOUS'
+    WEBSITE = 'WEBSITE'
+    WORKS = 'WORKS'
     EVENT_CATEGORY = [
         (PARTY, 'Fête'),
         (WEBSITE, 'Site'),
@@ -147,8 +147,8 @@ class Event(models.Model):
     end_date = models.DateTimeField(verbose_name='Fin de l\'évènement')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_events')
     # Event status
-    ACTIVATED = 'Activated'
-    DELETED = 'Deleted'
+    ACTIVATED = 'ACTIVATED'
+    DELETED = 'DELETED'
     EVENT_STATUS = [
         (ACTIVATED, 'Actif'),
         (DELETED, 'Supprimé'),
@@ -184,11 +184,11 @@ class Incident(models.Model):
     Model of the "contents_incident" table in the database
     """
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    ACCIDENT = 'Accident'
-    BREAKDOWN = 'Breakdown'
-    DAMAGE = 'Damage'
-    MISCELLANEOUS='Miscellaneous'
-    WATER_LEAKAGE = 'Water leakage'
+    ACCIDENT = 'ACCIDENT'
+    BREAKDOWN = 'BREAKDOWN'
+    DAMAGE = 'DAMAGE'
+    MISCELLANEOUS = 'MISCELLANEOUS'
+    WATER_LEAKAGE = 'WATER_LEAKAGE'
     INCIDENT_CATEGORY = [
         (ACCIDENT, 'Accident'),
         (DAMAGE, 'Dégradation'),
@@ -223,11 +223,11 @@ class IncidentTracking(models.Model):
     Model of the "contents_incidentTracking" table in the database
     """
     # incident status
-    PENDING = 'Pending'
-    REJECTED = 'Rejected'
-    REGISTERED = 'Registered'
-    IN_PROGRESS = 'In progress'
-    CLOSED = 'Closed'
+    PENDING = 'PENDING'
+    REJECTED = 'REJECTED'
+    REGISTERED = 'REGISTERED'
+    IN_PROGRESS = 'IN_PROGRESS'
+    CLOSED = 'CLOSED'
     TRACKING_STATUS = [
         (PENDING, 'en attente'),
         (REJECTED, 'rejeté'),
@@ -258,8 +258,8 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='add_comments')
     incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='add_comments')
     # article status
-    ACTIVATED = 'Activated'
-    DELETED = 'Deleted'
+    ACTIVATED = 'ACTIVATED'
+    DELETED = 'DELETED'
     COMMENT_STATUS = [
         (ACTIVATED, 'Actif'),
         (DELETED, 'Supprimé'),

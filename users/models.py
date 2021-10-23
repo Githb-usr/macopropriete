@@ -59,10 +59,10 @@ class User(AbstractUser):
     date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
     last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
-    OWNER_OCCUPIER = 'Owner occupier'
-    OWNER_LESSOR = 'Owner lessor'
-    TENANT = 'Tenant'
-    SYNDIC = 'Syndic'
+    OWNER_OCCUPIER = 'OWNER OCCUPIER'
+    OWNER_LESSOR = 'OWNER LESSOR'
+    TENANT = 'TENANT'
+    SYNDIC = 'SYNDIC'
     USER_TYPE = [
         (OWNER_OCCUPIER, 'Copropriétaire occupant'),
         (OWNER_LESSOR, 'Copropriétaire bailleur'),
@@ -78,8 +78,8 @@ class User(AbstractUser):
     about = models.TextField(null=True, blank=True, verbose_name='A propos de moi')
     is_resident = models.BooleanField(default=True, verbose_name='Résident')
     is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
-    PENDING = 'Pending'
-    VALIDATED = 'Validated'
+    PENDING = 'PENDING'
+    VALIDATED = 'VALIDATED'
     USER_STATUS = [
         (PENDING, 'En attente'),
         (VALIDATED, 'Validé'),
@@ -93,7 +93,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.username
+        return self.email
     
     def get_full_name(self):
         if self.first_name:

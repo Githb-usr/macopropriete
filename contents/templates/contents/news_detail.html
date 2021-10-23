@@ -4,38 +4,66 @@
 {% load static %}
 {% block content %}
 <main class="container main-product_detail">
-    <!-- Breadcrumb -->
-    <div class="row breadcrumb">
-        <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
-            <li class="nav-item">
-                <a href="/" 
-                class="breadcrumb-link text-body">Accueil</a>>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'news-list' %}" 
-                class="breadcrumb-link text-body">News</a>>
-            </li>
-            <li class="nav-item">
-                <span class="breadcrumb-link text-body">{{ news_detail.title }}</span>
-            </li>
-        </ul>
-    </div>
-    <!-- End breadcrumb -->
     <section class="main-section">
-        <div class="row product-detail-infos justify-content-center text-muted">
-            <div class="news-detail-title">{{ news_detail.title }}</div>
-            <div class="news-detail-content">{{ news_detail.content }}</div>
-            <div class="news-detail-imgblock"><img src="{{ MEDIA_URL }}{{news_detail.image.url}}" class="news-detail-img" /></div>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb d-flex flex-row">
+            <ul class="my-2 my-lg-0">
+                <li class="nav-item text-green">
+                    <a href="/" 
+                    class="breadcrumb-link">Accueil</a>>
+                </li>
+                <li class="nav-item text-green">
+                    <a href="{% url 'news-list' %}" 
+                    class="breadcrumb-link">Les news</a>>
+                </li>
+                <li class="nav-item text-green">
+                    <span class="breadcrumb-link">{{ news_detail.title }}</span>
+                </li>
+            </ul>
         </div>
-        <div class="row product_detail-links justify-content-center">
-            <div class="d-flex justify-content-left mt-4">
-                <a type="button" href="javascript:history.back()" target="_self"
-                    class="d-flex align-items-center btn btn-link btn-detail-detail text-white"
+        <!-- End breadcrumb -->
+        <article class="news-detail justify-content-center text-body">
+            <div class="news-detail-date">News du {{ news_detail.creation_date|date }}</div>
+            <div class="news-detail-title">{{ news_detail.title }}</div>
+            <div class="news-detail-category">Catégorie : {{ news_detail.get_category_display }}</div>
+            <div class="news-detail-content">{{ news_detail.content }}</div>
+            <div class="news-detail-img-block">
+                <img src="{{news_detail.image.url}}" alt="" class="news-detail-img" />
+            </div>
+        </article>
+        <div class="row news-detail-btn justify-content-between">
+            {% if news_detail.get_previous_by_creation_date %}
+            <div class="col-lg-3 mt-4">
+                <a type="button" href="{% url 'news-detail' news_detail.get_previous_by_creation_date.uuid %}" target="_self"
+                    class="d-flex align-items-center btn left-btn text-white"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir toutes les news">
-                    <i class="bi bi-skip-backward-circle card-footer-icon card-footer-icon-mgr"></i> Retour à la liste des news
+                    title="Voir la news précédente">
+                    <i class="bi bi-arrow-left news-detail-btn-icon news-detail-btn-icon-left"></i> News précédente
                 </a>
             </div>
+            {% else %}
+            <div class="col-lg-3 mt-4"></div>
+            {% endif %}
+            <div class="col-lg-3 mt-4 text-center">
+                <a type="button" href="{% url 'news-list' %}" target="_self"
+                    class="d-flex align-items-center btn central-btn text-white"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Voir toutes les news">
+                    Retour à la liste des news
+                </a>
+            </div>
+            {% if news_detail.get_next_by_creation_date %}
+            <div class="col-lg-3 mt-4">
+                <a type="button" href="{% url 'news-detail' news_detail.get_next_by_creation_date.uuid %}" target="_self"
+                    class="d-flex align-items-center btn right-btn text-white"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Voir la news suivante">
+                    News suivante <i class="bi bi-arrow-right news-detail-btn-icon news-detail-btn-icon-right"></i>
+                </a>
+            </div>
+            {% else %}
+            <div class="col-lg-3 mt-4"></div>
+            {% endif %}
         </div>
     </section>
     <hr class="separator" id="comment-anchor">

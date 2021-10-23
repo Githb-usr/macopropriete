@@ -11,6 +11,7 @@ from django.shortcuts import render, redirect, get_object_or_404, get_list_or_40
 from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import DetailView, ListView
+from django.views.generic.base import TemplateView
 import json
 import logging
 
@@ -38,15 +39,25 @@ class NewsDetailView(DetailView):
         # To use uuid in the route
         return Article.objects.get(uuid=self.kwargs.get("uuid"))
 
+class FaqCategoryView(TemplateView):
+    template_name = 'contents/faq_category.html'
+
 class FaqListView(ListView):
-    model = Faq
     paginate_by = 5
     template_name = 'contents/faq_list.html'
     context_object_name = 'faq_list'
 
+    def get_queryset(self):
+        return Faq.objects.filter(category=self.kwargs['category'].upper())
+
     def get_context_data(self, **kwargs):
+        faq_cat = ''
+        for item in Faq.FAQ_CATEGORY:
+            if item[0] == self.kwargs['category'].upper():
+                faq_cat = item[1]
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
+        context['category'] = faq_cat
         context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
         context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
         return context
