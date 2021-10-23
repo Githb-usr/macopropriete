@@ -17,6 +17,7 @@
     <!-- End breadcrumb -->
     <div class="page-title-block">
         <h1 class="page-title">Vos questions</h1>
+        <h2 class="page-subtitle">{{ category }}</h2>
     </div>
     {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
     {% if object_list is none %}
@@ -29,22 +30,28 @@
         </section>
     {% else %}
         <section class="main-section">
-            <ul>
-            {% for faq in faq_list %}
-                <a href="{% url 'faq-detail' faq.uuid %}" class="text-body">
-                    <div class="content-list-item row">
-                        <div class="content-list-imgblock col-1">
-                            <img src="{{ MEDIA_URL }}{{faq.image.url}}" class="content-list-img" />
+            <div class="accordion open" id="faqItems">
+                {% for faq in faq_list %}
+                    <div class="accordion-item">
+                        <div class="accordion-header faq-list-question" id="{% cycle 'headingOne' 'headingTwo' 'headingThree' 'headingFour' 'headingFive' %}">
+                            <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse" 
+                                data-bs-target="#{% cycle 'collapseOne' 'collapseTwo' 'collapseThree' 'collapseFour' 'collapseFive' %}" 
+                                aria-expanded="false"
+                                aria-controls="{% cycle 'collapseOne' 'collapseTwo' 'collapseThree' 'collapseFour' 'collapseFive' %}">
+                                {{ faq.question }}
+                            </button>
                         </div>
-                        <div class="content-list-contentblock col-11">
-                            <div class="content-list-title">{{ faq.question }}</div>
-                            <div class="content-list-content">{{ faq.answer|truncatechars:400 }}</div>
+                        <div class="accordion-collapse collapse" id="{% cycle 'collapseOne' 'collapseTwo' 'collapseThree' 'collapseFour' 'collapseFive' %}" 
+                            aria-labelledby="{% cycle 'headingOne' 'headingTwo' 'headingThree' 'headingFour' 'headingFive' %}">
+                            <div class="accordion-body faq-list-answer">
+                                {{ faq.answer }}
+                            </div>
                         </div>
                     </div>
-                </a>
-            <hr class="content-separator">
-            {% endfor %}
-            </ul>
+                {% endfor %}
+            </div>
         </section>
         {% include "pagination.html" with page_range=page_range_bottom pagination_css="pagination-bottom" %}
     {% endif %}
