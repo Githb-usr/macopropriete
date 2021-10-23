@@ -6,6 +6,8 @@ class ArticleAdmin(admin.ModelAdmin):
     """
     Display of Article in the back office
     """
+    model = Article
+    empty_value_display = '-empty-'
     list_display = ('category', 'title', 'content', 'image', 'creation_date',
                     'last_edit', 'status',)
 
@@ -13,6 +15,8 @@ class FaqAdmin(admin.ModelAdmin):
     """
     Display of FAQ in the back office
     """
+    model = Faq
+    empty_value_display = '-empty-'
     list_display = ('category', 'question', 'answer', 'image',
                     'creation_date', 'last_edit', 'status',)
 
@@ -20,6 +24,8 @@ class EventAdmin(admin.ModelAdmin):
     """
     Display of Event in the back office
     """
+    model = Event
+    empty_value_display = '-empty-'
     list_display = ('category', 'title', 'content', 'image', 'creation_date',
                     'last_edit', 'start_date', 'end_date', 'status',)
 
@@ -27,6 +33,8 @@ class IncidentAdmin(admin.ModelAdmin):
     """
     Display of Incident in the back office
     """
+    model = Incident
+    empty_value_display = '-empty-'
     list_display = ('category', 'content', 'image', 'creation_date',)
 
 class IncidentTrackingAdmin(admin.ModelAdmin):
@@ -39,6 +47,8 @@ class CommentAdmin(admin.ModelAdmin):
     """
     Display of Comment in the back office
     """
+    model = Comment
+    empty_value_display = '-empty-'
     list_display = ('content', 'creation_date', 'status',)
 
 admin.site.register(Article, ArticleAdmin)
