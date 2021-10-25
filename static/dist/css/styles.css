@@ -11733,14 +11733,14 @@ h3.comment-title, .comment-title.h3 {
 .profile-header-img-container {
   width: 7.7rem;
   height: 7.7rem;
+  background-color: #ADB386;
   border: 7px #65725E solid;
   border-radius: 50%;
 }
 
 .profile-header-img {
-  width: 7rem;
-  height: 7rem;
-  border-radius: 50%;
+  width: 5.2rem;
+  height: 5.2rem;
 }
 
 h1.profile-header-title, .profile-header-title.h1 {

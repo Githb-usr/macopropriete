@@ -28,13 +28,14 @@ class UserAdmin(admin.ModelAdmin):
                     'avatar', 'about',)}),
         ('Statuts', {'fields': ('is_active', 'is_resident', 'is_union_council', 'is_staff',)}),
     )
-    list_editable = ('password', 'user_type', 'first_name', 'last_name', 'contact_email', 'phone_number', 
+    list_editable = ('user_type', 'first_name', 'last_name', 'contact_email', 'phone_number', 
                      'is_resident', 'is_union_council',)
     list_filter = ('date_joined', 'is_active','is_resident', 'is_union_council', 'is_staff',)
     ordering = ('last_name',)
     search_fields = ('email', 'first_name', 'last_name',)
     
     def save_model(self, request, obj, form, change):
+        if not obj.password:
             user_password = get_random_string(10)
             obj.set_password(user_password)
             super().save_model(request, obj, form, change)
@@ -48,7 +49,7 @@ class UserAdmin(admin.ModelAdmin):
             html_message = render_to_string('users/account_validation_mail.html', email_context)
             plain_message = strip_tags(html_message)
             from_email = EMAIL_HOST_USER
-            print('TOTO', html_message)
             mail.send_mail(ACCOUNT_VALIDATION_SUBJECT, plain_message, from_email, [obj.email], html_message=html_message)
+        super().save_model(request, obj, form, change)
 
 admin.site.register(User, UserAdmin)
