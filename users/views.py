@@ -14,17 +14,16 @@ from users.models import User
 def validate_user_account_view(request, uuid):
     # récupérer le user à partir du uuid
     user = get_object_or_404(User, uuid=uuid)
-    # vérifier si le user existe et s'il existe, vérifier si son statut est bien "pending"
     if not user:
-        # si compte n'existe pas, rediriger vers une page vers une page "échec de la validation de votre compte"
         return render(request, 'users/account_validation_failure.html')
-    elif user.status == 'validated':
+    elif user.status == 'VALIDATED':
         # si statut déjà validé, rediriger sur la page de login
         return render(request, 'users/login.html')
-    # faire passer le statut de pending à validated
-    user.status = 'validated'
-    user.save()
-    return render(request, 'users/account_validation_success.html')
+    elif user.status == 'PENDING':
+        # sinon faire passer le statut de pending à validated
+        user.status = 'VALIDATED'
+        user.save()
+        return render(request, 'users/account_validation_success.html')
 
 @login_not_required
 class UserLoginView(LoginView):
