@@ -11465,6 +11465,90 @@ section.main-section hr.content-separator:last-child {
   font-size: 1.8rem;
 }
 
+h2.event-page-subtitle, .event-page-subtitle.h2 {
+  color: #ADB386;
+}
+
+span.events-subtitle-current-page {
+  color: #65725E;
+}
+
+a.events-subtitle-links {
+  color: #ADB386;
+}
+a.events-subtitle-links:hover, a.events-subtitle-links:active {
+  color: #65725E;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(4, 15rem);
+  grid-template-rows: repeat(2, 15rem);
+  grid-gap: 1rem;
+  margin-bottom: 0;
+}
+
+.event-warning {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.event-block-link, .event-block {
+  width: 14rem;
+  height: 14rem;
+}
+
+.event-block {
+  position: relative;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+.event-block-link {
+  font-weight: bold;
+}
+
+.event-block-condominium {
+  background-color: #64715E;
+}
+
+.event-block-meeting {
+  background-color: #D78400;
+}
+
+.event-block-miscellaneous {
+  background-color: #000;
+}
+
+.event-block-party {
+  background-color: #F54343;
+}
+
+.event-block-website {
+  background-color: #BD2B73;
+}
+
+.event-block-works {
+  background-color: #588799;
+}
+
+a div.event-date {
+  font-size: 1.8rem;
+  line-height: 3rem;
+}
+
+a div.event-title {
+  font-size: 0.9rem;
+}
+
+a.event-block-link i.bi-arrow-right-circle {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
 .pagination-top {
   margin: 1rem 0 4rem 0;
 }
@@ -11485,6 +11569,40 @@ section.main-section hr.content-separator:last-child {
 .pagination-top a:hover, .pagination-bottom a:hover, .pagination-top a .current-page, .pagination-bottom a .current-page {
   background-color: #ADB386;
   color: #fff;
+}
+
+.content-detail-btn a {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bolder;
+  color: #6c757d;
+  text-decoration: none;
+}
+.content-detail-btn a.left-btn, .content-detail-btn a.right-btn {
+  width: 85%;
+  background-color: #65725E;
+  justify-content: space-between;
+}
+.content-detail-btn a.central-btn {
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: #ADB386;
+  justify-content: center;
+}
+.content-detail-btn .btn {
+  border-radius: 1rem;
+}
+
+.content-detail-btn-icon {
+  font-size: 1.1rem;
+}
+
+.content-detail-btn-icon-left {
+  margin-right: 0.5rem;
+}
+
+.content-detail-icon-right {
+  margin-left: 0.5rem;
 }
 
 article.news-detail {
@@ -11524,40 +11642,6 @@ article.news-detail {
 
 .news-detail-img {
   width: 60%;
-}
-
-.news-detail-btn a {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: bolder;
-  color: #6c757d;
-  text-decoration: none;
-}
-.news-detail-btn a.left-btn, .news-detail-btn a.right-btn {
-  width: 85%;
-  background-color: #65725E;
-  justify-content: space-between;
-}
-.news-detail-btn a.central-btn {
-  width: 100%;
-  padding: 0.5rem 0;
-  background-color: #ADB386;
-  justify-content: center;
-}
-.news-detail-btn .btn {
-  border-radius: 1rem;
-}
-
-.news-detail-btn-icon {
-  font-size: 1.1rem;
-}
-
-.news-detail-btn-icon-left {
-  margin-right: 0.5rem;
-}
-
-.news-detail-icon-right {
-  margin-left: 0.5rem;
 }
 
 i.comment-message {
@@ -11622,6 +11706,44 @@ h3.comment-title, .comment-title.h3 {
 
 .btn-delete-comment:hover, button#comment-btn {
   color: #fff;
+}
+
+article.event-detail {
+  padding: 0;
+}
+
+.event-detail-date {
+  font-size: 2rem;
+}
+
+.event-detail-title {
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+
+.event-detail-date, .event-detail-title, .event-detail-category {
+  font-weight: bolder;
+}
+
+.event-detail-category {
+  margin: 1rem 0 2rem 0;
+  padding: 0.6rem 0;
+  font-size: 1rem;
+  border-top: 2px solid #ADB386;
+  border-bottom: 2px solid #ADB386;
+}
+
+.event-detail-date, .event-detail-title, .event-detail-category {
+  padding-left: 0;
+}
+
+.event-detail-img-block {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.event-detail-img {
+  width: 60%;
 }
 
 .page-section {
@@ -11968,6 +12090,30 @@ a:hover {
 
 .important-words {
   font-weight: bold;
+}
+
+.condominium-color {
+  color: #64715E;
+}
+
+.meeting-color {
+  color: #D78400;
+}
+
+.miscellaneous-color {
+  color: #000;
+}
+
+.party-color {
+  color: #F54343;
+}
+
+.website-color {
+  color: #BD2B73;
+}
+
+.works-color {
+  color: #588799;
 }
 
 .text-white-75 {
