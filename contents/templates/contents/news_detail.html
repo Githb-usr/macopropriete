@@ -22,6 +22,9 @@
             </ul>
         </div>
         <!-- End breadcrumb -->
+        <div class="page-title-block">
+            <h1 class="page-title">Les news</h1>
+        </div>
         <article class="news-detail justify-content-center text-body">
             <div class="news-detail-date">News du {{ news_detail.creation_date|date }}</div>
             <div class="news-detail-title">{{ news_detail.title }}</div>
@@ -31,14 +34,14 @@
                 <img src="{{news_detail.image.url}}" alt="" class="news-detail-img" />
             </div>
         </article>
-        <div class="row news-detail-btn justify-content-between">
+        <div class="row content-detail-btn justify-content-between">
             {% if news_detail.get_previous_by_creation_date %}
             <div class="col-lg-3 mt-4">
                 <a type="button" href="{% url 'news-detail' news_detail.get_previous_by_creation_date.uuid %}" target="_self"
                     class="d-flex align-items-center btn left-btn text-white"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                     title="Voir la news précédente">
-                    <i class="bi bi-arrow-left news-detail-btn-icon news-detail-btn-icon-left"></i> News précédente
+                    <i class="bi bi-arrow-left content-detail-btn-icon content-detail-btn-icon-left"></i> News précédente
                 </a>
             </div>
             {% else %}
@@ -53,12 +56,12 @@
                 </a>
             </div>
             {% if news_detail.get_next_by_creation_date %}
-            <div class="col-lg-3 mt-4">
+            <div class="col-lg-3 mt-4 d-flex justify-content-end">
                 <a type="button" href="{% url 'news-detail' news_detail.get_next_by_creation_date.uuid %}" target="_self"
                     class="d-flex align-items-center btn right-btn text-white"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                     title="Voir la news suivante">
-                    News suivante <i class="bi bi-arrow-right news-detail-btn-icon news-detail-btn-icon-right"></i>
+                    News suivante <i class="bi bi-arrow-right content-detail-btn-icon content-detail-btn-icon-right"></i>
                 </a>
             </div>
             {% else %}

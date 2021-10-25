@@ -11,6 +11,7 @@ urlpatterns = [
     path(route='faq/', view=views.FaqCategoryView.as_view(), name='faq-list'),
     path(route='faq/<str:category>', view=views.FaqListView.as_view(), name='faq-list'),
     path(route='faq/<uuid:uuid>/', view=views.FaqDetailView.as_view(), name='faq-detail'),
-    path(route='evenements/', view=views.EventListView.as_view(), name='event-list'),
-    path(route='evenements/<uuid:uuid>/', view=views.EventDetailView.as_view(), name='event-detail'),
+    path(route='events/', view=views.EventListNewView.as_view(), name='event-list-new'),
+    path(route='events/ended', view=views.EventListOldView.as_view(), name='event-list-old'),
+    path(route='events/<uuid:uuid>/', view=views.EventDetailView.as_view(), name='event-detail'),
 ]

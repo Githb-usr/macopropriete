@@ -13,11 +13,13 @@ class Article(models.Model):
     CONDOMINIUM = 'CONDOMINIUM'
     MEETING = 'MEETING'
     MISCELLANEOUS = 'MISCELLANEOUS'
+    PARTY = 'PARTY'
     WEBSITE = 'WEBSITE'
     WORKS = 'WORKS'
     ARTICLE_CATEGORY = [
         (CONDOMINIUM, 'Copropriété'),
         (MEETING, 'Réunion'),
+        (PARTY, 'Fête'),
         (WEBSITE, 'Site'),
         (WORKS, 'Travaux'),
         (MISCELLANEOUS, 'Divers'),
@@ -125,15 +127,17 @@ class Event(models.Model):
     Model of the "contents_event" table in the database
     """
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    PARTY = 'PARTY'
+    CONDOMINIUM = 'CONDOMINIUM'
     MEETING = 'MEETING'
     MISCELLANEOUS = 'MISCELLANEOUS'
+    PARTY = 'PARTY'
     WEBSITE = 'WEBSITE'
     WORKS = 'WORKS'
     EVENT_CATEGORY = [
-        (PARTY, 'Fête'),
-        (WEBSITE, 'Site'),
+        (CONDOMINIUM, 'Copropriété'),
+        (WEBSITE, 'Le site'),
         (MEETING, 'Réunion'),
+        (PARTY, 'Fête'),
         (WORKS, 'Travaux'),
         (MISCELLANEOUS, 'Divers'),
     ]

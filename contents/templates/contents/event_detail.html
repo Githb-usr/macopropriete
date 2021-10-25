@@ -3,50 +3,85 @@
 {% extends 'base_private_template.html' %}
 {% load static %}
 {% block content %}
-<main class="container main-product_detail">
-    <!-- Breadcrumb -->
-    <div class="row breadcrumb">
-        <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
-            <li class="nav-item">
-                <a href="/" 
-                class="breadcrumb-link text-body">Accueil</a>>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'news-list' %}" 
-                class="breadcrumb-link text-body">Evènements</a>>
-            </li>
-            <li class="nav-item">
-                <span class="breadcrumb-link text-body">{{ event_detail.title }}</span>
-            </li>
-        </ul>
-    </div>
-    <!-- End breadcrumb -->
+<main class="container text-body main-product_detail">
     <section class="main-section">
-        <div class="row product-detail-infos justify-content-center text-muted">
-            <div class="event-detail-title">{{ event_detail.title }}</div>
-            <div class="event-detail-content">{{ event_detail.content }}</div>
-            <div class="news-detail-imgblock"><img src="{{ MEDIA_URL }}{{event_detail.image.url}}" class="event-detail-img" /></div>
-
-            <div class="event-detail-markers">Repères chronologiques</div>
-            <div class="news-detail-marker">Jour de l'évènement : {{ event_detail.start_date|date:"l j F Y" }}</div>
-            <div class="news-detail-marker">Début de l'évènement : {{ event_detail.start_date|time:"H:i" }}</div>
-            <div class="news-detail-marker">Fin de l'évènement : {{ event_detail.end_date|time:"H:i" }}</div>
-            <div class="news-detail-marker">Durée de l'évènement : {{ event_detail.start_date|timesince:event_detail.end_date }}</div>
-            {% if event_detail.start_date > now %}
-                <div class="news-detail-marker">L'évènement a lieu dans : {{ event_detail.start_date|timeuntil }}</div>
-            {% else %}
-                <div class="news-detail-marker">L'évènement s'est terminé il y a : {{ event_detail.end_date|timesince }}</div>
-            {% endif %}
+        <!-- Breadcrumb -->
+        <div class="row breadcrumb">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
+                <li class="nav-item">
+                    <a href="/" 
+                    class="breadcrumb-link text-body">Accueil</a>>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'event-list-new' %}" 
+                    class="breadcrumb-link text-body">Les évènements</a>>
+                </li>
+                <li class="nav-item">
+                    <span class="breadcrumb-link text-body">{{ event_detail.title }}</span>
+                </li>
+            </ul>
         </div>
-        <div class="row product_detail-links justify-content-center">
-            <div class="d-flex justify-content-left mt-4">
-                <a type="button" href="javascript:history.back()" target="_self"
-                    class="d-flex align-items-center btn btn-link btn-detail-detail text-white"
+        <!-- End breadcrumb -->
+        <div class="page-title-block">
+            <h1 class="page-title">Les évènements</h1>
+        </div>
+        <article class="row event-detail justify-content-center text-muted">
+            <div class="event-detail-date {{ event_detail.category|lower }}-color">{{ event_detail.start_date|date:"l j F Y"|capfirst }}</div>
+            <div class="event-detail-title {{ event_detail.category|lower }}-color">{{ event_detail.title }}</div>
+            <div class="row event-detail-category {{ event_detail.category|lower }}-color">
+                <div class="col-lg-3">
+                    {% with 'dist/assets/img/'|add:'img-'|add:event_detail.category|add:'.png' as image %}
+                        <img src="{% static image %}"  class="content-list-item-img" />
+                    {% endwith %}
+                </div>
+                <div class="col-lg-9">
+                    <div class="event-detail-marker">Heure de début : {{ event_detail.start_date|time:"H:i" }}</div>
+                    <div class="event-detail-marker">Heure de fin   : {{ event_detail.end_date|time:"H:i" }}</div>
+                    <div class="event-detail-marker">Durée : {{ event_detail.start_date|timesince:event_detail.end_date }}</div>
+                    {% if event_detail.start_date > now %}
+                        <div class="event-detail-marker">L'évènement a lieu dans {{ event_detail.start_date|timeuntil }}</div>
+                    {% else %}
+                        <div class="event-detail-marker">L'évènement s'est terminé il y a {{ event_detail.end_date|timesince }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="event-detail-content">{{ event_detail.content }}</div>
+            <div class="event-detail-img-block"><img src="{{event_detail.image.url}}" class="event-detail-img" /></div>
+        </article>
+        <hr class="content-separator">
+        <div class="row content-detail-btn justify-content-between">
+            {% if event_detail.get_previous_by_creation_date %}
+            <div class="col-lg-4 mt-4">
+                <a type="button" href="{% url 'event-detail' event_detail.get_previous_by_creation_date.uuid %}" target="_self"
+                    class="d-flex align-items-center btn left-btn text-white"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir touts les évènements">
-                    <i class="bi bi-skip-backward-circle card-footer-icon card-footer-icon-mgr"></i> Retour à la liste des évènements
+                    title="Voir l'évènement précédent">
+                    <i class="bi bi-arrow-left content-detail-btn-icon content-detail-btn-icon-left"></i> Evènement précédent
                 </a>
             </div>
+            {% else %}
+            <div class="col-lg-3 mt-4"></div>
+            {% endif %}
+            <div class="col-lg-4 mt-4 text-center">
+                <a type="button" href="{% url 'event-list-new' %}" target="_self"
+                    class="d-flex align-items-center btn central-btn text-white"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Voir tous les évènements à venir">
+                    Retour à la liste des évènements
+                </a>
+            </div>
+            {% if event_detail.get_next_by_creation_date %}
+            <div class="col-lg-4 mt-4 d-flex justify-content-end">
+                <a type="button" href="{% url 'event-detail' event_detail.get_next_by_creation_date.uuid %}" target="_self"
+                    class="d-flex align-items-center btn right-btn text-white"
+                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Voir l'évènement suivant">
+                    Evènement suivant <i class="bi bi-arrow-right content-detail-btn-icon content-detail-btn-icon-right"></i>
+                </a>
+            </div>
+            {% else %}
+            <div class="col-lg-3 mt-4"></div>
+            {% endif %}
         </div>
     </section>
 </main>

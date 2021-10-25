@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import copy
-import datetime
+from datetime import datetime
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -71,11 +71,32 @@ class FaqDetailView(DetailView):
         # To use uuid in the route
         return Faq.objects.get(uuid=self.kwargs.get("uuid"))
 
-class EventListView(ListView):
+class EventListNewView(ListView):
     model = Event
-    paginate_by = 5
-    template_name = 'contents/event_list.html'
-    context_object_name = 'event_list'
+    paginate_by = 8
+    template_name = 'contents/event_list_new.html'
+    context_object_name = 'event_list_new'
+
+    def get_queryset(self):
+        current_datetime = datetime.now()
+        return Event.objects.filter(start_date__gt=current_datetime).order_by('start_date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page_number = self.request.GET.get('page', 1)
+        context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        return context
+
+class EventListOldView(ListView):
+    model = Event
+    paginate_by = 8
+    template_name = 'contents/event_list_old.html'
+    context_object_name = 'event_list_old'
+
+    def get_queryset(self):
+        current_datetime = datetime.now()
+        return Event.objects.filter(start_date__lt=current_datetime).order_by('-start_date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
