@@ -13,8 +13,12 @@
                     class="breadcrumb-link text-body">Accueil</a>>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'event-list-new' %}" 
-                    class="breadcrumb-link text-body">Les évènements</a>>
+                    {% if event_detail.start_date > now %}
+                        <a href="{% url 'event-list-new' %}"
+                    {% else %}
+                        <a href="{% url 'event-list-old' %}"
+                    {% endif %}
+                        class="breadcrumb-link text-body">Les évènements</a>>
                 </li>
                 <li class="nav-item">
                     <span class="breadcrumb-link text-body">{{ event_detail.title }}</span>
@@ -63,7 +67,11 @@
             <div class="col-lg-3 mt-4"></div>
             {% endif %}
             <div class="col-lg-4 mt-4 text-center">
-                <a type="button" href="{% url 'event-list-new' %}" target="_self"
+                {% if event_detail.start_date > now %}
+                    <a type="button" href="{% url 'event-list-new' %}" target="_self"
+                {% else %}
+                    <a type="button" href="{% url 'event-list-old' %}" target="_self"
+                {% endif %}
                     class="d-flex align-items-center btn central-btn text-white"
                     data-bs-toggle="tooltip" data-bs-placement="bottom"
                     title="Voir tous les évènements à venir">
