@@ -11847,6 +11847,33 @@ article.event-detail {
   padding-bottom: 0;
 }
 
+.contact-intro {
+  margin-bottom: 3rem;
+}
+
+div.contact-form form div input, div.contact-form form div select {
+  width: 33%;
+  margin-bottom: 2rem;
+}
+
+div.contact-form form div:last-of-type {
+  margin-bottom: 3rem;
+}
+
+div.contact-form form div:last-of-type textarea {
+  width: 66%;
+}
+
+div.contact-form form button {
+  width: 7rem;
+  background-color: #65725E;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
 .profile-header {
   margin-top: 1rem;
   text-align: center;
