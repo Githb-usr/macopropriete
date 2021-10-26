@@ -1,0 +1,61 @@
+<!-- lachana/templates/pages/contact.html -->
+{% extends 'base_private_template.html' %}
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+<section class="contact-section text-body">
+    <div class="page-title-block">
+        <h1 class="page-title">Contact</h1>
+    </div>
+    <div class="contact-intro">
+        <p>
+            Vous pouvez utiliser ce formulaire pour nous contacter, si le site ne vous a pas permis de trouver une réponse à votre question.
+        </p>
+        <p>
+            Attention, tous les champs sont obligatoires.
+        </p>
+    </div>
+    <div class="contact-form">
+        <form method="post">
+        {% csrf_token %}
+            {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field }}
+            {% endfor %}
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+                </div>
+            {% endif %}
+
+            {% for field in form.visible_fields %}
+                <div class="form-group">
+                {{ field.label_tag }}
+
+                {% if form.is_bound %}
+                    {% if field.errors %}
+                    {% render_field field class="form-control is-invalid" %}
+                    {% for error in field.errors %}
+                        <div class="invalid-feedback">
+                        {{ error }}
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    {% render_field field class="form-control is-valid" %}
+                    {% endif %}
+                {% else %}
+                    {% render_field field class="form-control" %}
+                {% endif %}
+
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+</section>
+{% endblock content %}
