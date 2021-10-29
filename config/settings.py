@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'contents',
     'pages',
     'users',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'widget_tweaks',
 ]
 
@@ -159,3 +161,8 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
 ACCOUNT_VALIDATION_URL = 'account/validation'
+
+# Crispy forms settings
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_FAIL_SILENTLY = not DEBUG

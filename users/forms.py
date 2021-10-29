@@ -46,3 +46,11 @@ class UserLoginForm(AuthenticationForm):
             'id': 'login-password',
         }
     ))
+
+class ProfileUpdateForm(forms.ModelForm):
+    """
+    Form used for the profile update
+    """
+    class Meta: 
+        model = User
+        fields = ('avatar', 'about', 'contact_email', 'phone_number')

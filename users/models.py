@@ -3,7 +3,9 @@
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.core.validators import FileExtensionValidator, RegexValidator
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 import uuid
 
@@ -73,9 +75,10 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Prénom')
     last_name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Nom')
     contact_email = models.EmailField(max_length=255, blank=True, null=True, verbose_name='Adresse email de contact')
-    phone_number = models.CharField(max_length=10, blank=True, null=True, verbose_name='Téléphone')
-    avatar = models.ImageField(upload_to='users/', null=True, blank=True, verbose_name='Avatar')
-    about = models.TextField(null=True, blank=True, verbose_name='A propos de moi')
+    phone_number_regex = RegexValidator(regex=r"^0\d{9}$")
+    phone_number = models.CharField(validators=[phone_number_regex], max_length=10, blank=True, null=True, verbose_name='Téléphone')
+    avatar = models.ImageField(validators=[FileExtensionValidator(['gif', 'jpeg', 'jpg', 'png'])], upload_to='users/', null=True, blank=True, verbose_name='Avatar')
+    about = models.TextField(max_length=2000, null=True, blank=True, verbose_name='A propos de moi')
     is_resident = models.BooleanField(default=True, verbose_name='Résident')
     is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
     PENDING = 'PENDING'
@@ -100,6 +103,9 @@ class User(AbstractUser):
             return f'{self.first_name} {self.last_name}'
 
         return self.email.split('@')[0]
+
+    def get_absolute_url(self):
+        return reverse('profile', kwargs={'uuid': self.uuid})
 
     class Meta:
         ordering = ('-date_joined', '-updated_at', )
