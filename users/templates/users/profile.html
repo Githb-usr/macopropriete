@@ -1,4 +1,4 @@
-<!-- lachan/users/templates/users/dashboard.html -->
+<!-- lachana/users/templates/users/profile.html -->
 {% extends 'base_private_template.html' %}
 {% load static %}
 {% block content %}
@@ -6,7 +6,7 @@
     <section class="profile-header d-flex flex-column align-items-center text-green">
         <div class="d-flex profile-header-img-container justify-content-center align-items-center">
             {% if not user.avatar %}
-                <img src="{{ MEDIA_URL }}users/default-user.png" alt="" class="profile-header-img img-fluid" />
+                <img src="{{ MEDIA_URL }}users/default-user.png" alt="" class="profile-header-img-default img-fluid" />
             {% else %}
                 <img src="{{ user.avatar.url }}" alt="" class="profile-header-img img-fluid" />
             {% endif %}
@@ -86,7 +86,8 @@
                 </div>
                 <hr class="profile-separator">
 
-                <button class="col-lg-4 align-self-center profile-btn">Modifier mes informations</button>
+                <button onclick="window.location.href='{% url 'profile-update' uuid=user.uuid %}';"
+                class="col-lg-4 align-self-center profile-btn">Modifier mes informations</button>
             </div>
         {% endif %}
     </section>
