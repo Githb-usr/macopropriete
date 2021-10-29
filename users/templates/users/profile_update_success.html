@@ -1,0 +1,24 @@
+<!-- lachana/users/templates/users/profile_update.html -->
+{% extends 'base_private_template.html' %}
+{% load static %}
+{% block content %}
+<main class="container">
+    <section class="profile-header d-flex flex-column align-items-center text-green">
+        <div class="d-flex profile-header-img-container justify-content-center align-items-center">
+            {% if not user.avatar %}
+                <img src="{{ MEDIA_URL }}users/default-user.png" alt="" class="profile-header-img-default img-fluid" />
+            {% else %}
+                <img src="{{ user.avatar.url }}" alt="" class="profile-header-img img-fluid" />
+            {% endif %}
+        </div>
+        <h1 class="profile-header-title">{{user.first_name}} {{user.last_name}}</h1>
+        <h2 class="profile-update-header-subtitle">Votre profil a été mis à jour !</h2>
+        <div class="profile-update-exit d-flex d-inline justify-content-around">
+            <button onclick="window.location.href='{% url 'profile' uuid=user.uuid %}';"
+                    class="col-lg-3 align-self-center profile-btn profile-update-btn">Retourner sur mon profil</button>
+            <button onclick="window.location.href='{% url 'profile-update' uuid=user.uuid %}';"
+                    class="col-lg-3 align-self-center profile-btn profile-update-btn">Continuer les modifications</button>
+        </div>
+    </section>
+</main>
+{% endblock content %}

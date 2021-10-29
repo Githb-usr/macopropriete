@@ -12,5 +12,7 @@ urlpatterns = [
     path(route='account/validation/success', view=AccountValidationSuccessView.as_view(), name='account-validation-success'),
     path(route='login/', view=UserLoginView.as_view(), name='login'),
     path(route='logout/', view=LogoutView.as_view(), name='logout'),
-    path(route='profile/<uuid:uuid>', view=views.Profile.as_view(), name='profile'),
+    path(route='profile/<uuid:uuid>', view=views.ProfileView.as_view(), name='profile'),
+    path(route='profile/<uuid:uuid>/edit', view=views.ProfileUpdateView.as_view(), name='profile-update'),
+    path(route='profile/<uuid:uuid>/edit/success', view=views.ProfileUpdateSuccessView.as_view(), name='profile-update-success'),
 ]
