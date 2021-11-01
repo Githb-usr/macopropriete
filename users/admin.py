@@ -1,14 +1,19 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.core import mail
+# from django.core import mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.utils import timezone
 
-from config.settings import ACCOUNT_VALIDATION_URL, EMAIL_HOST_USER
+from config.settings import ACCOUNT_VALIDATION_URL
+from pages.utils import choice_translation, generic_send_mail
 from users.forms import CustomUserCreationForm, CustomUserChangeForm
 from users.models import User
 from users.settings import ACCOUNT_VALIDATION_SUBJECT
-from users.utils import get_random_string, generic_send_mail
+from users.utils import get_random_string
 
 class UserAdmin(admin.ModelAdmin):
     """
@@ -39,17 +44,20 @@ class UserAdmin(admin.ModelAdmin):
             user_password = get_random_string(10)
             obj.set_password(user_password)
             super().save_model(request, obj, form, change)
+
+            message_subject = ACCOUNT_VALIDATION_SUBJECT
+            html_page = 'users/account_validation_mail.html'
+            recipients = obj.email
             email_context = {
+                'date': timezone.now(),
                 'hostname': request.META['HTTP_HOST'],
                 'validation_url': ACCOUNT_VALIDATION_URL,
                 'password': user_password,
                 'user_name': obj.get_full_name,
                 'user_uuid': obj.uuid,
-            }
-            html_message = render_to_string('users/account_validation_mail.html', email_context)
-            plain_message = strip_tags(html_message)
-            from_email = EMAIL_HOST_USER
-            mail.send_mail(ACCOUNT_VALIDATION_SUBJECT, plain_message, from_email, [obj.email], html_message=html_message)
+            }            
+            generic_send_mail(message_subject, html_page, recipients, email_context)
+
         super().save_model(request, obj, form, change)
 
 admin.site.register(User, UserAdmin)

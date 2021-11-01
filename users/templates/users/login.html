@@ -3,14 +3,25 @@
 {% load static %}
 {% block title %}{% endblock title %}
 {% block content %}
-<section class="warning-section">
+<section class="warning-section d-flex justify-content-center">
     {% if messages %}
-        <div class="messages text-warning">
+        <div class="d-flex messages-content justify-content-center">
             {% for message in messages %}
-                <p class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
-                    <i class="bi bi-check-circle-fill msg-icon"></i> {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </p>
+                {% if message.tags %}
+                    <p class="messages alert alert-{{ message.tags }} d-flex align-items-center alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle-fill msg-icon"></i> {{ message }}
+                        <button type="button" 
+                            {% if message.tags == 'error' %}
+                                class="btn-close"
+                            {% else %}
+                                class="btn-close btn-close-white"
+                            {% endif %}
+                            onclick="javascript:location.reload();"
+                            data-bs-dismiss="alert"
+                            aria-label="Close">
+                        </button>
+                    </p>
+                {% endif %}
             {% endfor %}
         </div>
     {% endif %}
