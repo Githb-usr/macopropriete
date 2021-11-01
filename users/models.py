@@ -9,6 +9,8 @@ from django.urls import reverse
 from django.utils import timezone
 import uuid
 
+from users.choices import OWNER_OCCUPIER, PENDING, USER_STATUS, USER_TYPE
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
         """
@@ -53,45 +55,77 @@ class User(AbstractUser):
         max_length=255,
         unique=True,
         verbose_name='Adresse email',
-        )
-    username = models.CharField(max_length=30, blank=True, null=True, unique=True, verbose_name='Pseudonyme')
+    )
+    username = models.CharField(
+        max_length=30,
+        blank=True,
+        null=True,
+        unique=True,
+        verbose_name='Pseudonyme'
+    )
     is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')
     is_staff = models.BooleanField(default=False, verbose_name='Administrateur')
     is_superuser = models.BooleanField(default=False, verbose_name='Super administrateur')
     date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
     last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
-    OWNER_OCCUPIER = 'OWNER OCCUPIER'
-    OWNER_LESSOR = 'OWNER LESSOR'
-    TENANT = 'TENANT'
-    SYNDIC = 'SYNDIC'
-    USER_TYPE = [
-        (OWNER_OCCUPIER, 'Copropriétaire occupant'),
-        (OWNER_LESSOR, 'Copropriétaire bailleur'),
-        (TENANT, 'Locataire'),
-        (SYNDIC, 'Syndic'),
-    ]
-    user_type = models.CharField(max_length=20, choices=USER_TYPE, default='OWNER_OCCUPIER', verbose_name='Catégorie d\'utilisateur')
-    first_name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Prénom')
-    last_name = models.CharField(max_length=30, blank=True, null=True, verbose_name='Nom')
-    contact_email = models.EmailField(max_length=255, blank=True, null=True, verbose_name='Adresse email de contact')
+    user_type = models.CharField(
+        max_length=20,
+        choices=USER_TYPE,
+        default=OWNER_OCCUPIER,
+        verbose_name='Catégorie d\'utilisateur'
+    )
+    first_name = models.CharField(
+        max_length=30,
+        blank=True,
+        null=True,
+        verbose_name='Prénom'
+    )
+    last_name = models.CharField(
+        max_length=30,
+        blank=True,
+        null=True,
+        verbose_name='Nom'
+    )
+    contact_email = models.EmailField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name='Adresse email de contact'
+    )
     phone_number_regex = RegexValidator(regex=r"^0\d{9}$")
-    phone_number = models.CharField(validators=[phone_number_regex], max_length=10, blank=True, null=True, verbose_name='Téléphone')
-    avatar = models.ImageField(validators=[FileExtensionValidator(['gif', 'jpeg', 'jpg', 'png'])], upload_to='users/', null=True, blank=True, verbose_name='Avatar')
-    about = models.TextField(max_length=2000, null=True, blank=True, verbose_name='A propos de moi')
+    phone_number = models.CharField(
+        validators=[phone_number_regex],
+        max_length=10,
+        blank=True,
+        null=True,
+        verbose_name='Téléphone'
+    )
+    avatar = models.ImageField(
+        validators=[FileExtensionValidator(['gif', 'jpeg', 'jpg', 'png'])],
+        upload_to='users/',
+        null=True,
+        blank=True,
+        verbose_name='Avatar'
+    )
+    about = models.TextField(
+        max_length=2000,
+        null=True,
+        blank=True,
+        verbose_name='A propos de moi'
+    )
     is_resident = models.BooleanField(default=True, verbose_name='Résident')
     is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
-    PENDING = 'PENDING'
-    VALIDATED = 'VALIDATED'
-    USER_STATUS = [
-        (PENDING, 'En attente'),
-        (VALIDATED, 'Validé'),
-    ]
-    status = models.CharField(max_length=15, choices=USER_STATUS, default=PENDING, verbose_name='Statut')
+    status = models.CharField(
+        max_length=15,
+        choices=USER_STATUS,
+        default=PENDING,
+        verbose_name='Statut'
+    )
 
     objects = UserManager()
 
-    # Main Field for authentication
+    # Main field for authentication
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
