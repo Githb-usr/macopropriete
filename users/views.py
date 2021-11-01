@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
@@ -13,22 +14,23 @@ from global_login_required import login_not_required
 
 from users.forms import UserLoginForm
 from users.models import User
+from users.settings import ACCOUNT_DOES_NOT_EXIST, ALREADY_VALIDATED_ACCOUNT_MSG, VALIDATED_ACCOUNT_SUCCESS_MSG
 
 @login_not_required
 def validate_user_account_view(request, uuid):
-    # récupérer le user à partir du uuid
     try:
         user = User.objects.get(uuid=uuid)
         if user.status == 'VALIDATED':
-            # si statut déjà validé, rediriger sur la page de login
+            messages.success(request, ALREADY_VALIDATED_ACCOUNT_MSG)
             return redirect('login')
         elif user.status == 'PENDING':
-            # sinon faire passer le statut de pending à validated
             user.status = 'VALIDATED'
             user.save()
-            return redirect('account-validation-success')
+            messages.success(request, VALIDATED_ACCOUNT_SUCCESS_MSG)
+            return redirect('login')
     except ObjectDoesNotExist:
-        return redirect('account-validation-failure')
+        messages.error(request, ACCOUNT_DOES_NOT_EXIST)
+        return redirect('login')
 
 @login_not_required
 class UserLoginView(LoginView):
