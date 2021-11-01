@@ -5391,14 +5391,14 @@ textarea.form-control-lg {
   width: 1em;
   height: 1em;
   padding: 0.25em 0.25em;
-  color: #000;
-  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  color: #BD2B73;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23BD2B73'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
   border: 0;
   border-radius: 0.25rem;
   opacity: 0.5;
 }
 .btn-close:hover {
-  color: #000;
+  color: #BD2B73;
   text-decoration: none;
   opacity: 0.75;
 }
@@ -12343,13 +12343,6 @@ header .row, header h1, header .h1 {
   padding-left: 0;
 }
 
-.warning-section {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  font-size: 1.5rem;
-}
-
 .main-section {
   margin: 0;
   padding: 0;
@@ -12357,10 +12350,6 @@ header .row, header h1, header .h1 {
 
 main section {
   padding: 0 0 2rem 0;
-}
-
-.msg-icon {
-  margin-right: 0.5rem;
 }
 
 div.page-title-block {
@@ -12381,6 +12370,43 @@ h2.page-subtitle, .page-subtitle.h2 {
 h1.page-title, .page-title.h1, h2.page-subtitle, .page-subtitle.h2 {
   font-weight: bolder;
   color: #ADB386;
+}
+
+.warning-section {
+  width: 45%;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.alert-success {
+  color: #fff;
+  background-color: #57869A;
+  border-color: #dbf9f8;
+}
+
+.alert-error {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+
+p.messages button.btn-close, p.messages button.btn-close:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.messages-content {
+  width: 75%;
+}
+
+.messages {
+  min-width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 0.6rem;
+}
+
+.msg-icon {
+  margin-right: 1rem;
 }
 
 div.breadcrumb {
@@ -12426,28 +12452,6 @@ footer, footer a {
 
 .asteriskField {
   padding-left: 0.2rem;
-}
-
-.alert-success {
-  color: #fff;
-  background-color: #57869A;
-  border-color: #dbf9f8;
-}
-
-.alert-error {
-  color: #842029;
-  background-color: #f8d7da;
-  border-color: #f5c2c7;
-}
-
-p.messages button.btn-close, p.messages button.btn-close:hover {
-  color: #fff;
-  opacity: 1;
-}
-
-.messages {
-  width: 75%;
-  margin-bottom: 2rem;
 }
 
 /* ********************************* */
