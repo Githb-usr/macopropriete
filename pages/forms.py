@@ -2,25 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-
-CONDOMINIUM = 'CONDOMINIUM'
-MEETING = 'MEETING'
-MISCELLANEOUS = 'MISCELLANEOUS'
-PARTY = 'PARTY'
-WEBSITE = 'WEBSITE'
-WORKS = 'WORKS'
-SUBJECTS = [
-    (CONDOMINIUM, 'Copropriété'),
-    (WEBSITE, 'Le site'),
-    (MEETING, 'Réunion'),
-    (PARTY, 'Fête'),
-    (WORKS, 'Travaux'),
-    (MISCELLANEOUS, 'Autre'),
-]
+from pages.choices import SUBJECTS, USER_TYPE
 
 class ContactForm(forms.Form):
     first_name = forms.CharField(max_length = 50, label='Prénom')
     last_name = forms.CharField(max_length = 50, label='Nom')
     email_address = forms.EmailField(max_length = 150, label='Adresse email')
+    user_type = forms.ChoiceField(choices=USER_TYPE, label='Vous êtes')
     message_subject = forms.ChoiceField(choices=SUBJECTS, label='Sujet du message')
-    message = forms.CharField(widget = forms.Textarea, max_length = 2500, label='Votre message')
+    cc_myself = forms.BooleanField(required=False, label='Recevoir une copie de mon message')
+    message = forms.CharField(widget=forms.Textarea, max_length = 2500, label='Votre message')
