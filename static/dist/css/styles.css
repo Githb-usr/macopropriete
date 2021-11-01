@@ -11851,17 +11851,61 @@ article.event-detail {
   margin-bottom: 3rem;
 }
 
-div.contact-form form div input, div.contact-form form div select {
-  width: 33%;
-  margin-bottom: 2rem;
+div.contact-form form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-div.contact-form form div:last-of-type {
-  margin-bottom: 3rem;
+div#div_id_first_name, div#div_id_last_name, div#div_id_email_address, div#div_id_user_type, div#div_id_message_subject {
+  width: 50%;
+}
+
+div#div_id_message {
+  width: 100%;
+}
+
+div.contact-form form div input, div.contact-form form div select {
+  width: 95%;
+  margin-bottom: 1.5rem;
+}
+
+input#id_last_name, select#id_user_type, div#div_id_last_name {
+  margin-left: auto;
+}
+
+div#div_id_last_name label, div#div_id_user_type label {
+  margin-left: 5%;
+}
+
+div.contact-form form div:nth-last-of-type(2) {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+div#div_id_cc_myself {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin-bottom: 0 !important;
+}
+
+div#div_id_cc_myself label, div#div_id_cc_myself input {
+  align-self: center;
+}
+
+div#div_id_cc_myself input {
+  width: 1rem;
+  margin-right: 0.5rem;
+  margin-top: 2rem;
+}
+
+div#div_id_cc_myself label {
+  margin-top: 0.63rem;
 }
 
 div.contact-form form div:last-of-type textarea {
-  width: 66%;
+  width: 100%;
 }
 
 div.contact-form form button {
@@ -11872,6 +11916,7 @@ div.contact-form form button {
   border: none;
   border-radius: 1rem;
   padding: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .profile-header {
@@ -12377,6 +12422,10 @@ footer {
 
 footer, footer a {
   font-size: small;
+}
+
+.asteriskField {
+  padding-left: 0.2rem;
 }
 
 .alert-success {
