@@ -12429,8 +12429,8 @@ footer, footer a {
 }
 
 .alert-success {
-  color: #508d8a;
-  background-color: #e7fbfa;
+  color: #fff;
+  background-color: #57869A;
   border-color: #dbf9f8;
 }
 
@@ -12438,6 +12438,16 @@ footer, footer a {
   color: #842029;
   background-color: #f8d7da;
   border-color: #f5c2c7;
+}
+
+p.messages button.btn-close, p.messages button.btn-close:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.messages {
+  width: 75%;
+  margin-bottom: 2rem;
 }
 
 /* ********************************* */
