@@ -2,12 +2,18 @@
 {% extends 'base_private_template.html' %}
 {% block content %}
 {% load static %}
-<section class="intentions-section">
+<section class="contact-section text-body">
     <div class="page-title-block">
-        <h1 class="page-title">Votre message a été envoyé avec succès !</h1>
+        <h1 class="page-title">Contact</h1>
     </div>
-    <div class="intention">
-        xxx
+    <div class="contact-success-msg">
+        Votre message a été envoyé avec succès !
+    </div>
+    <div class="profile-update-exit d-flex d-inline justify-content-around">
+        <button onclick="window.location.href='{% url 'homepage' %}';"
+                class="col-lg-3 align-self-center profile-btn profile-update-btn">
+            Retour à l'accueil du site
+        </button>
     </div>
 </section>
 {% endblock content %}
