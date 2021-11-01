@@ -3,6 +3,7 @@
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import DetailView
@@ -56,15 +57,12 @@ class ProfileView(DetailView):
         context['uuid'] = self.kwargs.get("uuid")
         return context
 
-class ProfileUpdateView(UpdateView):
+class ProfileUpdateView(SuccessMessageMixin, UpdateView):
     model = User
     fields = ['avatar', 'about', 'contact_email', 'phone_number']
     template_name = 'users/profile_update.html'
-    success_url = 'edit/success'
+    success_message = 'Votre profil a bien été mis à jour !'
     
     def get_object(self, queryset=None):
         # To use uuid in the route
         return User.objects.get(uuid=self.kwargs.get("uuid"))
-
-class ProfileUpdateSuccessView(TemplateView):
-    template_name = 'users/profile_update_success.html'
