@@ -13,6 +13,16 @@
         </div>
         <h1 class="profile-header-title">{{user.first_name}} {{user.last_name}}</h1>
     </section>
+    {% if messages %}
+        <div class="d-flex profile-content justify-content-center">
+            {% for message in messages %}
+                <p class="messages alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+                    <i class="bi bi-check-circle-fill msg-icon"></i> {{ message }}
+                    <button type="button" class="btn-close btn-close-white" onclick="javascript:location.reload();" data-bs-dismiss="alert" aria-label="Close"></button>
+                </p>
+            {% endfor %}
+        </div>
+    {% endif %}
     <section class="d-flex flex-column profile-content">
         <div class="d-flex flex-column profile-public-content text-body">
             <div class="current-connected-user-infos">Informations publiques (visibles de tous les personnes inscrites sur le site)</div>
