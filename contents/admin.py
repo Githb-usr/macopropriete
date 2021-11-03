@@ -1,16 +1,18 @@
 from django.contrib import admin
 
-from .models import Article, Faq, Event, Incident, IncidentTracking, Comment
+from .models import News, Faq, Event, Incident, IncidentTracking, Comment
 
-class ArticleAdmin(admin.ModelAdmin):
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
     """
-    Display of Article in the back office
+    Display of News in the back office
     """
-    model = Article
+    model = News
     empty_value_display = '-empty-'
-    list_display = ('category', 'title', 'content', 'image', 'creation_date',
-                    'last_edit', 'status',)
+    list_display = ('title', 'content', 'category', 'image', 'creation_date',
+                    'display_author', 'last_edit', 'status',)
 
+@admin.register(Faq)
 class FaqAdmin(admin.ModelAdmin):
     """
     Display of FAQ in the back office
@@ -20,6 +22,7 @@ class FaqAdmin(admin.ModelAdmin):
     list_display = ('category', 'question', 'answer', 'image',
                     'creation_date', 'last_edit', 'status',)
 
+@admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     """
     Display of Event in the back office
@@ -29,6 +32,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('category', 'title', 'content', 'image', 'creation_date',
                     'last_edit', 'start_date', 'end_date', 'status',)
 
+@admin.register(Incident)
 class IncidentAdmin(admin.ModelAdmin):
     """
     Display of Incident in the back office
@@ -37,12 +41,14 @@ class IncidentAdmin(admin.ModelAdmin):
     empty_value_display = '-empty-'
     list_display = ('category', 'content', 'image', 'creation_date',)
 
+@admin.register(IncidentTracking)
 class IncidentTrackingAdmin(admin.ModelAdmin):
     """
     Display of IncidentTracking in the back office
     """
     list_display = ('status', 'status_date',)
 
+@admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     """
     Display of Comment in the back office
@@ -50,10 +56,3 @@ class CommentAdmin(admin.ModelAdmin):
     model = Comment
     empty_value_display = '-empty-'
     list_display = ('content', 'creation_date', 'status',)
-
-admin.site.register(Article, ArticleAdmin)
-admin.site.register(Faq, FaqAdmin)
-admin.site.register(Event, EventAdmin)
-admin.site.register(Incident, IncidentAdmin)
-admin.site.register(IncidentTracking, IncidentTrackingAdmin)
-admin.site.register(Comment, CommentAdmin)

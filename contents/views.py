@@ -4,21 +4,22 @@
 import copy
 from datetime import datetime
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateView
-import json
-import logging
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from contents.models import Article, Faq, Event
+from contents.choices import FAQ_CATEGORY
+from contents.models import Event, Faq, News, NewsUpdate
+from pages.utils import choice_translation
 
 class NewsListView(ListView):
-    model = Article
+    model = News
     paginate_by = 5
     template_name = 'contents/news_list.html'
     context_object_name = 'news_list'
@@ -31,13 +32,47 @@ class NewsListView(ListView):
         return context
 
 class NewsDetailView(DetailView):
-    model = Article
+    model = News
     template_name = 'contents/news_detail.html'
     context_object_name = 'news_detail'
 
     def get_object(self, queryset=None):
         # To use uuid in the route
-        return Article.objects.get(uuid=self.kwargs.get("uuid"))
+        return News.objects.get(uuid=self.kwargs.get("uuid"))
+
+class NewsCreateView(SuccessMessageMixin, CreateView):
+    model = News
+    template_name = 'contents/news_create.html'
+    success_message = 'Votre news a bien été créée !'
+    fields = ['category', 'title', 'content', 'image', 'status']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class NewsUpdateView(SuccessMessageMixin, UpdateView):
+    model = News
+    template_name = 'contents/news_update.html'
+    success_message = 'La news a bien été mise à jour !'
+    fields = ['category', 'title', 'content', 'image', 'status']
+
+    def get_object(self, queryset=None):
+        # To use uuid in the route
+        return News.objects.get(uuid=self.kwargs.get("uuid"))
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+class NewsDeleteView(SuccessMessageMixin, DeleteView):
+    model = News
+    template_name = 'contents/news_delete.html'
+    success_message = 'La news a bien été supprimée !'
+    success_url = reverse_lazy('author-list')
+
+    def get_object(self, queryset=None):
+        # To use uuid in the route
+        return News.objects.get(uuid=self.kwargs.get("uuid"))
 
 class FaqCategoryView(TemplateView):
     template_name = 'contents/faq_category.html'
@@ -51,10 +86,7 @@ class FaqListView(ListView):
         return Faq.objects.filter(category=self.kwargs['category'].upper())
 
     def get_context_data(self, **kwargs):
-        faq_cat = ''
-        for item in Faq.FAQ_CATEGORY:
-            if item[0] == self.kwargs['category'].upper():
-                faq_cat = item[1]
+        faq_cat = choice_translation(FAQ_CATEGORY, 'category')
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
         context['category'] = faq_cat

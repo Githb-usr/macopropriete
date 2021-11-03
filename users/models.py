@@ -9,6 +9,8 @@ from django.urls import reverse
 from django.utils import timezone
 import uuid
 
+from condominium.models import Lot
+from contents.models import Comment, Event, Faq, Incident, News
 from users.choices import OWNER_OCCUPIER, PENDING, USER_STATUS, USER_TYPE
 
 class UserManager(BaseUserManager):
@@ -28,7 +30,7 @@ class UserManager(BaseUserManager):
 
         return user
     
-    def create_superuser(self, email, username, password=None, is_staff=True, is_superuser=True):
+    def create_superuser(self, email, password=None, is_staff=True, is_superuser=True):
         """
         Managing the creation of a superuser
         """
@@ -50,31 +52,6 @@ class User(AbstractUser):
     """
     Model of the "users_user" table in the database
     """
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    email = models.EmailField(
-        max_length=255,
-        unique=True,
-        verbose_name='Adresse email',
-    )
-    username = models.CharField(
-        max_length=30,
-        blank=True,
-        null=True,
-        unique=True,
-        verbose_name='Pseudonyme'
-    )
-    is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')
-    is_staff = models.BooleanField(default=False, verbose_name='Administrateur')
-    is_superuser = models.BooleanField(default=False, verbose_name='Super administrateur')
-    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
-    last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
-    user_type = models.CharField(
-        max_length=20,
-        choices=USER_TYPE,
-        default=OWNER_OCCUPIER,
-        verbose_name='Catégorie d\'utilisateur'
-    )
     first_name = models.CharField(
         max_length=30,
         blank=True,
@@ -86,6 +63,44 @@ class User(AbstractUser):
         blank=True,
         null=True,
         verbose_name='Nom'
+    )
+    email = models.EmailField(
+        max_length=255,
+        unique=True,
+        verbose_name='Adresse email',
+    )
+    user_type = models.CharField(
+        max_length=20,
+        choices=USER_TYPE,
+        default=OWNER_OCCUPIER,
+        verbose_name='Catégorie d\'utilisateur'
+    )
+    status = models.CharField(
+        max_length=15,
+        choices=USER_STATUS,
+        default=PENDING,
+        verbose_name='Statut'
+    )
+    is_resident = models.BooleanField(default=True, verbose_name='Résident')
+    is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
+    is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')
+    is_staff = models.BooleanField(default=False, verbose_name='Administrateur')
+    is_superuser = models.BooleanField(default=False, verbose_name='Super administrateur')
+    last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
+    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
+    avatar = models.ImageField(
+        validators=[FileExtensionValidator(['gif', 'jpeg', 'jpg', 'png'])],
+        upload_to='users/',
+        null=True,
+        blank=True,
+        verbose_name='Avatar'
+    )
+    about = models.TextField(
+        max_length=2000,
+        null=True,
+        blank=True,
+        verbose_name='A propos de moi'
     )
     contact_email = models.EmailField(
         max_length=255,
@@ -101,27 +116,16 @@ class User(AbstractUser):
         null=True,
         verbose_name='Téléphone'
     )
-    avatar = models.ImageField(
-        validators=[FileExtensionValidator(['gif', 'jpeg', 'jpg', 'png'])],
-        upload_to='users/',
-        null=True,
-        blank=True,
-        verbose_name='Avatar'
-    )
-    about = models.TextField(
-        max_length=2000,
-        null=True,
-        blank=True,
-        verbose_name='A propos de moi'
-    )
-    is_resident = models.BooleanField(default=True, verbose_name='Résident')
-    is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
-    status = models.CharField(
-        max_length=15,
-        choices=USER_STATUS,
-        default=PENDING,
-        verbose_name='Statut'
-    )
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
+    news_to_update = models.ManyToManyField(News, through='contents.NewsUpdate', related_name='news_update')
+    news_to_delete = models.ManyToManyField(News, through='contents.NewsDelete', related_name='news_delete')
+    faq_to_update = models.ManyToManyField(Faq, through='contents.FaqUpdate', related_name='faq_update')
+    faq_to_delete = models.ManyToManyField(Faq, through='contents.FaqDelete', related_name='faq_delete')
+    event_to_update = models.ManyToManyField(Event, through='contents.EventUpdate', related_name='event_update')
+    event_to_delete = models.ManyToManyField(Event, through='contents.EventDelete', related_name='event_delete')
+    incident_to_delete = models.ManyToManyField(Incident, through='contents.IncidentDelete', related_name='incident_delete')
+    comment_to_delete = models.ManyToManyField(Comment, through='contents.CommentDelete', related_name='comment_delete')
+    lot_owned = models.ManyToManyField(Lot, through='condominium.Ownership', related_name='lot_owned')
 
     objects = UserManager()
 

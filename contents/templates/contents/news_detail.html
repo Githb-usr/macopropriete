@@ -21,6 +21,16 @@
                 </li>
             </ul>
         </div>
+        <div class="content-action-btn">
+            <button onclick="window.location.href='{% url 'news-update' uuid=news_detail.uuid %}';"
+                class="col-lg-3 align-self-center content-btn content-update-btn">
+                Modifier cette news
+            </button>
+            <button onclick="window.location.href='{% url 'news-delete' uuid=news_detail.uuid %}';"
+                class="col-lg-3 align-self-center content-btn content-delete-btn">
+                Supprimer cette news
+            </button>
+        </div>
         <!-- End breadcrumb -->
         <div class="page-title-block">
             <h1 class="page-title">Les news</h1>
@@ -30,9 +40,11 @@
             <div class="news-detail-title">{{ news_detail.title }}</div>
             <div class="news-detail-category">Catégorie : {{ news_detail.get_category_display }}</div>
             <div class="news-detail-content">{{ news_detail.content }}</div>
-            <div class="news-detail-img-block">
-                <img src="{{news_detail.image.url}}" alt="" class="news-detail-img" />
-            </div>
+            {% if news_detail.image %}
+                <div class="news-detail-img-block">
+                    <img src="{{news_detail.image.url}}" alt="" class="news-detail-img" />
+                </div>
+            {% endif %}
         </article>
         <div class="row content-detail-btn justify-content-between">
             {% if news_detail.get_previous_by_creation_date %}
