@@ -3,103 +3,94 @@
 
 from django.conf import settings
 from django.db import models
+from django.db.models.signals import pre_save
+from django.urls import reverse
 import uuid
 
-class Article(models.Model):
+from contents.choices import ACTIVATED, NEWS_CATEGORY, CONTENT_STATUS, EVENT_CATEGORY, FAQ_CATEGORY, INCIDENT_CATEGORY, MISCELLANEOUS, PENDING, TRACKING_STATUS
+
+class News(models.Model):
     """
-    Model of the "contents_article" table in the database
+    Model of the "contents_news" table in the database
     """
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    CONDOMINIUM = 'CONDOMINIUM'
-    MEETING = 'MEETING'
-    MISCELLANEOUS = 'MISCELLANEOUS'
-    PARTY = 'PARTY'
-    WEBSITE = 'WEBSITE'
-    WORKS = 'WORKS'
-    ARTICLE_CATEGORY = [
-        (CONDOMINIUM, 'Copropriété'),
-        (MEETING, 'Réunion'),
-        (PARTY, 'Fête'),
-        (WEBSITE, 'Site'),
-        (WORKS, 'Travaux'),
-        (MISCELLANEOUS, 'Divers'),
-    ]
-    category = models.CharField(max_length=30, choices=ARTICLE_CATEGORY, default=MISCELLANEOUS)
+    category = models.CharField(max_length=30, choices=NEWS_CATEGORY, default=MISCELLANEOUS, verbose_name='Catégorie')
     title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
-    content = models.TextField(blank=False, verbose_name='Article')
-    image = models.ImageField(upload_to='contents', null=True, blank=True)
-    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de l\'article')
+    content = models.TextField(blank=False, verbose_name='News')
+    status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_article')
-    # article status
-    ACTIVATED = 'ACTIVATED'
-    DELETED = 'DELETED'
-    ARTICLE_STATUS = [
-        (ACTIVATED, 'Actif'),
-        (DELETED, 'Supprimé'),
-    ]
-    status = models.CharField(max_length=30, choices=ARTICLE_STATUS, default=ACTIVATED)
-        
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
+    image = models.ImageField(upload_to='contents', null=True, blank=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
+    author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_news')
+
     def __str__(self):
         return f'{self.title}'
-    
+
+    def get_absolute_url(self):
+        return reverse('news-detail', kwargs={'uuid': self.uuid})
+
+    def display_author(self):
+        """Create a string for the author. This is required to display author in Admin."""
+        return self.author.get_full_name()
+
+    display_author.short_description = 'Auteur'
+
     class Meta:
-        verbose_name_plural = "articles"
+        verbose_name_plural = "news"
         ordering = ['-creation_date']
 
-class ArticleUpdate(models.Model):
+class NewsUpdate(models.Model):
     """
-    Intermediate model between "Article" and "User", defined to add fields
+    Intermediate model between "News" and "User", defined to add fields
     """
-    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='article_updater')
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='updated_article')
-    update_date = models.DateTimeField(auto_now=True, null=True, verbose_name='Date de la modification')
-    update_reason = models.CharField(max_length=250, verbose_name='Motif de la modification')
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='updated_news')
+    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='news_updater')
+    update_date = models.DateTimeField(auto_now=True, null=True, verbose_name='Modification le')
+    update_reason = models.CharField(max_length=250, verbose_name='Raison de la modification')
 
-class ArticleDelete(models.Model):
+    def display_updater(self):
+        """Create a string for the updater. This is required to display updater in Admin."""
+        return self.updater.get_full_name()
+
+    display_updater.short_description = 'Auteur de la modification'
+
+class NewsDelete(models.Model):
     """
-    Intermediate model between "Article" and "User", defined to add fields
+    Intermediate model between "News" and "User", defined to add fields
     """
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='article_deleter')
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='deleted_article')
-    delete_date = models.DateTimeField(auto_now=True, null=True)
-    delete_reason = models.CharField(max_length=250, null=False)
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='deleted_news')
+    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='news_deleter')
+    deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
+    deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
+
+    def display_deleter(self):
+        """Create a string for the deleter. This is required to display deleter in Admin."""
+        return self.deleter.get_full_name()
+
+    display_deleter.short_description = 'Auteur de la suppression'
 
 class Faq(models.Model):
     """
     Model of the "contents_faq" table in the database
     """
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    BUILDINGS = 'BUILDINGS'
-    CAR_PARKS = 'CAR PARKS'
-    INDIVIDUAL_GARAGES = 'INDIVIDUAL GARAGES'
-    MISCELLANEOUS = 'MISCELLANEOUS'
-    PARK = 'PARK'
-    FAQ_CATEGORY = [
-        (BUILDINGS, 'Les bâtiments'),
-        (INDIVIDUAL_GARAGES, 'Les garages'),
-        (PARK, 'Le parc'),
-        (CAR_PARKS, 'Les parkings'),
-        (MISCELLANEOUS, 'Divers'),
-    ]
-    category = models.CharField(max_length=30, choices=FAQ_CATEGORY, default=MISCELLANEOUS)
+    category = models.CharField(max_length=30, choices=FAQ_CATEGORY, default=MISCELLANEOUS, verbose_name='Catégorie')
     question = models.CharField(blank=False, max_length=250, verbose_name='Question')
     answer = models.TextField(blank=False, verbose_name='Réponse')
-    image = models.ImageField(upload_to='contents/faqs/', null=True, blank=True)
-    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de la question')
+    status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
+    image = models.ImageField(upload_to='contents/faqs/', null=True, blank=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_faq')
-    # FAQ status
-    ACTIVATED = 'ACTIVATED'
-    DELETED = 'DELETED'
-    FAQ_STATUS = [
-        (ACTIVATED, 'Actif'),
-        (DELETED, 'Supprimé'),
-    ]
-    status = models.CharField(max_length=30, choices=FAQ_STATUS, default=ACTIVATED)
     
     def __str__(self):
         return f'{self.category} - {self.question}'
+
+    def display_author(self):
+        """Create a string for the author. This is required to display author in Admin."""
+        return self.author.get_full_name()
+
+    display_author.short_description = 'Auteur'
     
     class Meta:
         verbose_name_plural = "Faqs"
@@ -108,59 +99,56 @@ class FaqUpdate(models.Model):
     """
     Intermediate model between "Faq" and "User", defined to add fields
     """
-    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='faq_updater')
     faq = models.ForeignKey(Faq, on_delete=models.CASCADE, related_name='updated_faq')
-    update_date = models.DateTimeField(auto_now=True, null=True)
-    update_reason = models.CharField(max_length=250)
+    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='faq_updater')
+    update_date = models.DateTimeField(auto_now=True, verbose_name='Modification le')
+    update_reason = models.CharField(max_length=250, verbose_name='Raison de la modification')
+
+    def display_updater(self):
+        """Create a string for the updater. This is required to display updater in Admin."""
+        return self.updater.get_full_name()
+
+    display_updater.short_description = 'Auteur de la modification'
 
 class FaqDelete(models.Model):
     """
     Intermediate model between "Faq" and "User", defined to add fields
     """
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='faq_deleter')
     faq = models.ForeignKey(Faq, on_delete=models.CASCADE, related_name='deleted_faq')
-    delete_date = models.DateTimeField(auto_now=True, null=True)
-    delete_reason = models.CharField(max_length=250, null=False)
+    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='faq_deleter')
+    deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
+    deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
+
+    def display_deleter(self):
+        """Create a string for the deleter. This is required to display deleter in Admin."""
+        return self.deleter.get_full_name()
+
+    display_deleter.short_description = 'Auteur de la suppression'
 
 class Event(models.Model):
     """
     Model of the "contents_event" table in the database
     """
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    CONDOMINIUM = 'CONDOMINIUM'
-    MEETING = 'MEETING'
-    MISCELLANEOUS = 'MISCELLANEOUS'
-    PARTY = 'PARTY'
-    WEBSITE = 'WEBSITE'
-    WORKS = 'WORKS'
-    EVENT_CATEGORY = [
-        (CONDOMINIUM, 'Copropriété'),
-        (WEBSITE, 'Le site'),
-        (MEETING, 'Réunion'),
-        (PARTY, 'Fête'),
-        (WORKS, 'Travaux'),
-        (MISCELLANEOUS, 'Divers'),
-    ]
-    category = models.CharField(max_length=30, choices=EVENT_CATEGORY, default=MISCELLANEOUS)
+    category = models.CharField(max_length=30, choices=EVENT_CATEGORY, default=MISCELLANEOUS, verbose_name='Catégorie')
     title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
     content = models.TextField(blank=False, verbose_name='Evènement')
-    image = models.ImageField(upload_to='contents/events/', null=True, blank=True)
-    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de l\'évènement')
-    last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     start_date = models.DateTimeField(verbose_name='Début de l\'évènement')
     end_date = models.DateTimeField(verbose_name='Fin de l\'évènement')
+    status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
+    last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
+    image = models.ImageField(upload_to='contents/events/', null=True, blank=True)
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_events')
-    # Event status
-    ACTIVATED = 'ACTIVATED'
-    DELETED = 'DELETED'
-    EVENT_STATUS = [
-        (ACTIVATED, 'Actif'),
-        (DELETED, 'Supprimé'),
-    ]
-    status = models.CharField(max_length=30, choices=EVENT_STATUS, default=ACTIVATED)
     
     def __str__(self):
         return f'Evènement - {self.title}'
+
+    def display_author(self):
+        """Create a string for the author. This is required to display author in Admin."""
+        return self.author.get_full_name()
+
+    display_author.short_description = 'Auteur'
     
     class Meta:
         verbose_name_plural = "events"
@@ -169,47 +157,53 @@ class EventUpdate(models.Model):
     """
     Intermediate model between "Event" and "User", defined to add fields
     """
-    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='event_updater')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='updated_event')
-    update_date = models.DateTimeField(auto_now=True, null=True)
-    update_reason = models.CharField(max_length=250)
+    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='event_updater')
+    update_date = models.DateTimeField(auto_now=True, verbose_name='Modification le')
+    update_reason = models.CharField(max_length=250, verbose_name='Raison de la modification')
+
+    def display_updater(self):
+        """Create a string for the updater. This is required to display updater in Admin."""
+        return self.updater.get_full_name()
+
+    display_updater.short_description = 'Auteur de la modification'
 
 class EventDelete(models.Model):
     """
     Intermediate model between "Event" and "User", defined to add fields
     """
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='event_deleter')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='deleted_event')
-    delete_date = models.DateTimeField(auto_now=True, null=True, verbose_name='Date de suppression')
-    delete_reason = models.CharField(max_length=250, null=False, verbose_name='Motif de la suppression')
+    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='event_deleter')
+    deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
+    deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
+
+    def display_deleter(self):
+        """Create a string for the deleter. This is required to display deleter in Admin."""
+        return self.deleter.get_full_name()
+
+    display_deleter.short_description = 'Auteur de la suppression'
 
 class Incident(models.Model):
     """
     Model of the "contents_incident" table in the database
     """
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    ACCIDENT = 'ACCIDENT'
-    BREAKDOWN = 'BREAKDOWN'
-    DAMAGE = 'DAMAGE'
-    MISCELLANEOUS = 'MISCELLANEOUS'
-    WATER_LEAKAGE = 'WATER_LEAKAGE'
-    INCIDENT_CATEGORY = [
-        (ACCIDENT, 'Accident'),
-        (DAMAGE, 'Dégradation'),
-        (WATER_LEAKAGE, 'Fuite d\'eau'),
-        (BREAKDOWN, 'Panne'),        
-        (MISCELLANEOUS, 'Divers'),
-    ]
-    category = models.CharField(max_length=30, choices=INCIDENT_CATEGORY, default=MISCELLANEOUS, verbose_name='Type d\'incident')
-    zone = models.ForeignKey('condominium.Zone', on_delete=models.CASCADE, related_name='incident_zone')
+    category = models.CharField(max_length=30, choices=INCIDENT_CATEGORY, default=MISCELLANEOUS, verbose_name='Type')
     content = models.TextField(blank=False, verbose_name='Incident')
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     image = models.ImageField(upload_to='contents/incidents/', null=True, blank=True)
-    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication de l\'incident')
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Déclarant', related_name='create_incident')
-    
+    zone = models.ForeignKey('condominium.Zone', on_delete=models.CASCADE, related_name='incident_zone')
+
     def __str__(self):
         return f'Incident - {self.incident_type}'
-    
+
+    def display_author(self):
+        """Create a string for the author. This is required to display author in Admin."""
+        return self.author.get_full_name()
+
+    display_author.short_description = 'Déclarant'
+
     class Meta:
         verbose_name_plural = "incidents"
 
@@ -217,31 +211,24 @@ class IncidentDelete(models.Model):
     """
     Intermediate model between "Incident" and "User", defined to add fields
     """
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='incident_deleter')
     incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='deleted_incident')
-    delete_date = models.DateTimeField(auto_now=True, null=True, verbose_name='Date de suppression')
-    delete_reason = models.CharField(max_length=250, null=False, verbose_name='Motif de la suppression')
+    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='incident_deleter')
+    deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
+    deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
+
+    def display_deleter(self):
+        """Create a string for the deleter. This is required to display deleter in Admin."""
+        return self.deleter.get_full_name()
+
+    display_deleter.short_description = 'Auteur de la suppression'
 
 class IncidentTracking(models.Model):
     """
     Model of the "contents_incidentTracking" table in the database
     """
-    # incident status
-    PENDING = 'PENDING'
-    REJECTED = 'REJECTED'
-    REGISTERED = 'REGISTERED'
-    IN_PROGRESS = 'IN_PROGRESS'
-    CLOSED = 'CLOSED'
-    TRACKING_STATUS = [
-        (PENDING, 'en attente'),
-        (REJECTED, 'rejeté'),
-        (REGISTERED, 'enregistré'),
-        (IN_PROGRESS, 'en cours'),
-        (CLOSED, 'fermé'),
-    ]
-    status = models.CharField(max_length=20, choices=TRACKING_STATUS, default=PENDING)
-    status_date = models.DateTimeField(auto_now=True)
     incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='incident')
+    status = models.CharField(max_length=20, choices=TRACKING_STATUS, default=PENDING, verbose_name='Statut')
+    status_date = models.DateTimeField(auto_now=True, verbose_name='Date du statut')
     
     def __str__(self):
         return status
@@ -253,25 +240,23 @@ class Comment(models.Model):
     """
     Model of the "contents_comment" table in the database
     """
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
     content = models.TextField(blank=False, verbose_name='Commentaire')
-    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication du commentaire')
-    last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
+    status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_comments')
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='add_comments')
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='add_comments')
-    incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='add_comments')
-    # article status
-    ACTIVATED = 'ACTIVATED'
-    DELETED = 'DELETED'
-    COMMENT_STATUS = [
-        (ACTIVATED, 'Actif'),
-        (DELETED, 'Supprimé'),
-    ]
-    status = models.CharField(max_length=30, choices=COMMENT_STATUS, default=ACTIVATED)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='add_event_comment')
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='add_news_comment')
+    incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='add_incident_comment')
     
     def __str__(self):
         return 'Commentaire de {}'.format(self.user)
+
+    def display_author(self):
+        """Create a string for the author. This is required to display author in Admin."""
+        return self.author.get_full_name()
+
+    display_author.short_description = 'Auteur'
     
     class Meta:
         verbose_name_plural = "comments"
@@ -281,7 +266,13 @@ class CommentDelete(models.Model):
     """
     Intermediate model between "Comment" and "User", defined to add fields
     """
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='comment_deleter')
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='deleted_comment')
-    delete_date = models.DateTimeField(auto_now=True, null=True, verbose_name='Date de suppression')
-    delete_reason = models.CharField(max_length=250, null=False, verbose_name='Motif de la suppression')
+    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='comment_deleter')
+    deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
+    deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
+
+    def display_deleter(self):
+        """Create a string for the deleter. This is required to display deleter in Admin."""
+        return self.deleter.get_full_name()
+
+    display_deleter.short_description = 'Auteur de la suppression'
