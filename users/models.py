@@ -11,7 +11,7 @@ import uuid
 
 from condominium.models import Lot
 from contents.models import Comment, Event, Faq, Incident, News
-from users.choices import OWNER_OCCUPIER, PENDING, USER_STATUS, USER_TYPE
+from users.choices import OWNER_OCCUPIER, PENDING, USER_ADRESS, USER_STATUS, USER_TYPE
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -69,6 +69,11 @@ class User(AbstractUser):
         unique=True,
         verbose_name='Adresse email',
     )
+    adress = models.CharField(
+        max_length=25,
+        choices=USER_ADRESS,
+        verbose_name='Bâtiment'
+    )
     user_type = models.CharField(
         max_length=20,
         choices=USER_TYPE,
@@ -117,8 +122,6 @@ class User(AbstractUser):
         verbose_name='Téléphone'
     )
     uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    news_to_update = models.ManyToManyField(News, through='contents.NewsUpdate', related_name='news_update')
-    news_to_delete = models.ManyToManyField(News, through='contents.NewsDelete', related_name='news_delete')
     faq_to_update = models.ManyToManyField(Faq, through='contents.FaqUpdate', related_name='faq_update')
     faq_to_delete = models.ManyToManyField(Faq, through='contents.FaqDelete', related_name='faq_delete')
     event_to_update = models.ManyToManyField(Event, through='contents.EventUpdate', related_name='event_update')

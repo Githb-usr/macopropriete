@@ -49,6 +49,7 @@ class IndividualGarages(models.Model):
         primary_key=True,
     )
     rows_number = models.IntegerField(verbose_name='Nombre de rangées')
+    description = models.TextField(null=True, blank=True, verbose_name='Description')
     garages_number = models.IntegerField(verbose_name='Nombre de garages')
     image = models.ImageField(null=True, blank=True, upload_to='condominium/condominium/')
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
@@ -64,8 +65,9 @@ class Building(models.Model):
     )
     name = models.CharField(max_length=30, verbose_name='Nom')
     letter = models.CharField(max_length=1, verbose_name='Lettre')
-    bike_room = models.BooleanField(default=False, verbose_name='Garage à vélos')
+    description = models.TextField(null=True, blank=True, verbose_name='Description')
     entrances_number = models.IntegerField(verbose_name='Nombre d\'entrées')
+    bike_room = models.BooleanField(default=False, verbose_name='Garage à vélos')
 
     def __str__(self):
         return f'Bâtiment {self.name}'
@@ -75,6 +77,7 @@ class Building(models.Model):
 
 class Entrance(models.Model):
     number = models.CharField(max_length=3, verbose_name='Numéro')
+    description = models.TextField(null=True, blank=True, verbose_name='Description')
     floors_number = models.IntegerField(verbose_name='Nombre de niveaux')
     apartments_number = models.IntegerField(verbose_name='Nombre d\'appartements')
     cellars_number = models.IntegerField(verbose_name='Nombre de caves')
@@ -116,6 +119,7 @@ class Apartment(models.Model):
     number = models.CharField(max_length=10, verbose_name='Numéro')
     door = models.CharField(max_length=10, verbose_name='Porte')
     floor = models.IntegerField(verbose_name='Etage')
+    description = models.TextField(null=True, blank=True, verbose_name='Description')
     parking_space_number = models.IntegerField(verbose_name='Place de parking')
     balcony = models.BooleanField(default=True, verbose_name='Balcon')
     garden = models.BooleanField(default=False, verbose_name='Jardin')
@@ -137,6 +141,7 @@ class Cellar(models.Model):
     number = models.CharField(max_length=10, verbose_name='Numéro')
     floor = models.IntegerField(verbose_name='Etage')
     entrance = models.ForeignKey(Entrance, on_delete=models.CASCADE, related_name='entrance_cellar')
+    description = models.TextField(null=True, blank=True, verbose_name='Description')
 
     def __str__(self):
         return f'Cave {self.number}'
@@ -152,6 +157,7 @@ class IndividualGarage(models.Model):
     )
     number = models.CharField(max_length=10, verbose_name='Numéro')
     location = models.CharField(max_length=20, choices=INDIVIDUAL_GARAGE_LOCATION, verbose_name='Emplacement')
+    description = models.TextField(null=True, blank=True, verbose_name='Description')
 
     def __str__(self):
         return f'Garage {self.number}'

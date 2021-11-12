@@ -10,11 +10,12 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
-from django.views.generic import DetailView, ListView
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import ModelFormMixin
 
 from contents.choices import FAQ_CATEGORY
+from contents import forms
 from contents.models import Event, Faq, News, NewsUpdate
 from pages.utils import choice_translation
 
@@ -62,7 +63,14 @@ class NewsUpdateView(SuccessMessageMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        self.object = form.save(commit=False)
+        NewsUpdate.objects.filter(news=self.object).delete()
+        for user in form.cleaned_data['news_update_user']:
+            news_update = NewsUpdate()
+            news_update.news = self.object
+            news_update.updater = user
+            news_update.save()
+        return super(ModelFormMixin, self).form_valid(form)
 
 class NewsDeleteView(SuccessMessageMixin, DeleteView):
     model = News
