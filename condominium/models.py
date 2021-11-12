@@ -7,6 +7,7 @@ from django.urls import reverse
 import uuid
 
 from condominium.choices import CONDOMINIUM_TYPE, INDIVIDUAL_GARAGE_LOCATION, LOT_TYPE
+from config.settings.base import AUTH_USER_MODEL
 
 class Zone(models.Model):
     """
@@ -169,6 +170,6 @@ class Ownership(models.Model):
     """
     Intermediate model between "Lot" and "User", defined to add fields
     """
-    owner = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='lot_owner')
+    owner = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='lot_owner')
     lot = models.ForeignKey(Lot, on_delete=models.CASCADE, related_name='owned_lot')
     acquisition_date = models.DateTimeField(null=True, blank=True, verbose_name='Acquisition le')
