@@ -4,15 +4,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 # from django.core import mail
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from django.utils import timezone
 
-from config.settings import ACCOUNT_VALIDATION_URL
-from pages.utils import choice_translation, generic_send_mail
+from pages.utils import generic_send_mail
 from users.forms import CustomUserCreationForm, CustomUserChangeForm
 from users.models import User
-from users.settings import ACCOUNT_VALIDATION_SUBJECT
+from users.settings import ACCOUNT_VALIDATION_SUBJECT, ACCOUNT_VALIDATION_URL
 from users.utils import get_random_string
 
 class UserAdmin(admin.ModelAdmin):
