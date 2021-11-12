@@ -8,7 +8,7 @@ from django.urls import reverse
 import uuid
 
 from contents.choices import ACTIVATED, NEWS_CATEGORY, CONTENT_STATUS, EVENT_CATEGORY, FAQ_CATEGORY, INCIDENT_CATEGORY, MISCELLANEOUS, PENDING, TRACKING_STATUS
-
+from config.settings import AUTH_USER_MODEL
 class News(models.Model):
     """
     Model of the "contents_news" table in the database
@@ -21,7 +21,9 @@ class News(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     image = models.ImageField(upload_to='contents', null=True, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_news')
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_news')
+    news_update_user = models.ManyToManyField(AUTH_USER_MODEL, through='contents.NewsUpdate', related_name='news_update_user')
+    news_delete_user = models.ManyToManyField(AUTH_USER_MODEL, through='contents.NewsDelete', related_name='news_delete_user')
 
     def __str__(self):
         return f'{self.title}'
@@ -44,7 +46,7 @@ class NewsUpdate(models.Model):
     Intermediate model between "News" and "User", defined to add fields
     """
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='updated_news')
-    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='news_updater')
+    updater = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='news_updater')
     update_date = models.DateTimeField(auto_now=True, null=True, verbose_name='Modification le')
     update_reason = models.CharField(max_length=250, verbose_name='Raison de la modification')
 
@@ -59,7 +61,7 @@ class NewsDelete(models.Model):
     Intermediate model between "News" and "User", defined to add fields
     """
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='deleted_news')
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='news_deleter')
+    deleter = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='news_deleter')
     deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
     deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
 
@@ -81,7 +83,7 @@ class Faq(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     image = models.ImageField(upload_to='contents/faqs/', null=True, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_faq')
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_faq')
     
     def __str__(self):
         return f'{self.category} - {self.question}'
@@ -100,7 +102,7 @@ class FaqUpdate(models.Model):
     Intermediate model between "Faq" and "User", defined to add fields
     """
     faq = models.ForeignKey(Faq, on_delete=models.CASCADE, related_name='updated_faq')
-    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='faq_updater')
+    updater = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='faq_updater')
     update_date = models.DateTimeField(auto_now=True, verbose_name='Modification le')
     update_reason = models.CharField(max_length=250, verbose_name='Raison de la modification')
 
@@ -115,7 +117,7 @@ class FaqDelete(models.Model):
     Intermediate model between "Faq" and "User", defined to add fields
     """
     faq = models.ForeignKey(Faq, on_delete=models.CASCADE, related_name='deleted_faq')
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='faq_deleter')
+    deleter = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='faq_deleter')
     deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
     deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
 
@@ -139,7 +141,7 @@ class Event(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     image = models.ImageField(upload_to='contents/events/', null=True, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_events')
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_events')
     
     def __str__(self):
         return f'Evènement - {self.title}'
@@ -158,7 +160,7 @@ class EventUpdate(models.Model):
     Intermediate model between "Event" and "User", defined to add fields
     """
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='updated_event')
-    updater = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='event_updater')
+    updater = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='event_updater')
     update_date = models.DateTimeField(auto_now=True, verbose_name='Modification le')
     update_reason = models.CharField(max_length=250, verbose_name='Raison de la modification')
 
@@ -173,7 +175,7 @@ class EventDelete(models.Model):
     Intermediate model between "Event" and "User", defined to add fields
     """
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='deleted_event')
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='event_deleter')
+    deleter = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='event_deleter')
     deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
     deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
 
@@ -192,7 +194,7 @@ class Incident(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     image = models.ImageField(upload_to='contents/incidents/', null=True, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Déclarant', related_name='create_incident')
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Déclarant', related_name='create_incident')
     zone = models.ForeignKey('condominium.Zone', on_delete=models.CASCADE, related_name='incident_zone')
 
     def __str__(self):
@@ -212,7 +214,7 @@ class IncidentDelete(models.Model):
     Intermediate model between "Incident" and "User", defined to add fields
     """
     incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='deleted_incident')
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='incident_deleter')
+    deleter = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='incident_deleter')
     deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
     deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
 
@@ -231,7 +233,7 @@ class IncidentTracking(models.Model):
     status_date = models.DateTimeField(auto_now=True, verbose_name='Date du statut')
     
     def __str__(self):
-        return status
+        return self.status
     
     class Meta:
         verbose_name_plural = "Incident status"
@@ -244,7 +246,7 @@ class Comment(models.Model):
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
-    author = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_comments')
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_comments')
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='add_event_comment')
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='add_news_comment')
     incident = models.ForeignKey(Incident, on_delete=models.CASCADE, related_name='add_incident_comment')
@@ -267,7 +269,7 @@ class CommentDelete(models.Model):
     Intermediate model between "Comment" and "User", defined to add fields
     """
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='deleted_comment')
-    deleter = models.ForeignKey('users.User', on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='comment_deleter')
+    deleter = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur de la suppression', related_name='comment_deleter')
     deletion_date = models.DateTimeField(auto_now=True, verbose_name='Suppression le')
     deletion_reason = models.CharField(blank=False, max_length=250, verbose_name='Raison de la suppression')
 
