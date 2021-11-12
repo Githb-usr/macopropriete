@@ -3,12 +3,17 @@
 
 from django import forms
 
-from contents.models import News, NewsDelete, NewsUpdate
+from contents import models
 
-class NewsUpdateForm(forms.ModelForm):
+class NewsForm(forms.ModelForm):
     """
     Form used for the profile update
     """
     class Meta: 
-        model = News
-        fields = ('category', 'title', 'content', 'image', 'status')
+        model = models.News
+        fields = ('category', 'title', 'content', 'image', 'status', )
+
+class NewsUpdateForm(forms.ModelForm):
+    class Meta: 
+        model = models.NewsUpdate
+        fields = ('update_reason',)
