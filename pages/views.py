@@ -8,7 +8,7 @@ from django.utils.html import strip_tags
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 
-from config.settings import ADMIN_RECIPIENTS
+from config.settings.base import ADMIN_RECIPIENTS
 from pages.choices import SUBJECTS, USER_TYPE
 from pages.forms import ContactForm
 from pages.utils import choice_translation, generic_send_mail

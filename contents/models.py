@@ -8,7 +8,7 @@ from django.urls import reverse
 import uuid
 
 from contents.choices import ACTIVATED, NEWS_CATEGORY, CONTENT_STATUS, EVENT_CATEGORY, FAQ_CATEGORY, INCIDENT_CATEGORY, MISCELLANEOUS, PENDING, TRACKING_STATUS
-from config.settings import AUTH_USER_MODEL
+from config.settings.base import AUTH_USER_MODEL
 class News(models.Model):
     """
     Model of the "contents_news" table in the database

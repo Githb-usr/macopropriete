@@ -5,7 +5,7 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
-from config.settings import EMAIL_HOST_USER, ADMIN_RECIPIENTS
+from config.settings.base import EMAIL_HOST_USER
 
 def choice_translation(choice_list, original_item):
     translated_item = ''

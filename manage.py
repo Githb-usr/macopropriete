@@ -1,12 +1,24 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
+import environ
 import os
 import sys
 
+from config.settings.base import BASE_DIR
+
+env = environ.Env()
+# reading .env file
+environ.Env.read_env(os.path.join(BASE_DIR, 'config', '.env'))
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    environment = env("ENV")
+    if environment == "local":
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
+    elif environment == "travis":
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.travis')
+    elif environment == "production":
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.production')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
