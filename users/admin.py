@@ -23,10 +23,10 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('email', 'password', 'status', 'is_active', 'is_staff',
                     'date_joined', 'last_login', 'updated_at', 'user_type',
                     'first_name', 'last_name', 'contact_email', 'phone_number',
-                    'avatar', 'about', 'is_resident', 'is_union_council',)
+                    'avatar', 'about', 'is_resident', 'is_union_council', 'address',)
     fieldsets = (
         ('Compte', {'fields': ('email', 'password', 'status', 'uuid')}),
-        ('Personne', {'fields': ('user_type', 'first_name', 'last_name', 'contact_email', 'phone_number',
+        ('Personne', {'fields': ('user_type', 'first_name', 'last_name', 'address', 'contact_email', 'phone_number',
                     'avatar', 'about',)}),
         ('Statuts', {'fields': ('is_active', 'is_resident', 'is_union_council', 'is_staff',)}),
     )

@@ -11,7 +11,7 @@ import uuid
 
 from condominium.models import Lot
 from contents.models import Comment, Event, Faq, Incident, News
-from users.choices import OWNER_OCCUPIER, PENDING, USER_ADRESS, USER_STATUS, USER_TYPE
+from users.choices import OWNER_OCCUPIER, PENDING, USER_ADDRESS, USER_STATUS, USER_TYPE
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -69,9 +69,11 @@ class User(AbstractUser):
         unique=True,
         verbose_name='Adresse email',
     )
-    adress = models.CharField(
+    address = models.CharField(
         max_length=25,
-        choices=USER_ADRESS,
+        choices=USER_ADDRESS,
+        blank=True,
+        null=True,
         verbose_name='Bâtiment'
     )
     user_type = models.CharField(
