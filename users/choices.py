@@ -28,7 +28,7 @@ B3 = 'B3'
 C1 = 'C1'
 C2 = 'C2'
 C3 = 'C3'
-USER_ADRESS = [
+USER_ADDRESS = [
     (A1, 'Tulipier 1'),
     (A2, 'Tulipier 2'),
     (A3, 'Tulipier 3'),

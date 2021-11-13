@@ -2,11 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import messages
-from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import redirect
+from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
@@ -65,6 +66,21 @@ class ProfileUpdateView(SuccessMessageMixin, UpdateView):
     template_name = 'users/profile_update.html'
     success_message = 'Votre profil a bien été mis à jour !'
     
-    def get_object(self, queryset=None):
+    def get_object(self):
         # To use uuid in the route
-        return User.objects.get(uuid=self.kwargs.get("uuid"))
+        return User.objects.get(uuid=self.kwargs.get('uuid'))
+
+class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
+    model = User
+    form_class = PasswordChangeForm
+    template_name = 'users/change_password.html'
+    success_url = reverse_lazy('password-update-done')
+    success_message = 'Votre mot de passe a bien été mis à jour !'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['uuid'] = User.objects.get(uuid=self.kwargs.get('uuid'))
+        return context
+
+class UpdatePasswordDoneView(PasswordChangeDoneView):
+    template_name = "users/change_password_done.html"
