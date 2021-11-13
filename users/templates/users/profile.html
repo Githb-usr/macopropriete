@@ -25,10 +25,16 @@
     {% endif %}
     <section class="d-flex flex-column profile-content">
         <div class="d-flex flex-column profile-public-content text-body">
-            <div class="current-connected-user-infos">Informations publiques (visibles de tous les personnes inscrites sur le site)</div>
+            {% if user.uuid == uuid %}
+                <div class="current-connected-user-infos">Informations publiques (visibles de tous les personnes inscrites sur le site)</div>
+            {% endif %}
             <hr class="profile-separator">
             <div class="profile-label-about">A propos de moi</div>
-            <div class="profile-value">blablabla{{user.about}}</div>
+            {% if user.about %}
+                <div class="profile-value">{{user.about}}</div>
+            {% else %}
+                <div class="profile-value empty-value">Non renseigné</div>
+            {% endif %}
             <hr class="profile-separator">
             <div class="d-flex flex-row">
             <div class="profile-label">Résident de la copropriété :</div>
@@ -45,23 +51,25 @@
             {% endif %}
             </div>
             <hr class="profile-separator">
-            <div class="d-flex flex-row">
-                <div class="profile-label">Bâtiment :</div><div class="profile-value">xxx</div>
-            </div>
-            <hr class="profile-separator">
-            <div class="d-flex flex-row">
-            <div class="profile-label">Membre du conseil syndical :</div>
-            {% if user.is_union_council %}
-                <div class="profile-value">
-                    <i class="bi bi-check-square"></i>Oui
-                    <i class="bi bi-square"></i>Non
-                </div>
-            {% else %}
-                <div class="profile-value">
-                    <i class="bi bi-square"></i>Oui
-                    <i class="bi bi-check-square"></i>Non
+            {% if user.is_resident %}
+                <div class="d-flex flex-row">
+                    <div class="profile-label">Bâtiment :</div><div class="profile-value">{{user.get_address_display}}</div>
                 </div>
             {% endif %}
+            <hr class="profile-separator">
+            <div class="d-flex flex-row">
+                <div class="profile-label">Membre du conseil syndical :</div>
+                {% if user.is_union_council %}
+                    <div class="profile-value">
+                        <i class="bi bi-check-square"></i>Oui
+                        <i class="bi bi-square"></i>Non
+                    </div>
+                {% else %}
+                    <div class="profile-value">
+                        <i class="bi bi-square"></i>Oui
+                        <i class="bi bi-check-square"></i>Non
+                    </div>
+                {% endif %}
             </div>
             <hr class="profile-separator">
         </div>
@@ -71,11 +79,17 @@
                 <div class="current-connected-user-infos">Informations privées (visibles de vous et du Conseil Syndical seulement)</div>
                 <hr class="profile-separator">
                 <div class="d-flex flex-row">
-                    <div class="profile-label">Email de connexion :</div><div class="profile-value">{{user.email}}</div>
+                    <div class="profile-label">Email de connexion :</div>
+                    <div class="profile-value">{{user.email}}</div>
                 </div>
                 <hr class="profile-separator">
                 <div class="d-flex flex-row">
-                    <div class="profile-label">Email de contact :</div><div class="profile-value">{{user.contact_email}}</div>
+                    <div class="profile-label">Email de contact :</div>
+                    {% if user.contact_email %}
+                        <div class="profile-value">{{user.contact_email}}</div>
+                    {% else %}
+                        <div class="profile-value empty-value">Non renseigné</div>
+                    {% endif %}
                 </div>
                 <hr class="profile-separator">
                 <div class="d-flex flex-row">
@@ -83,7 +97,7 @@
                     {% if user.phone_number %}
                         <div class="profile-value">{{user.phone_number}}</div>
                     {% else %}
-                        <div class="profile-value">vous n'avez pas renseigné de numéro de téléphone</div>
+                        <div class="profile-value empty-value">Non renseigné</div>
                     {% endif %}
                 </div>
                 <hr class="profile-separator">
@@ -96,8 +110,12 @@
                 </div>
                 <hr class="profile-separator">
 
-                <button onclick="window.location.href='{% url 'profile-update' uuid=user.uuid %}';"
-                class="col-lg-4 align-self-center profile-btn">Modifier mes informations</button>
+                <div class="d-flex flex-row justify-content-around">
+                    <button onclick="window.location.href='{% url 'profile-update' uuid=user.uuid %}';"
+                    class="col-lg-4 align-self-center profile-btn">Modifier mes informations</button>
+                    <button onclick="window.location.href='{% url 'password-update' uuid=user.uuid %}';"
+                    class="col-lg-4 align-self-center profile-btn">Modifier mon mot de passe</button>
+                </div>
             </div>
         {% endif %}
     </section>
