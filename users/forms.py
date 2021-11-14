@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 
 from users.models import User
@@ -13,7 +13,7 @@ class CustomUserCreationForm(UserCreationForm):
     """
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('username', 'password',)
+        fields = ('email', 'password',)
 
 class CustomUserChangeForm(UserChangeForm):
     """
@@ -45,6 +45,23 @@ class UserLoginForm(AuthenticationForm):
             'class': 'login-form-input',
             'placeholder': 'Mot de passe',
             'id': 'login-password',
+        }
+    ))
+
+class ResetPasswordForm(PasswordResetForm):
+    """
+    Form used for the password reset
+    """
+    def __init__(self, *args, **kwargs):
+        super(ResetPasswordForm, self).__init__(*args, **kwargs)
+        # Disable email labels
+        self.fields["email"].label = ""
+
+    email = forms.EmailField(widget=forms.TextInput(
+        attrs={
+            'class': 'login-form-input',
+            'placeholder': 'Votre email de connexion',
+            'id': 'login-id'
         }
     ))
 
