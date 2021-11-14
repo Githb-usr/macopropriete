@@ -14,44 +14,47 @@ from contents.models import Comment, Event, Faq, Incident, News
 from users.choices import OWNER_OCCUPIER, PENDING, USER_ADDRESS, USER_STATUS, USER_TYPE
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    """
+    Define a model manager for User model with no username field.
+    """
+
+    use_in_migrations = True
+
+    def create_user(self, email, password=None, **extra_fields):
         """
-        Managing the creation of a user
+        Create and save a new user with email but no password required by default
         """
         if not email:
             raise ValueError('Vous devez entrer un email valide')
 
-        user = self.model(
-            email=self.normalize_email(email),
-        )
-
+        user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
         return user
-    
-    def create_superuser(self, email, password=None, is_staff=True, is_superuser=True):
+
+    def create_superuser(self, email, password, **extra_fields):
         """
-        Managing the creation of a superuser
+        Create and save a superuser
         """
         if not email:
             raise ValueError('Vous devez entrer un email valide')
 
-        superuser = self.model(
-            email=self.normalize_email(email),
-            is_staff=is_staff,
-            is_superuser=is_superuser
-        )
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Un super utilisateur doit avoir is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Un super utilisateur doit avoir is_superuser=True.')
 
-        superuser.set_password(password)
-        superuser.save(using=self._db)
-
-        return superuser
+        return self._create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
     """
     Model of the "users_user" table in the database
     """
+    username = None
     first_name = models.CharField(
         max_length=30,
         blank=True,

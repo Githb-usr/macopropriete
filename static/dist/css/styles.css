@@ -12070,12 +12070,12 @@ span.text-break a {
 }
 
 .login-logo {
-  width: 25%;
+  width: 15%;
   padding: 0;
 }
 
 .login-main-section {
-  width: 25%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -12089,7 +12089,7 @@ section.login-main-section form {
   align-self: center;
 }
 
-.login-main-section form input {
+.login-main-section form input, .reset-password-main-section form input:first-child {
   width: 100%;
   height: 2.5rem;
   vertical-align: middle;
@@ -12102,7 +12102,6 @@ section.login-main-section form {
 }
 
 .login-main-section form button {
-  width: 25%;
   align-self: center;
   background-color: #ADB386;
   border-radius: 1rem;
@@ -12125,6 +12124,20 @@ section.login-main-section form {
 
 .further-instructions p {
   margin: 1.5rem 0 0 0;
+}
+
+.reset-password-main-section {
+  width: 21%;
+}
+
+h1.reset-password-header-title, .reset-password-header-title.h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.6rem;
+}
+
+.reset-password-header-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 html {
@@ -12180,6 +12193,10 @@ h3, .h3 {
 
 .text-green {
   color: #ADB386;
+}
+
+.text-darkgreen {
+  color: #65725E;
 }
 
 .text-warnings {

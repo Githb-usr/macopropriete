@@ -3,7 +3,7 @@
 
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetCompleteView, PasswordResetDoneView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect
@@ -13,7 +13,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
 from global_login_required import login_not_required
 
-from users.forms import UserLoginForm
+from users.forms import ResetPasswordForm, UserLoginForm
 from users.models import User
 from users.settings import ACCOUNT_DOES_NOT_EXIST, ALREADY_VALIDATED_ACCOUNT_MSG, VALIDATED_ACCOUNT_SUCCESS_MSG
 
@@ -84,3 +84,21 @@ class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
 
 class UpdatePasswordDoneView(PasswordChangeDoneView):
     template_name = "users/change_password_done.html"
+
+@login_not_required
+class ResetPasswordView(PasswordResetView):
+    form_class = ResetPasswordForm
+    template_name = "users/reset_password.html"
+    html_email_template_name = 'users/reset_password_mail.html'
+
+@login_not_required
+class ResetPasswordDoneView(PasswordResetDoneView):
+    template_name = "users/reset_password_done.html"
+
+@login_not_required
+class ResetPasswordConfirmationView(PasswordResetConfirmView):
+    template_name = "users/reset_password_confirmation.html"
+
+@login_not_required
+class ResetPasswordCompletedView(PasswordResetCompleteView):
+    template_name = "users/reset_password_complete.html"
