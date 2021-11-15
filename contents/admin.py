@@ -9,7 +9,7 @@ class NewsAdmin(admin.ModelAdmin):
     """
     model = News
     empty_value_display = '-empty-'
-    list_display = ('title', 'content', 'category', 'image', 'creation_date',
+    list_display = ('title', 'content', 'category', 'creation_date',
                     'display_author', 'last_edit', 'status',)
 
 @admin.register(Faq)
@@ -19,7 +19,7 @@ class FaqAdmin(admin.ModelAdmin):
     """
     model = Faq
     empty_value_display = '-empty-'
-    list_display = ('category', 'question', 'answer', 'image',
+    list_display = ('category', 'question', 'answer', 
                     'creation_date', 'last_edit', 'status',)
 
 @admin.register(Event)
@@ -29,7 +29,7 @@ class EventAdmin(admin.ModelAdmin):
     """
     model = Event
     empty_value_display = '-empty-'
-    list_display = ('category', 'title', 'content', 'image', 'creation_date',
+    list_display = ('category', 'title', 'content', 'creation_date',
                     'last_edit', 'start_date', 'end_date', 'status',)
 
 @admin.register(Incident)
@@ -39,7 +39,7 @@ class IncidentAdmin(admin.ModelAdmin):
     """
     model = Incident
     empty_value_display = '-empty-'
-    list_display = ('category', 'content', 'image', 'creation_date',)
+    list_display = ('category', 'content', 'creation_date',)
 
 @admin.register(IncidentTracking)
 class IncidentTrackingAdmin(admin.ModelAdmin):
