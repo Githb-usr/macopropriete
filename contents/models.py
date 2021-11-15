@@ -9,6 +9,16 @@ import uuid
 
 from contents.choices import ACTIVATED, NEWS_CATEGORY, CONTENT_STATUS, EVENT_CATEGORY, FAQ_CATEGORY, INCIDENT_CATEGORY, MISCELLANEOUS, PENDING, TRACKING_STATUS
 from config.settings.base import AUTH_USER_MODEL
+
+class Photo(models.Model):
+    """
+    Model of the "contents_photo" table in the database
+    """
+    image = models.ImageField()
+    caption = models.CharField(max_length=128, blank=True)
+    uploader = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
+    date_created = models.DateTimeField(auto_now_add=True)
+
 class News(models.Model):
     """
     Model of the "contents_news" table in the database
@@ -19,7 +29,7 @@ class News(models.Model):
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
-    image = models.ImageField(upload_to='contents', null=True, blank=True)
+    photos = models.ManyToManyField(Photo)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_news')
     news_update_user = models.ManyToManyField(AUTH_USER_MODEL, through='contents.NewsUpdate', related_name='news_update_user')
@@ -81,7 +91,7 @@ class Faq(models.Model):
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
-    image = models.ImageField(upload_to='contents/faqs/', null=True, blank=True)
+    photos = models.ManyToManyField(Photo)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_faq')
     
@@ -139,7 +149,7 @@ class Event(models.Model):
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
-    image = models.ImageField(upload_to='contents/events/', null=True, blank=True)
+    photos = models.ManyToManyField(Photo)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_events')
     
@@ -192,7 +202,7 @@ class Incident(models.Model):
     category = models.CharField(max_length=30, choices=INCIDENT_CATEGORY, default=MISCELLANEOUS, verbose_name='Type')
     content = models.TextField(blank=False, verbose_name='Incident')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
-    image = models.ImageField(upload_to='contents/incidents/', null=True, blank=True)
+    photos = models.ManyToManyField(Photo)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Déclarant', related_name='create_incident')
     zone = models.ForeignKey('condominium.Zone', on_delete=models.CASCADE, related_name='incident_zone')
