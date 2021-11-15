@@ -29,7 +29,7 @@ class News(models.Model):
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
-    photos = models.ManyToManyField(Photo)
+    photos = models.ManyToManyField(Photo, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
     author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_news')
     news_update_user = models.ManyToManyField(AUTH_USER_MODEL, through='contents.NewsUpdate', related_name='news_update_user')
