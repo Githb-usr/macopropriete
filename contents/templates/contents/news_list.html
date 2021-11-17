@@ -5,18 +5,28 @@
 {% block content %}
 <main class="container text-body">
     <section class="main-section">
-        <!-- Breadcrumb -->
-        <div class="breadcrumb d-flex flex-row">
-            <ul class="my-2 my-lg-0">
-                <li class="nav-item text-green">
-                    <a href="/" class="breadcrumb-link">Accueil</a>>
-                </li>
-                <li class="nav-item">
-                    <span class="breadcrumb-link">Les news</span>
-                </li>
-            </ul>
+        <div class ="d-flex justify-content-between">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb d-flex flex-row">
+                <ul class="my-2 my-lg-0">
+                    <li class="nav-item text-green">
+                        <a href="/" class="breadcrumb-link">Accueil</a>>
+                    </li>
+                    <li class="nav-item">
+                        <span class="breadcrumb-link">Les news</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- End breadcrumb -->
+            {% if user.is_staff %}
+                <div class="admin-btn-zone">
+                    <button onclick="window.location.href='{% url 'news-create' %}';"
+                            class="align-self-center content-admin-btn">
+                            Créer une news
+                    </button>
+                </div>
+            {% endif %}
         </div>
-        <!-- End breadcrumb -->
         <div class="page-title-block">
             <h1 class="page-title">Les news</h1>
         </div>
