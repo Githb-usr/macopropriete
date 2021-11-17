@@ -35,6 +35,14 @@
         <div class="page-title-block">
             <h1 class="page-title">Les news</h1>
         </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="messages alert alert-{{ message.tags }} d-flex align-items-center alert-dismissible fade show" role="alert" {% endif %}>
+                    <i class="bi bi-check-circle-fill comment-message"></i>  {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
         <article class="news-detail justify-content-center text-body">
             <div class="news-detail-date">News du {{ news_detail.creation_date|date }}</div>
             <div class="news-detail-title">{{ news_detail.title }}</div>
