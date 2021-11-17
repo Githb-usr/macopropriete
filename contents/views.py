@@ -3,6 +3,7 @@
 
 from datetime import datetime
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -10,6 +11,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import ModelFormMixin
 
 from contents.choices import FAQ_CATEGORY
+from contents.forms import NewsForm, NewsUpdateForm, PhotoForm
 from contents.models import Event, Faq, News, NewsUpdate
 from pages.utils import choice_translation
 
@@ -37,13 +39,54 @@ class NewsDetailView(DetailView):
 
 class NewsCreateView(SuccessMessageMixin, CreateView):
     model = News
+    news_form_class = NewsForm
+    photo_form_class = PhotoForm
     template_name = 'contents/news_create.html'
-    success_message = 'Votre news a bien été créée !'
-    fields = ['category', 'title', 'content', 'image', 'status']
+    success_message = 'La news a bien été créée !'
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    # def get(self, request, *args, **kwargs):
+    #     super(NewsCreateView, self).get(request, *args, **kwargs)
+    #     news_form = self.news_form_class
+    #     photo_form = self.photo_form_class
+    #     return self.render_to_response(self.get_context_data(
+    #         object=self.object, news_form=news_form, photo_form=photo_form))
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(NewsCreateView, self).get_context_data(**kwargs)
+    #     if 'news_form' not in context:
+    #         context['news_form'] = self.news_form_class(self.request.GET, prefix='news')
+    #     if 'photo_form' not in context:
+    #         context['photo_form'] = self.photo_form_class(self.request.GET, prefix='photo')
+    #     return context
+
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
+
+    def post(self, request, *args, **kwargs):
+        news_data = request.POST or None
+        news_form = self.news_form_class(news_data, prefix='news')
+        photo_form = self.photo_form_class(news_data, prefix='photo')
+
+        context = self.get_context_data(news_form=news_form,
+                                        photo_form=photo_form)
+
+        if news_form.is_valid() and photo_form.is_valid():
+            photodata = photo_form.save(commit=False)
+            photodata.uploader = self.request.user
+            photodata.save()
+            newsdata = news_form.save(commit=False)
+            newsdata.author = self.request.user
+            newsdata.photos = photodata
+            newsdata.save()
+            
+        return self.render_to_response(context)
+
+    def form_save(self, form):
+        return form.save()
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
 
 class NewsUpdateView(SuccessMessageMixin, UpdateView):
     model = News
