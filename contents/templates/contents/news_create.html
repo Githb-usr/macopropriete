@@ -1,0 +1,24 @@
+<!-- lachana/contents/templates/contents/news_create.html -->
+{% extends 'base_private_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<main class="container">
+    <section class="profile-header d-flex flex-column align-items-center text-green">
+        <h1 class="profile-header-title">Créer une news</h1>
+        <div class="profile-header-subtitle">Créer une news</div>
+    </section>
+    <section class="d-flex flex-column profile-update-content text-body">
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}   
+            {{ news_form|crispy }}
+            {{ photo_form|crispy }}
+            <button type="submit" class="profile-btn profile-update-validate-btn">Valider</button>
+            <input type="button" name="cancel" value="Annuler"
+                    onclick="window.location.href='{% url 'news-list' %}';"
+                    class="profile-btn profile-update-cancel-btn">
+        </form>
+        
+    </section>
+</main>
+{% endblock content %}
