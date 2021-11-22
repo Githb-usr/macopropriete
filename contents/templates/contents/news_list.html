@@ -3,68 +3,68 @@
 {% extends 'base_private_template.html' %}
 {% load static %}
 {% block content %}
-<main class="container text-body">
-    <section class="main-section">
-        <div class ="d-flex justify-content-between">
-            <!-- Breadcrumb -->
-            <div class="breadcrumb d-flex flex-row">
-                <ul class="my-2 my-lg-0">
-                    <li class="nav-item text-green">
-                        <a href="/" class="breadcrumb-link">Accueil</a>>
-                    </li>
-                    <li class="nav-item">
-                        <span class="breadcrumb-link">Les news</span>
-                    </li>
-                </ul>
-            </div>
-            <!-- End breadcrumb -->
-            {% if user.is_staff %}
-                <div class="admin-btn-zone">
-                    <button onclick="window.location.href='{% url 'news-create' %}';"
-                            class="align-self-center content-admin-btn">
-                            Créer une news
-                    </button>
+    <main class="container text-body">
+        <div class="main-section">
+            <div class ="d-flex justify-content-between align-items-start">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb d-flex flex-row text-darkgreen">
+                    <ul class="my-2 my-lg-0">
+                        <li class="nav-item">
+                            <a href="/" class="breadcrumb-link">Accueil</a>/
+                        </li>
+                        <li class="nav-item">
+                            <span class="breadcrumb-link">Les news</span>
+                        </li>
+                    </ul>
                 </div>
+                <!-- End breadcrumb -->
+                {% if user.is_staff %}
+                    <div class="d-flex admin-btn-zone justify-content-end">
+                        <button class="col-lg-4 dark-btn font-0 align-self-center"
+                                onclick="window.location.href='{% url 'news-create' %}';">
+                            Créer une news
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="page-title-block">
+                <h1 class="page-title">Les news</h1>
+            </div>
+            {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
+            {% if object_list is none %}
+                <section class="intro-section">
+                    <div class="main-instructions d-flex justify-content-center">
+                        <span class="font-weight-bold text-body text-danger">
+                            Il n'y a aucune news à afficher.
+                        </span>
+                    </div>
+                </section>
+            {% else %}
+                <section class="news-list-section">
+                    <ul>
+                    {% for news in news_list %}
+                        <a href="{% url 'news-detail' news.uuid %}" class="text-body">
+                            <div class="content-list-item row">
+                                <div class="content-list-item-img-block col-1">
+                                    {% with 'dist/assets/img/'|add:'img-'|add:news.category|add:'.png' as image %}
+                                        <img src="{% static image %}"  class="content-list-item-img" />
+                                    {% endwith %}
+                                </div>
+                                <div class="content-list-item-block col-11">
+                                    <div class="content-list-item-date">{{ news.creation_date|date }}</div>
+                                    <div class="content-list-item-title">{{ news.title }}</div>
+                                    <div class="content-list-item-content">{{ news.content|truncatechars:400 }}</div>
+                                    <div class="content-list-item-next">[Lire la suite...]</div>
+                                </div>
+                            </div>
+                        </a>
+                    <hr class="content-separator">
+                    {% endfor %}
+                    </ul>
+                </section>
+                {% include "pagination.html" with page_range=page_range_bottom pagination_css="pagination-bottom" %}
             {% endif %}
         </div>
-        <div class="page-title-block">
-            <h1 class="page-title">Les news</h1>
-        </div>
-        {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
-        {% if object_list is none %}
-            <section class="intro-section">
-                <div class="main-instructions d-flex justify-content-center">
-                    <span class="font-weight-bold text-body text-danger">
-                        Il n'y a aucune news à afficher.
-                    </span>
-                </div>
-            </section>
-        {% else %}
-            <section class="news-list-section">
-                <ul>
-                {% for news in news_list %}
-                    <a href="{% url 'news-detail' news.uuid %}" class="text-body">
-                        <div class="content-list-item row">
-                            <div class="content-list-item-img-block col-1">
-                                {% with 'dist/assets/img/'|add:'img-'|add:news.category|add:'.png' as image %}
-                                    <img src="{% static image %}"  class="content-list-item-img" />
-                                {% endwith %}
-                            </div>
-                            <div class="content-list-item-block col-11">
-                                <div class="content-list-item-date">{{ news.creation_date|date }}</div>
-                                <div class="content-list-item-title">{{ news.title }}</div>
-                                <div class="content-list-item-content">{{ news.content|truncatechars:400 }}</div>
-                                <div class="content-list-item-next">[Lire la suite...]</div>
-                            </div>
-                        </div>
-                    </a>
-                <hr class="content-separator">
-                {% endfor %}
-                </ul>
-            </section>
-            {% include "pagination.html" with page_range=page_range_bottom pagination_css="pagination-bottom" %}
-        {% endif %}
-    </section>
-</main>
+    </main>
 {% endblock content %}
 {% block contact %}{% endblock contact %}
