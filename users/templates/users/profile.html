@@ -111,10 +111,14 @@
                 <hr class="profile-separator">
 
                 <div class="d-flex flex-row justify-content-around">
-                    <button onclick="window.location.href='{% url 'profile-update' uuid=user.uuid %}';"
-                    class="col-lg-4 align-self-center profile-btn">Modifier mes informations</button>
-                    <button onclick="window.location.href='{% url 'password-update' uuid=user.uuid %}';"
-                    class="col-lg-4 align-self-center profile-btn">Modifier mon mot de passe</button>
+                    <button class="col-lg-5 align-self-center dark-btn profile-btn"
+                            onclick="window.location.href='{% url 'profile-update' uuid=user.uuid %}';">
+                        Modifier mes informations
+                    </button>
+                    <button class="col-lg-5 align-self-center dark-btn profile-btn"
+                            onclick="window.location.href='{% url 'password-update' uuid=user.uuid %}';">
+                        Modifier mon mot de passe
+                    </button>
                 </div>
             </div>
         {% endif %}
