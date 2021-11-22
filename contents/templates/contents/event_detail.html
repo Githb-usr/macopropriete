@@ -29,6 +29,14 @@
         <div class="page-title-block">
             <h1 class="page-title">Les évènements</h1>
         </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="messages alert alert-{{ message.tags }} d-flex align-items-center alert-dismissible fade show" role="alert" {% endif %}>
+                    <i class="bi bi-check-circle-fill comment-message"></i>  {{ message }}
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
         <article class="row event-detail justify-content-center text-muted">
             <div class="event-detail-date {{ event_detail.category|lower }}-color">{{ event_detail.start_date|date:"l j F Y"|capfirst }}</div>
             <div class="event-detail-title {{ event_detail.category|lower }}-color">{{ event_detail.title }}</div>
@@ -56,36 +64,37 @@
         <div class="row content-detail-btn justify-content-between">
             {% if event_detail.get_previous_by_creation_date %}
             <div class="col-lg-4 mt-4">
-                <a type="button" href="{% url 'event-detail' event_detail.get_previous_by_creation_date.uuid %}" target="_self"
-                    class="d-flex align-items-center btn left-btn text-white"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir l'évènement précédent">
+                <button class="d-flex align-items-center light-btn font-0"
+                        onclick="window.location.href='{% url 'event-detail' event_detail.get_previous_by_creation_date.uuid %}';"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Voir l'évènement précédent (plus ancien)">
                     <i class="bi bi-arrow-left content-detail-btn-icon content-detail-btn-icon-left"></i> Evènement précédent
-                </a>
+                </button>
             </div>
             {% else %}
             <div class="col-lg-3 mt-4"></div>
             {% endif %}
-            <div class="col-lg-4 mt-4 text-center">
-                {% if event_detail.start_date > now %}
-                    <a type="button" href="{% url 'event-list-new' %}" target="_self"
-                {% else %}
-                    <a type="button" href="{% url 'event-list-old' %}" target="_self"
-                {% endif %}
-                    class="d-flex align-items-center btn central-btn text-white"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir tous les évènements à venir">
+            <div class="col-lg-4 mt-4 d-flex justify-content-center">
+                <button 
+                    {% if event_detail.start_date > now %}
+                        onclick="window.location.href='{% url 'event-list-new' %}';"
+                    {% else %}
+                        onclick="window.location.href='{% url 'event-list-old' %}';"
+                    {% endif %}
+                        class="d-flex align-items-center light-btn font-0 content-nav-central-btn"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Voir tous les évènements à venir">
                     Retour à la liste des évènements
-                </a>
+                </button>
             </div>
             {% if event_detail.get_next_by_creation_date %}
             <div class="col-lg-4 mt-4 d-flex justify-content-end">
-                <a type="button" href="{% url 'event-detail' event_detail.get_next_by_creation_date.uuid %}" target="_self"
-                    class="d-flex align-items-center btn right-btn text-white"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir l'évènement suivant">
+                <button class="d-flex align-items-center light-btn font-0"
+                        onclick="window.location.href='{% url 'event-detail' event_detail.get_next_by_creation_date.uuid %}';"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Voir l'évènement suivant (plus récent)">
                     Evènement suivant <i class="bi bi-arrow-right content-detail-btn-icon content-detail-btn-icon-right"></i>
-                </a>
+                </button>
             </div>
             {% else %}
             <div class="col-lg-3 mt-4"></div>
