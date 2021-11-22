@@ -78,12 +78,13 @@
                 <button 
                     {% if event_detail.start_date > now %}
                         onclick="window.location.href='{% url 'event-list-new' %}';"
+                        title="Voir tous les évènements à venir"
                     {% else %}
                         onclick="window.location.href='{% url 'event-list-old' %}';"
+                        title="Voir tous les évènements passés"
                     {% endif %}
                         class="d-flex align-items-center light-btn font-0 content-nav-central-btn"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        title="Voir tous les évènements à venir">
+                        data-bs-toggle="tooltip" data-bs-placement="bottom">
                     Retour à la liste des évènements
                 </button>
             </div>
