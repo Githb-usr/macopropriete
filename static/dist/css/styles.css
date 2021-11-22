@@ -11275,6 +11275,66 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.dark-btn {
+  background-color: #65725E;
+}
+
+.light-btn {
+  background-color: #ADB386;
+}
+
+button.dark-btn, button.light-btn {
+  font-weight: bold;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.375rem 0.75rem;
+  color: #fff;
+}
+
+.font-0 {
+  font-size: 0.9rem;
+}
+
+.font-1 {
+  font-size: 1rem;
+}
+
+.update-validate-btn {
+  margin-right: 1rem;
+}
+
+.update-validate-btn, .update-cancel-btn {
+  width: 6rem;
+  margin-top: 1rem;
+}
+
+.profile-btn {
+  margin-top: 2rem;
+}
+
+.login-main-section form button {
+  align-self: center;
+  margin: 0 0 2rem 0;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.login-redirect-btn {
+  margin-top: 1rem;
+}
+
+.admin-btn-zone {
+  width: 50%;
+}
+
+.content-delete-btn {
+  margin-left: 1rem;
+}
+
+button.content-nav-central-btn {
+  padding: 0.5rem 0.75rem;
+}
+
 .btn-xl {
   padding: 1.25rem 2.25rem;
   font-size: 0.85rem;
@@ -11284,25 +11344,19 @@ textarea.form-control-lg {
   border-radius: 10rem;
 }
 
-.content-detail-btn a, .content-admin-btn a {
+.content-detail-btn a {
   display: block;
   font-size: 0.9rem;
   font-weight: bolder;
   color: #6c757d;
   text-decoration: none;
 }
-.content-detail-btn a.left-btn, .content-detail-btn a.right-btn, .content-admin-btn a.left-btn, .content-admin-btn a.right-btn {
+.content-detail-btn a.left-btn, .content-detail-btn a.right-btn {
   width: 85%;
   background-color: #65725E;
   justify-content: space-between;
 }
-.content-detail-btn a.central-btn, .content-admin-btn a.central-btn {
-  width: 100%;
-  padding: 0.5rem 0;
-  background-color: #ADB386;
-  justify-content: center;
-}
-.content-detail-btn .btn, .content-admin-btn .btn {
+.content-detail-btn .btn {
   border-radius: 1rem;
 }
 
@@ -11314,12 +11368,8 @@ textarea.form-control-lg {
   margin-right: 0.5rem;
 }
 
-.content-detail-icon-right {
+.content-detail-btn-icon-right {
   margin-left: 0.5rem;
-}
-
-.admin-btn-zone {
-  width: 15%;
 }
 
 hr.divider {
@@ -11668,7 +11718,7 @@ hr.separator {
 }
 
 textarea#id_content {
-  width: 75%;
+  width: 100%;
 }
 
 .btn-comment {
@@ -11750,6 +11800,20 @@ article.event-detail {
   width: 60%;
 }
 
+#div_id_start_date {
+  margin-top: 2rem;
+}
+
+#div_id_start_date, #div_id_end_date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#div_id_start_date label, #div_id_end_date label {
+  width: 49%;
+}
+
 .page-section {
   padding: 0;
 }
@@ -11778,12 +11842,7 @@ article.event-detail {
 }
 
 .index-welcome-button {
-  background-color: #ADB386;
-  width: 10rem;
-  font-size: 200;
-  font-weight: bold;
-  color: #fff;
-  border-radius: 1rem;
+  width: 9rem;
 }
 
 .index-welcome-carousel {
@@ -11913,14 +11972,8 @@ div.contact-form form div:last-of-type textarea {
 }
 
 div.contact-form form button {
-  width: 7rem;
-  background-color: #65725E;
-  font-weight: bold;
-  color: #fff;
-  border: none;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  margin-top: 1.5rem;
+  width: 6rem;
+  margin-top: 1.2rem;
 }
 
 .profile-header {
@@ -11994,16 +12047,6 @@ h1.profile-header-title, .profile-header-title.h1 {
 hr.profile-separator {
   height: 0.15rem;
   opacity: 0.6;
-}
-
-.profile-btn {
-  padding: 0.5rem 0;
-  margin-top: 2rem;
-  background-color: #ADB386;
-  border-radius: 1rem;
-  font-size: 0.9rem;
-  font-weight: bolder;
-  color: #fff;
 }
 
 .profile-public-content, .profile-private-content {
@@ -12105,23 +12148,6 @@ section.login-main-section form {
   margin-bottom: 1rem;
 }
 
-.login-main-section form button {
-  align-self: center;
-  background-color: #ADB386;
-  border-radius: 1rem;
-  margin: 0 0 2rem 0;
-  padding: 0.4rem 0.75rem 0.3rem 0.75rem;
-  line-height: 1.5;
-  font-size: 1.1rem;
-  font-weight: bolder;
-  color: #f3f3f3;
-  text-align: center;
-}
-
-.login-btn {
-  font-weight: bolder;
-}
-
 .login-warning {
   margin-top: 2.5rem;
 }
@@ -12188,6 +12214,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 h3, .h3 {
   font-size: 1.2em;
+}
+
+ul {
+  padding-left: 0;
 }
 
 .text-body {
@@ -12385,6 +12415,7 @@ div.page-title-block {
 }
 
 h1.page-title, .page-title.h1 {
+  margin-top: 1rem;
   font-size: 3rem;
 }
 
@@ -12436,6 +12467,7 @@ p.messages button.btn-close, p.messages button.btn-close:hover {
 
 div.breadcrumb {
   margin-bottom: 2rem;
+  font-size: 0.8rem;
 }
 
 .breadcrumb ul {
@@ -12450,9 +12482,12 @@ div.breadcrumb {
   margin-right: 0.3rem;
 }
 
+.breadcrumb ul li a, .breadcrumb ul li a:hover {
+  color: #65725E;
+}
+
 .breadcrumb-link {
-  font-size: 0.8rem;
-  color: #ADB386;
+  color: #65725E;
   text-decoration: none;
   line-height: 1.5;
   text-align: center;
@@ -12477,6 +12512,17 @@ footer, footer a {
 
 .asteriskField {
   padding-left: 0.2rem;
+}
+
+.header-title {
+  font-size: 2rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.header-intro {
+  width: 100%;
+  font-size: 1.2rem;
+  color: #4D4D4D;
 }
 
 /* ********************************* */
