@@ -42,7 +42,7 @@
             <div class="event-detail-title {{ event_detail.category|lower }}-color">{{ event_detail.title }}</div>
             <div class="row event-detail-category {{ event_detail.category|lower }}-color">
                 <div class="col-lg-3">
-                    {% with 'dist/assets/img/'|add:'img-'|add:event_detail.category|add:'.png' as image %}
+                    {% with 'dist/assets/img/'|add:'img-'|add:event_detail.category|lower|add:'.png' as image %}
                         <img src="{% static image %}"  class="content-list-item-img" />
                     {% endwith %}
                 </div>
