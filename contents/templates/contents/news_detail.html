@@ -5,33 +5,37 @@
 {% block content %}
 <main class="container main-product_detail">
     <section class="main-section">
-        <!-- Breadcrumb -->
-        <div class="breadcrumb d-flex flex-row">
-            <ul class="my-2 my-lg-0">
-                <li class="nav-item text-green">
-                    <a href="/" 
-                    class="breadcrumb-link">Accueil</a>>
-                </li>
-                <li class="nav-item text-green">
-                    <a href="{% url 'news-list' %}" 
-                    class="breadcrumb-link">Les news</a>>
-                </li>
-                <li class="nav-item text-green">
-                    <span class="breadcrumb-link">{{ news_detail.title }}</span>
-                </li>
-            </ul>
+        <div class ="d-flex justify-content-between align-items-start">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb d-flex flex-row text-darkgreen">
+                <ul class="my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a href="/" 
+                        class="breadcrumb-link">Accueil</a>/
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'news-list' %}" 
+                        class="breadcrumb-link">Les news</a>/
+                    </li>
+                    <li class="nav-item">
+                        <span class="breadcrumb-link">{{ news_detail.title }}</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- End breadcrumb -->
+            {% if user.is_staff %}
+                <div class="d-flex admin-btn-zone justify-content-end">
+                    <button class="col-lg-3 align-self-center dark-btn font-0 content-update-btn"
+                            onclick="window.location.href='{% url 'news-update' uuid=news_detail.uuid %}';">
+                        Modifier
+                    </button>
+                    <button class="col-lg-3 align-self-center dark-btn font-0 content-delete-btn"
+                            onclick="window.location.href='{% url 'news-delete' uuid=news_detail.uuid %}';">
+                        Supprimer
+                    </button>
+                </div>
+            {% endif %}
         </div>
-        <div class="content-action-btn">
-            <button onclick="window.location.href='{% url 'news-update' uuid=news_detail.uuid %}';"
-                class="col-lg-3 align-self-center content-btn content-update-btn">
-                Modifier cette news
-            </button>
-            <button onclick="window.location.href='{% url 'news-delete' uuid=news_detail.uuid %}';"
-                class="col-lg-3 align-self-center content-btn content-delete-btn">
-                Supprimer cette news
-            </button>
-        </div>
-        <!-- End breadcrumb -->
         <div class="page-title-block">
             <h1 class="page-title">Les news</h1>
         </div>
@@ -39,7 +43,7 @@
             {% for message in messages %}
                 <div {% if message.tags %} class="messages alert alert-{{ message.tags }} d-flex align-items-center alert-dismissible fade show" role="alert" {% endif %}>
                     <i class="bi bi-check-circle-fill comment-message"></i>  {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             {% endfor %}
         {% endif %}
@@ -48,41 +52,45 @@
             <div class="news-detail-title">{{ news_detail.title }}</div>
             <div class="news-detail-category">Catégorie : {{ news_detail.get_category_display }}</div>
             <div class="news-detail-content">{{ news_detail.content }}</div>
-            {% if news_detail.image %}
+            {% if news_detail.photos %}
                 <div class="news-detail-img-block">
-                    <img src="{{news_detail.image.url}}" alt="" class="news-detail-img" />
+                    {% for photo in news_detail.photos.all %}
+                        {% if photo.image %}
+                            <img src="{{ photo.image.url }}" alt="test photo" class="news-detail-img" />
+                        {% endif %}
+                    {% endfor %}
                 </div>
             {% endif %}
         </article>
         <div class="row content-detail-btn justify-content-between">
             {% if news_detail.get_previous_by_creation_date %}
             <div class="col-lg-3 mt-4">
-                <a type="button" href="{% url 'news-detail' news_detail.get_previous_by_creation_date.uuid %}" target="_self"
-                    class="d-flex align-items-center btn left-btn text-white"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir la news précédente">
+                <button class="d-flex align-items-center light-btn font-0"
+                        onclick="window.location.href='{% url 'news-detail' news_detail.get_previous_by_creation_date.uuid %}';"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Voir la news précédente (plus ancienne)">
                     <i class="bi bi-arrow-left content-detail-btn-icon content-detail-btn-icon-left"></i> News précédente
-                </a>
+                </button>
             </div>
             {% else %}
             <div class="col-lg-3 mt-4"></div>
             {% endif %}
-            <div class="col-lg-3 mt-4 text-center">
-                <a type="button" href="{% url 'news-list' %}" target="_self"
-                    class="d-flex align-items-center btn central-btn text-white"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir toutes les news">
-                    Retour à la liste des news
-                </a>
+            <div class="col-lg-3 mt-4 d-flex justify-content-center">
+                <button class="d-flex align-items-center light-btn font-0 content-nav-central-btn"
+                        onclick="window.location.href='{% url 'news-list' %}';"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Voir toutes les news">
+                    Liste des news
+                </button>
             </div>
             {% if news_detail.get_next_by_creation_date %}
             <div class="col-lg-3 mt-4 d-flex justify-content-end">
-                <a type="button" href="{% url 'news-detail' news_detail.get_next_by_creation_date.uuid %}" target="_self"
-                    class="d-flex align-items-center btn right-btn text-white"
-                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Voir la news suivante">
+                <button class="d-flex align-items-center light-btn font-0"
+                        onclick="window.location.href='{% url 'news-detail' news_detail.get_next_by_creation_date.uuid %}';"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Voir la news suivante (plus récente)">
                     News suivante <i class="bi bi-arrow-right content-detail-btn-icon content-detail-btn-icon-right"></i>
-                </a>
+                </button>
             </div>
             {% else %}
             <div class="col-lg-3 mt-4"></div>
