@@ -15,7 +15,7 @@ from django.views.generic.edit import ModelFormMixin
 from contents.choices import FAQ_CATEGORY
 from contents.forms import EventForm, FaqForm, NewsForm, NewsUpdateForm, PhotoForm
 from contents.models import Event, Faq, News, NewsUpdate
-from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, QUESTION_CREATION_SUCCESS
+from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS
 from pages.utils import choice_translation
 
 class NewsListView(ListView):
@@ -66,26 +66,44 @@ def NewsCreateView(request):
             
     return render(request, 'contents/news_create.html', context=context)
 
-class NewsUpdateView(SuccessMessageMixin, UpdateView):
-    model = News
-    template_name = 'contents/news_update.html'
-    success_message = 'La news a bien été mise à jour !'
-    fields = ['category', 'title', 'content', 'image', 'status']
+def NewsUpdateView(request, uuid):
+    news = News.objects.get(uuid=uuid)
+    news_data = {
+        'category': news.category,
+        'title': news.title,
+        'content': news.content,
+        'status': news.status,
+    }
+    news_form = NewsForm(initial=news_data)
+    news_update_form = NewsUpdateForm()
+    photo_form = PhotoForm()
 
-    def get_object(self, queryset=None):
-        # To use uuid in the route
-        return News.objects.get(uuid=self.kwargs.get("uuid"))
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        self.object = form.save(commit=False)
-        NewsUpdate.objects.filter(news=self.object).delete()
-        for user in form.cleaned_data['news_update_user']:
-            news_update = NewsUpdate()
-            news_update.news = self.object
-            news_update.updater = user
+    if request.method == 'POST':
+        news_form = NewsForm(request.POST, instance=news)
+        news_update_form = NewsUpdateForm(request.POST)
+        photo_form = PhotoForm(request.POST, request.FILES)
+        if all([news_form.is_valid() and news_update_form.is_valid() and photo_form.is_valid()]):
+            news = news_form.save()
+            news_update = news_update_form.save(commit=False)
+            news_update.news = news
+            news_update.updater = request.user
             news_update.save()
-        return super(ModelFormMixin, self).form_valid(form)
+            photo = photo_form.save(commit=False)
+            photo.uploader = request.user
+            photo.save()
+            news.photos.add(photo)
+            news.save()
+            messages.success(request, NEWS_UPDATE_SUCCESS) # Adding a confirmation message
+            return redirect('news-detail', uuid=news.uuid)
+
+    context = {
+        'news': news,
+        'news_form': news_form,
+        'news_update_form': news_update_form,
+        'photo_form': photo_form,
+    }
+            
+    return render(request, 'contents/news_update.html', context=context)
 
 class NewsDeleteView(SuccessMessageMixin, DeleteView):
     model = News
