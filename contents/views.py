@@ -10,7 +10,7 @@ from django.views.generic import DeleteView, DetailView, ListView
 from django.views.generic.base import TemplateView
 
 from contents.choices import FAQ_CATEGORY
-from contents.forms import EventForm, FaqForm, FaqUpdateForm, NewsForm, NewsUpdateForm, PhotoForm
+from contents.forms import EventForm, EventUpdateForm, FaqForm, FaqUpdateForm, NewsForm, NewsUpdateForm, PhotoForm
 from contents.models import Event, Faq, News
 from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_UPDATE_SUCCESS
 from pages.utils import choice_translation
@@ -275,3 +275,47 @@ def event_create_view(request):
     }
             
     return render(request, 'contents/event_create.html', context=context)
+
+def event_update_view(request, uuid):
+    event = Event.objects.get(uuid=uuid)
+    event_data = {
+        'category': event.category,
+        'title': event.title,
+        'content': event.content,
+        'start_date': event.start_date,
+        'end_date': event.end_date,
+        'status': event.status,
+    }
+    event_form = EventForm(initial=event_data)
+    event_update_form = EventUpdateForm()
+    photo_form = PhotoForm()
+
+    if request.method == 'POST':
+        event_form = EventForm(request.POST, instance=event)
+        event_update_form = EventUpdateForm(request.POST)
+        photo_form = PhotoForm(request.POST, request.FILES)
+        if all([event_form.is_valid() and event_update_form.is_valid() and photo_form.is_valid()]):
+            event = event_form.save()
+            event_update = event_update_form.save(commit=False)
+            event_update.event = event
+            event_update.updater = request.user
+            event_update.save()
+            photo = photo_form.save(commit=False)
+            photo.uploader = request.user
+            photo.save()
+            event.photos.add(photo)
+            event.save()
+            messages.success(request, NEWS_UPDATE_SUCCESS) # Adding a confirmation message
+            return redirect('event-detail', uuid=event.uuid)
+
+    context = {
+        'event': event,
+        'event_form': event_form,
+        'event_update_form': event_update_form,
+        'photo_form': photo_form,
+    }
+            
+    return render(request, 'contents/event_update.html', context=context)
+
+def event_delete_view():
+    pass
