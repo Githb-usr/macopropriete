@@ -93,7 +93,7 @@ class Faq(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     photos = models.ManyToManyField(Photo, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
-    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_faq')
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, editable=False, verbose_name='Auteur', related_name='create_faq')
     
     def __str__(self):
         return f'{self.category} - {self.question}'
@@ -151,7 +151,7 @@ class Event(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     photos = models.ManyToManyField(Photo, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
-    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='create_events')
+    author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, editable=False, verbose_name='Auteur', related_name='create_events')
     
     def __str__(self):
         return f'Evènement - {self.title}'
