@@ -1,21 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from datetime import datetime
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils import timezone
-from django.views.generic import DeleteView, DetailView, ListView, UpdateView
+from django.views.generic import DeleteView, DetailView, ListView
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import ModelFormMixin
 
 from contents.choices import FAQ_CATEGORY
-from contents.forms import EventForm, FaqForm, NewsForm, NewsUpdateForm, PhotoForm
-from contents.models import Event, Faq, News, NewsUpdate
-from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS
+from contents.forms import EventForm, FaqForm, FaqUpdateForm, NewsForm, NewsUpdateForm, PhotoForm
+from contents.models import Event, Faq, News
+from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_UPDATE_SUCCESS
 from pages.utils import choice_translation
 
 class NewsListView(ListView):
@@ -105,7 +102,7 @@ def news_update_view(request, uuid):
             
     return render(request, 'contents/news_update.html', context=context)
 
-class NewsDeleteView(SuccessMessageMixin, DeleteView):
+def news_delete_view():
     model = News
     template_name = 'contents/news_delete.html'
     success_message = 'La news a bien été supprimée !'
@@ -134,6 +131,7 @@ class FaqCategoryView(ListView):
         page_number = self.request.GET.get('page', 1)
         context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
         context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        
         return context
 
 def faq_create_view(request):
@@ -163,43 +161,46 @@ def faq_create_view(request):
     return render(request, 'contents/faq_create.html', context=context)
 
 def faq_update_view(request, uuid):
-    news = News.objects.get(uuid=uuid)
-    news_data = {
-        'category': news.category,
-        'title': news.title,
-        'content': news.content,
-        'status': news.status,
+    question = Faq.objects.get(uuid=uuid)
+    question_data = {
+        'category': question.category,
+        'question': question.question,
+        'answer': question.answer,
+        'status': question.status,
     }
-    news_form = NewsForm(initial=news_data)
-    news_update_form = NewsUpdateForm()
+    faq_form = FaqForm(initial=question_data)
+    faq_update_form = FaqUpdateForm()
     photo_form = PhotoForm()
 
     if request.method == 'POST':
-        news_form = NewsForm(request.POST, instance=news)
-        news_update_form = NewsUpdateForm(request.POST)
+        faq_form = FaqForm(request.POST, instance=question)
+        faq_update_form = FaqUpdateForm(request.POST)
         photo_form = PhotoForm(request.POST, request.FILES)
-        if all([news_form.is_valid() and news_update_form.is_valid() and photo_form.is_valid()]):
-            news = news_form.save()
-            news_update = news_update_form.save(commit=False)
-            news_update.news = news
-            news_update.updater = request.user
-            news_update.save()
+        if all([faq_form.is_valid() and faq_update_form.is_valid() and photo_form.is_valid()]):
+            question = faq_form.save()
+            question_update = faq_update_form.save(commit=False)
+            question_update.faq = question
+            question_update.updater = request.user
+            question_update.save()
             photo = photo_form.save(commit=False)
             photo.uploader = request.user
             photo.save()
-            news.photos.add(photo)
-            news.save()
-            messages.success(request, NEWS_UPDATE_SUCCESS) # Adding a confirmation message
-            return redirect('news-detail', uuid=news.uuid)
+            question.photos.add(photo)
+            question.save()
+            messages.success(request, QUESTION_UPDATE_SUCCESS) # Adding a confirmation message
+            return redirect('faq-category', category=question.category)
 
     context = {
-        'news': news,
-        'news_form': news_form,
-        'news_update_form': news_update_form,
+        'question': question,
+        'faq_form': faq_form,
+        'faq_update_form': faq_update_form,
         'photo_form': photo_form,
     }
             
-    return render(request, 'contents/news_update.html', context=context)
+    return render(request, 'contents/faq_update.html', context=context)
+
+def faq_delete_view():
+    pass
 
 class EventListNewView(ListView):
     model = Event
