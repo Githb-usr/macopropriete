@@ -40,7 +40,7 @@ class NewsDetailView(DetailView):
         # To use uuid in the route
         return News.objects.get(uuid=self.kwargs.get("uuid"))
 
-def NewsCreateView(request):
+def news_create_view(request):
     news_form = NewsForm()
     photo_form = PhotoForm()
 
@@ -66,7 +66,7 @@ def NewsCreateView(request):
             
     return render(request, 'contents/news_create.html', context=context)
 
-def NewsUpdateView(request, uuid):
+def news_update_view(request, uuid):
     news = News.objects.get(uuid=uuid)
     news_data = {
         'category': news.category,
@@ -136,7 +136,7 @@ class FaqCategoryView(ListView):
         context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
         return context
 
-def FaqCreateView(request):
+def faq_create_view(request):
     faq_form = FaqForm()
     photo_form = PhotoForm()
 
@@ -161,6 +161,45 @@ def FaqCreateView(request):
     }
             
     return render(request, 'contents/faq_create.html', context=context)
+
+def faq_update_view(request, uuid):
+    news = News.objects.get(uuid=uuid)
+    news_data = {
+        'category': news.category,
+        'title': news.title,
+        'content': news.content,
+        'status': news.status,
+    }
+    news_form = NewsForm(initial=news_data)
+    news_update_form = NewsUpdateForm()
+    photo_form = PhotoForm()
+
+    if request.method == 'POST':
+        news_form = NewsForm(request.POST, instance=news)
+        news_update_form = NewsUpdateForm(request.POST)
+        photo_form = PhotoForm(request.POST, request.FILES)
+        if all([news_form.is_valid() and news_update_form.is_valid() and photo_form.is_valid()]):
+            news = news_form.save()
+            news_update = news_update_form.save(commit=False)
+            news_update.news = news
+            news_update.updater = request.user
+            news_update.save()
+            photo = photo_form.save(commit=False)
+            photo.uploader = request.user
+            photo.save()
+            news.photos.add(photo)
+            news.save()
+            messages.success(request, NEWS_UPDATE_SUCCESS) # Adding a confirmation message
+            return redirect('news-detail', uuid=news.uuid)
+
+    context = {
+        'news': news,
+        'news_form': news_form,
+        'news_update_form': news_update_form,
+        'photo_form': photo_form,
+    }
+            
+    return render(request, 'contents/news_update.html', context=context)
 
 class EventListNewView(ListView):
     model = Event
@@ -210,7 +249,7 @@ class EventDetailView(DetailView):
         # To use uuid in the route
         return Event.objects.get(uuid=self.kwargs.get("uuid"))
 
-def EventCreateView(request):
+def event_create_view(request):
     event_form = EventForm()
     photo_form = PhotoForm()
 
