@@ -66,3 +66,8 @@ class EventForm(ModelForm):
     class Meta: 
         model = models.Event
         fields = ('category', 'title', 'content', 'start_date', 'end_date', 'status', )
+
+class EventUpdateForm(ModelForm):
+    class Meta: 
+        model = models.EventUpdate
+        fields = ('update_reason',)
