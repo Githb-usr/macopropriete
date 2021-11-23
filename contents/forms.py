@@ -38,6 +38,11 @@ class FaqForm(ModelForm):
         model = models.Faq
         fields = ('category', 'question', 'answer', 'status', )
 
+class FaqUpdateForm(ModelForm):
+    class Meta: 
+        model = models.FaqUpdate
+        fields = ('update_reason',)
+
 class EventForm(ModelForm):
     """
     Form used for create an event
