@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from django.forms import ModelForm, DateTimeField, SplitDateTimeField, widgets
+from django.forms import ModelForm, SplitDateTimeField, widgets
 
 from contents import models
 
