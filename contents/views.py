@@ -21,6 +21,12 @@ class NewsListView(ListView):
     template_name = 'contents/news_list.html'
     context_object_name = 'news_list'
 
+    def get_queryset(self):
+        try:
+            return News.objects.filter(status='ACTIVATED')
+        except News.objects.filter(status='ACTIVATED').DoesNotExist:
+            return News.objects.none()
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
