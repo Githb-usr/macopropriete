@@ -10,9 +10,9 @@ from django.views.generic import DeleteView, DetailView, ListView
 from django.views.generic.base import TemplateView
 
 from contents.choices import FAQ_CATEGORY
-from contents.forms import EventForm, EventUpdateForm, FaqForm, FaqUpdateForm, NewsForm, NewsUpdateForm, PhotoForm
+from contents.forms import EventForm, EventUpdateForm, FaqForm, FaqUpdateForm, NewsForm, NewsDeleteForm, NewsUpdateForm, PhotoForm
 from contents.models import Event, Faq, News
-from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_UPDATE_SUCCESS
+from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_DELETE_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_UPDATE_SUCCESS
 from pages.utils import choice_translation
 
 class NewsListView(ListView):
@@ -102,15 +102,28 @@ def news_update_view(request, uuid):
             
     return render(request, 'contents/news_update.html', context=context)
 
-def news_delete_view():
-    model = News
-    template_name = 'contents/news_delete.html'
-    success_message = 'La news a bien été supprimée !'
-    success_url = reverse_lazy('author-list')
+def news_delete_view(request, uuid):
+    news = News.objects.get(uuid=uuid)
+    news_delete_form = NewsDeleteForm()
 
-    def get_object(self, queryset=None):
-        # To use uuid in the route
-        return News.objects.get(uuid=self.kwargs.get("uuid"))
+    if request.method == 'POST':
+        news_delete_form = NewsDeleteForm(request.POST)
+    if news_delete_form.is_valid():
+        news_delete = news_delete_form.save(commit=False)
+        news_delete.news = news
+        news_delete.deleter = request.user
+        news_delete.save()
+        news.status = 'DELETED'
+        news.save()
+        messages.success(request, NEWS_DELETE_SUCCESS) # Adding a confirmation message
+        return redirect('news-list')
+        
+    context = {
+        'news': news,
+        'news_delete_form': news_delete_form,
+    }
+            
+    return render(request, 'contents/news_delete.html', context=context)
 
 class FaqCategoryListView(TemplateView):
     template_name = 'contents/faq_category_list.html'
@@ -199,7 +212,7 @@ def faq_update_view(request, uuid):
             
     return render(request, 'contents/faq_update.html', context=context)
 
-def faq_delete_view():
+def faq_delete_view(request, uuid):
     pass
 
 class EventListNewView(ListView):
@@ -317,5 +330,5 @@ def event_update_view(request, uuid):
             
     return render(request, 'contents/event_update.html', context=context)
 
-def event_delete_view():
+def event_delete_view(request, uuid):
     pass
