@@ -55,7 +55,7 @@ class NewsUpdate(models.Model):
     """
     Intermediate model between "News" and "User", defined to add fields
     """
-    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='updated_news')
+    news = models.ForeignKey(News, on_delete=models.CASCADE, verbose_name='News modifiée', related_name='updated_news')
     updater = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Auteur', related_name='news_updater')
     update_date = models.DateTimeField(auto_now=True, null=True, verbose_name='Modification le')
     update_reason = models.CharField(max_length=250, verbose_name='Raison de la modification')

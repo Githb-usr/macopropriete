@@ -5,27 +5,41 @@
 {% block content %}
 <main class="container text-body main-product_detail">
     <section class="main-section">
-        <!-- Breadcrumb -->
-        <div class="row breadcrumb">
-            <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
-                <li class="nav-item">
-                    <a href="/" 
-                    class="breadcrumb-link text-body">Accueil</a>>
-                </li>
-                <li class="nav-item">
-                    {% if event_detail.start_date > now %}
-                        <a href="{% url 'event-list-new' %}"
-                    {% else %}
-                        <a href="{% url 'event-list-old' %}"
-                    {% endif %}
-                        class="breadcrumb-link text-body">Les évènements</a>>
-                </li>
-                <li class="nav-item">
-                    <span class="breadcrumb-link text-body">{{ event_detail.title }}</span>
-                </li>
-            </ul>
+        <div class ="d-flex justify-content-between align-items-start">
+            <!-- Breadcrumb -->
+            <div class="row breadcrumb">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
+                    <li class="nav-item">
+                        <a href="/" 
+                        class="breadcrumb-link text-body">Accueil</a>>
+                    </li>
+                    <li class="nav-item">
+                        {% if event_detail.start_date > now %}
+                            <a href="{% url 'event-list-new' %}"
+                        {% else %}
+                            <a href="{% url 'event-list-old' %}"
+                        {% endif %}
+                            class="breadcrumb-link text-body">Les évènements</a>>
+                    </li>
+                    <li class="nav-item">
+                        <span class="breadcrumb-link text-body">{{ event_detail.title }}</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- End breadcrumb -->
+            {% if user.is_staff %}
+                <div class="d-flex admin-btn-zone justify-content-end">
+                    <button class="col-lg-3 align-self-center dark-btn font-0 content-update-btn"
+                            onclick="window.location.href='{% url 'event-update' uuid=event_detail.uuid %}';">
+                        Modifier
+                    </button>
+                    <button class="col-lg-3 align-self-center dark-btn font-0 content-delete-btn"
+                            onclick="window.location.href='{% url 'event-delete' uuid=event_detail.uuid %}';">
+                        Supprimer
+                    </button>
+                </div>
+            {% endif %}
         </div>
-        <!-- End breadcrumb -->
         <div class="page-title-block">
             <h1 class="page-title">Les évènements</h1>
         </div>
@@ -78,12 +92,13 @@
                 <button 
                     {% if event_detail.start_date > now %}
                         onclick="window.location.href='{% url 'event-list-new' %}';"
+                        title="Voir tous les évènements à venir"
                     {% else %}
                         onclick="window.location.href='{% url 'event-list-old' %}';"
+                        title="Voir tous les évènements passés"
                     {% endif %}
                         class="d-flex align-items-center light-btn font-0 content-nav-central-btn"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        title="Voir tous les évènements à venir">
+                        data-bs-toggle="tooltip" data-bs-placement="bottom">
                     Retour à la liste des évènements
                 </button>
             </div>

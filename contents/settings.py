@@ -3,4 +3,6 @@
 
 EVENT_CREATION_SUCCESS = 'L\'évènement a bien été créé !'
 NEWS_CREATION_SUCCESS = 'La news a bien été créée !'
+NEWS_UPDATE_SUCCESS = 'La news a bien été mise à jour !'
 QUESTION_CREATION_SUCCESS = 'La question a bien été créée !'
+QUESTION_UPDATE_SUCCESS = 'La question a bien été mise à jour !'
