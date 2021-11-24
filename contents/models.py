@@ -106,6 +106,7 @@ class Faq(models.Model):
     
     class Meta:
         verbose_name_plural = "Faqs"
+        ordering = ['-creation_date']
 
 class FaqUpdate(models.Model):
     """
