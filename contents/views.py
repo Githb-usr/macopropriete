@@ -10,9 +10,9 @@ from django.views.generic import DeleteView, DetailView, ListView
 from django.views.generic.base import TemplateView
 
 from contents.choices import FAQ_CATEGORY
-from contents.forms import EventForm, EventUpdateForm, FaqForm, FaqDeleteForm, FaqUpdateForm, NewsForm, NewsDeleteForm, NewsUpdateForm, PhotoForm
+from contents.forms import EventForm, EventDeleteForm, EventUpdateForm, FaqForm, FaqDeleteForm, FaqUpdateForm, NewsForm, NewsDeleteForm, NewsUpdateForm, PhotoForm
 from contents.models import Event, Faq, News
-from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_DELETE_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_DELETE_SUCCESS, QUESTION_UPDATE_SUCCESS
+from contents.settings import EVENT_CREATION_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_UPDATE_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_DELETE_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_DELETE_SUCCESS, QUESTION_UPDATE_SUCCESS
 from pages.utils import choice_translation
 
 class NewsListView(ListView):
@@ -252,7 +252,7 @@ class EventListNewView(ListView):
 
     def get_queryset(self):
         current_datetime = timezone.now()
-        return Event.objects.filter(start_date__gt=current_datetime).order_by('start_date')
+        return Event.objects.filter(start_date__gt=current_datetime).filter(status='ACTIVATED').order_by('start_date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -269,7 +269,7 @@ class EventListOldView(ListView):
 
     def get_queryset(self):
         current_datetime = timezone.now()
-        return Event.objects.filter(start_date__lt=current_datetime).order_by('-start_date')
+        return Event.objects.filter(start_date__lt=current_datetime).filter(status='ACTIVATED').order_by('-start_date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -347,7 +347,7 @@ def event_update_view(request, uuid):
             photo.save()
             event.photos.add(photo)
             event.save()
-            messages.success(request, NEWS_UPDATE_SUCCESS) # Adding a confirmation message
+            messages.success(request, EVENT_UPDATE_SUCCESS) # Adding a confirmation message
             return redirect('event-detail', uuid=event.uuid)
 
     context = {
@@ -360,4 +360,28 @@ def event_update_view(request, uuid):
     return render(request, 'contents/event_update.html', context=context)
 
 def event_delete_view(request, uuid):
-    pass
+    event = Event.objects.get(uuid=uuid)
+    event_delete_form = EventDeleteForm()
+    current_datetime = timezone.now()
+
+    if request.method == 'POST':
+        event_delete_form = EventDeleteForm(request.POST)
+    if event_delete_form.is_valid():
+        event_delete = event_delete_form.save(commit=False)
+        event_delete.event = event
+        event_delete.deleter = request.user
+        event_delete.save()
+        event.status = 'DELETED'
+        event.save()
+        messages.success(request, EVENT_DELETE_SUCCESS) # Adding a confirmation message
+        if event.start_date <= current_datetime:
+            return redirect('event-list-old')
+        else: 
+            return redirect('event-list-new')
+        
+    context = {
+        'event': event,
+        'event_delete_form': event_delete_form,
+    }
+            
+    return render(request, 'contents/event_delete.html', context=context)
