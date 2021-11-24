@@ -21,7 +21,7 @@
             {{ faq_update_form|crispy }}
             <button class="dark-btn update-validate-btn" type="submit">Valider</button>
             <button class="light-btn update-cancel-btn"
-                    onclick="window.location.href='{% url 'faq-category' category=question.category %}';">
+                    onclick="window.location.href='{% url 'faq-category' category=question.category|lower %}';">
                 Annuler
             </button>
         </form>

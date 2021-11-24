@@ -11513,7 +11513,7 @@ hr.content-separator {
   opacity: 1;
 }
 
-section.main-section hr.content-separator:last-child {
+div.main-section hr.content-separator:last-child {
   display: none;
 }
 
@@ -11760,6 +11760,10 @@ h3.comment-title, .comment-title.h3 {
 
 .btn-delete-comment:hover, button#comment-btn {
   color: #fff;
+}
+
+.faq-admin-info {
+  width: 100%;
 }
 
 article.event-detail {
@@ -12446,7 +12450,7 @@ h1.page-title, .page-title.h1, h2.page-subtitle, .page-subtitle.h2 {
   border-color: #f5c2c7;
 }
 
-p.messages button.btn-close, p.messages button.btn-close:hover {
+div.messages button.btn-close-white, div.messages button.btn-close-white:hover {
   color: #fff;
   opacity: 1;
 }
