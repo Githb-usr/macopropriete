@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from django.forms import ModelForm, DateTimeField, SplitDateTimeField, widgets
+from django.forms import ModelForm, SplitDateTimeField, widgets
 
 from contents import models
 
@@ -38,6 +38,11 @@ class FaqForm(ModelForm):
         model = models.Faq
         fields = ('category', 'question', 'answer', 'status', )
 
+class FaqUpdateForm(ModelForm):
+    class Meta: 
+        model = models.FaqUpdate
+        fields = ('update_reason',)
+
 class EventForm(ModelForm):
     """
     Form used for create an event
@@ -61,3 +66,8 @@ class EventForm(ModelForm):
     class Meta: 
         model = models.Event
         fields = ('category', 'title', 'content', 'start_date', 'end_date', 'status', )
+
+class EventUpdateForm(ModelForm):
+    class Meta: 
+        model = models.EventUpdate
+        fields = ('update_reason',)

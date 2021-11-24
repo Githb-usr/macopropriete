@@ -34,6 +34,14 @@
                 <h1 class="page-title">Vos questions</h1>
                 <h2 class="page-subtitle">{{ current_category }}</h2>
             </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <div {% if message.tags %} class="messages alert alert-{{ message.tags }} d-flex align-items-center alert-dismissible fade show" role="alert" {% endif %}>
+                        <i class="bi bi-check-circle-fill comment-message"></i>  {{ message }}
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
             {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
             {% if faq_category is none %}
                 <section class="intro-section">
@@ -60,8 +68,22 @@
                                 </div>
                                 <div class="accordion-collapse collapse" id="{% cycle 'collapseOne' 'collapseTwo' 'collapseThree' 'collapseFour' 'collapseFive' %}" 
                                     aria-labelledby="{% cycle 'headingOne' 'headingTwo' 'headingThree' 'headingFour' 'headingFive' %}">
-                                    <div class="accordion-body faq-list-answer">
-                                        {{ faq.answer }}
+                                    <div class="d-flex flex-column accordion-body faq-list-answer align-items-end">
+                                        <article class="faq-content">
+                                            {{ faq.answer }}
+                                        </article>
+                                        {% if user.is_staff %}
+                                            <div class="d-flex admin-btn-zone justify-content-end">
+                                                <button class="col-lg-3 align-self-center dark-btn font-0 content-update-btn"
+                                                        onclick="window.location.href='{% url 'faq-update' uuid=faq.uuid %}';">
+                                                    Modifier
+                                                </button>
+                                                <button class="col-lg-3 align-self-center dark-btn font-0 content-delete-btn"
+                                                        onclick="window.location.href='{% url 'faq-delete' uuid=faq.uuid %}';">
+                                                    Supprimer
+                                                </button>
+                                            </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
