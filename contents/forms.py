@@ -30,6 +30,11 @@ class NewsUpdateForm(ModelForm):
         model = models.NewsUpdate
         fields = ('update_reason',)
 
+class NewsDeleteForm(ModelForm):
+    class Meta: 
+        model = models.NewsDelete
+        fields = ('deletion_reason',)
+
 class FaqForm(ModelForm):
     """
     Form used for create a FAQ question
@@ -42,6 +47,11 @@ class FaqUpdateForm(ModelForm):
     class Meta: 
         model = models.FaqUpdate
         fields = ('update_reason',)
+
+class FaqDeleteForm(ModelForm):
+    class Meta: 
+        model = models.FaqDelete
+        fields = ('deletion_reason',)
 
 class EventForm(ModelForm):
     """
@@ -71,3 +81,8 @@ class EventUpdateForm(ModelForm):
     class Meta: 
         model = models.EventUpdate
         fields = ('update_reason',)
+
+class EventDeleteForm(ModelForm):
+    class Meta: 
+        model = models.EventDelete
+        fields = ('deletion_reason',)

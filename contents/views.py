@@ -10,9 +10,9 @@ from django.views.generic import DeleteView, DetailView, ListView
 from django.views.generic.base import TemplateView
 
 from contents.choices import FAQ_CATEGORY
-from contents.forms import EventForm, EventUpdateForm, FaqForm, FaqUpdateForm, NewsForm, NewsUpdateForm, PhotoForm
+from contents.forms import EventForm, EventDeleteForm, EventUpdateForm, FaqForm, FaqDeleteForm, FaqUpdateForm, NewsForm, NewsDeleteForm, NewsUpdateForm, PhotoForm
 from contents.models import Event, Faq, News
-from contents.settings import EVENT_CREATION_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_UPDATE_SUCCESS
+from contents.settings import EVENT_CREATION_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_UPDATE_SUCCESS, NEWS_CREATION_SUCCESS, NEWS_DELETE_SUCCESS, NEWS_UPDATE_SUCCESS, QUESTION_CREATION_SUCCESS, QUESTION_DELETE_SUCCESS, QUESTION_UPDATE_SUCCESS
 from pages.utils import choice_translation
 
 class NewsListView(ListView):
@@ -20,6 +20,12 @@ class NewsListView(ListView):
     paginate_by = 5
     template_name = 'contents/news_list.html'
     context_object_name = 'news_list'
+
+    def get_queryset(self):
+        try:
+            return News.objects.filter(status='ACTIVATED')
+        except News.objects.filter(status='ACTIVATED').DoesNotExist:
+            return News.objects.none()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -102,15 +108,28 @@ def news_update_view(request, uuid):
             
     return render(request, 'contents/news_update.html', context=context)
 
-def news_delete_view():
-    model = News
-    template_name = 'contents/news_delete.html'
-    success_message = 'La news a bien été supprimée !'
-    success_url = reverse_lazy('author-list')
+def news_delete_view(request, uuid):
+    news = News.objects.get(uuid=uuid)
+    news_delete_form = NewsDeleteForm()
 
-    def get_object(self, queryset=None):
-        # To use uuid in the route
-        return News.objects.get(uuid=self.kwargs.get("uuid"))
+    if request.method == 'POST':
+        news_delete_form = NewsDeleteForm(request.POST)
+    if news_delete_form.is_valid():
+        news_delete = news_delete_form.save(commit=False)
+        news_delete.news = news
+        news_delete.deleter = request.user
+        news_delete.save()
+        news.status = 'DELETED'
+        news.save()
+        messages.success(request, NEWS_DELETE_SUCCESS) # Adding a confirmation message
+        return redirect('news-list')
+        
+    context = {
+        'news': news,
+        'news_delete_form': news_delete_form,
+    }
+            
+    return render(request, 'contents/news_delete.html', context=context)
 
 class FaqCategoryListView(TemplateView):
     template_name = 'contents/faq_category_list.html'
@@ -122,7 +141,10 @@ class FaqCategoryView(ListView):
     context_object_name = 'faq_category'
     
     def get_queryset(self):
-        return Faq.objects.filter(category=self.kwargs['category'].upper())
+        try:
+            return Faq.objects.filter(category=self.kwargs['category'].upper()).filter(status='ACTIVATED')
+        except Faq.objects.filter(category=self.kwargs['category'].upper().filter(status='ACTIVATED')).DoesNotExist:
+            return Faq.objects.none()
 
     def get_context_data(self, **kwargs):
         context = super(ListView, self).get_context_data(**kwargs)
@@ -188,7 +210,7 @@ def faq_update_view(request, uuid):
             question.photos.add(photo)
             question.save()
             messages.success(request, QUESTION_UPDATE_SUCCESS) # Adding a confirmation message
-            return redirect('faq-category', category=question.category)
+            return redirect('faq-category', category=question.category.lower())
 
     context = {
         'question': question,
@@ -199,8 +221,28 @@ def faq_update_view(request, uuid):
             
     return render(request, 'contents/faq_update.html', context=context)
 
-def faq_delete_view():
-    pass
+def faq_delete_view(request, uuid):
+    question = Faq.objects.get(uuid=uuid)
+    faq_delete_form = FaqDeleteForm()
+
+    if request.method == 'POST':
+        faq_delete_form = FaqDeleteForm(request.POST)
+    if faq_delete_form.is_valid():
+        faq_delete = faq_delete_form.save(commit=False)
+        faq_delete.faq = question
+        faq_delete.deleter = request.user
+        faq_delete.save()
+        question.status = 'DELETED'
+        question.save()
+        messages.success(request, QUESTION_DELETE_SUCCESS) # Adding a confirmation message
+        return redirect('faq-category', category=question.category.lower())
+        
+    context = {
+        'question': question,
+        'faq_delete_form': faq_delete_form,
+    }
+            
+    return render(request, 'contents/faq_delete.html', context=context)
 
 class EventListNewView(ListView):
     model = Event
@@ -210,7 +252,7 @@ class EventListNewView(ListView):
 
     def get_queryset(self):
         current_datetime = timezone.now()
-        return Event.objects.filter(start_date__gt=current_datetime).order_by('start_date')
+        return Event.objects.filter(start_date__gt=current_datetime).filter(status='ACTIVATED').order_by('start_date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -227,7 +269,7 @@ class EventListOldView(ListView):
 
     def get_queryset(self):
         current_datetime = timezone.now()
-        return Event.objects.filter(start_date__lt=current_datetime).order_by('-start_date')
+        return Event.objects.filter(start_date__lt=current_datetime).filter(status='ACTIVATED').order_by('-start_date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -305,7 +347,7 @@ def event_update_view(request, uuid):
             photo.save()
             event.photos.add(photo)
             event.save()
-            messages.success(request, NEWS_UPDATE_SUCCESS) # Adding a confirmation message
+            messages.success(request, EVENT_UPDATE_SUCCESS) # Adding a confirmation message
             return redirect('event-detail', uuid=event.uuid)
 
     context = {
@@ -317,5 +359,29 @@ def event_update_view(request, uuid):
             
     return render(request, 'contents/event_update.html', context=context)
 
-def event_delete_view():
-    pass
+def event_delete_view(request, uuid):
+    event = Event.objects.get(uuid=uuid)
+    event_delete_form = EventDeleteForm()
+    current_datetime = timezone.now()
+
+    if request.method == 'POST':
+        event_delete_form = EventDeleteForm(request.POST)
+    if event_delete_form.is_valid():
+        event_delete = event_delete_form.save(commit=False)
+        event_delete.event = event
+        event_delete.deleter = request.user
+        event_delete.save()
+        event.status = 'DELETED'
+        event.save()
+        messages.success(request, EVENT_DELETE_SUCCESS) # Adding a confirmation message
+        if event.start_date <= current_datetime:
+            return redirect('event-list-old')
+        else: 
+            return redirect('event-list-new')
+        
+    context = {
+        'event': event,
+        'event_delete_form': event_delete_form,
+    }
+            
+    return render(request, 'contents/event_delete.html', context=context)
