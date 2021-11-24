@@ -33,6 +33,14 @@
             </h2>
         </div>
         {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
+        {% if messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="messages alert alert-{{ message.tags }} d-flex align-items-center alert-dismissible fade show" role="alert" {% endif %}>
+                    <i class="bi bi-check-circle-fill comment-message"></i>  {{ message }}
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
         {% if event_list_old is none %}
             <section class="intro-section">
                 <div class="main-instructions d-flex justify-content-center">
