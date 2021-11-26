@@ -51,16 +51,7 @@
             <div class="news-detail-date">News du {{ news_detail.creation_date|date }}</div>
             <div class="news-detail-title">{{ news_detail.title }}</div>
             <div class="news-detail-category">Catégorie : {{ news_detail.get_category_display }}</div>
-            <div class="news-detail-content">{{ news_detail.content }}</div>
-            {% if news_detail.photos %}
-                <div class="news-detail-img-block">
-                    {% for photo in news_detail.photos.all %}
-                        {% if photo.image %}
-                            <img src="{{ photo.image.url }}" alt="test photo" class="news-detail-img" />
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% endif %}
+            <div class="news-detail-content">{{ news_detail.content|safe }}</div>
         </article>
         <div class="row content-detail-btn justify-content-between">
             {% if news_detail.get_previous_by_creation_date %}

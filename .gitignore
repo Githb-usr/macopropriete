@@ -2,6 +2,7 @@
 .vscode/
 __pycache__
 get-pip.py
+static/ckeditor/
 staticfiles/
 theme/
 venvp13/

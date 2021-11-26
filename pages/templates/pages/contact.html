@@ -18,6 +18,7 @@
     <div class="contact-form">
         <form method="post">
         {% csrf_token %}
+            {{ form.media }}
             {{ form|crispy }}
             <button type="submit" class="dark-btn">Envoyer</button>
         </form>

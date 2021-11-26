@@ -11971,8 +11971,8 @@ div#div_id_cc_myself label {
   margin-top: 0.63rem;
 }
 
-div.contact-form form div:last-of-type textarea {
-  width: 100%;
+div.django-ckeditor-widget, div#cke_id_message, div#cke_id_content, div#cke_id_answer {
+  width: 100% !important;
 }
 
 div.contact-form form button {
