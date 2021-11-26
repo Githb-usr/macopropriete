@@ -71,7 +71,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="event-detail-content">{{ event_detail.content }}</div>
+            <div class="event-detail-content">{{ event_detail.content|safe }}</div>
             <div class="event-detail-img-block"><img src="{{event_detail.image.url}}" class="event-detail-img" /></div>
         </article>
         <hr class="content-separator">

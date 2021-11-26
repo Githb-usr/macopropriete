@@ -15,9 +15,9 @@
     </section>
     <section class="d-flex flex-column profile-update-content text-body">
         <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}   
+        {% csrf_token %}
+            {{ news_form.media }}
             {{ news_form|crispy }}
-            {{ photo_form|crispy }}
             {{ news_update_form|crispy }}
             <button class="dark-btn update-validate-btn" type="submit">Valider</button>
             <button class="light-btn update-cancel-btn"
