@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField 
 from django.conf import settings
 from django.db import models
