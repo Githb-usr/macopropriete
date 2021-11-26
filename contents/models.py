@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField 
 from django.conf import settings
 from django.db import models
 from django.db.models.signals import pre_save
@@ -19,13 +21,16 @@ class Photo(models.Model):
     uploader = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Uploadé par')
     date_created = models.DateTimeField(auto_now_add=True, verbose_name='Date d\'upload')
 
+    def __str__(self):
+        return f'{self.caption}'
+
 class News(models.Model):
     """
     Model of the "contents_news" table in the database
     """
     category = models.CharField(max_length=30, choices=NEWS_CATEGORY, default=MISCELLANEOUS, verbose_name='Catégorie')
     title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
-    content = models.TextField(blank=False, verbose_name='News')
+    content = RichTextUploadingField(blank=False, verbose_name='News')
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
@@ -87,7 +92,7 @@ class Faq(models.Model):
     """
     category = models.CharField(max_length=30, choices=FAQ_CATEGORY, default=MISCELLANEOUS, verbose_name='Catégorie')
     question = models.CharField(blank=False, max_length=250, verbose_name='Question')
-    answer = models.TextField(blank=False, verbose_name='Réponse')
+    answer = RichTextUploadingField(blank=False, verbose_name='Réponse')
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     last_edit = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
@@ -144,7 +149,7 @@ class Event(models.Model):
     """
     category = models.CharField(max_length=30, choices=EVENT_CATEGORY, default=MISCELLANEOUS, verbose_name='Catégorie')
     title = models.CharField(blank=False, max_length=100, verbose_name='Titre')
-    content = models.TextField(blank=False, verbose_name='Evènement')
+    content = RichTextUploadingField(blank=False, verbose_name='Evènement')
     start_date = models.DateTimeField(verbose_name='Début de l\'évènement')
     end_date = models.DateTimeField(verbose_name='Fin de l\'évènement')
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
@@ -201,7 +206,7 @@ class Incident(models.Model):
     Model of the "contents_incident" table in the database
     """
     category = models.CharField(max_length=30, choices=INCIDENT_CATEGORY, default=MISCELLANEOUS, verbose_name='Type')
-    content = models.TextField(blank=False, verbose_name='Incident')
+    content = RichTextUploadingField(blank=False, verbose_name='Incident')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     photos = models.ManyToManyField(Photo, blank=True)
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
@@ -253,7 +258,7 @@ class Comment(models.Model):
     """
     Model of the "contents_comment" table in the database
     """
-    content = models.TextField(blank=False, verbose_name='Commentaire')
+    content = RichTextUploadingField(blank=False, verbose_name='Commentaire')
     status = models.CharField(max_length=30, choices=CONTENT_STATUS, default=ACTIVATED, verbose_name='Statut')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Publication le')
     uuid = models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')
