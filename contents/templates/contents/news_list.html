@@ -61,7 +61,7 @@
                                 <div class="content-list-item-block col-11">
                                     <div class="content-list-item-date">{{ news.creation_date|date }}</div>
                                     <div class="content-list-item-title">{{ news.title }}</div>
-                                    <div class="content-list-item-content">{{ news.content|truncatechars:400 }}</div>
+                                    <div class="content-list-item-content">{{ news.content|safe|truncatechars:400 }}</div>
                                     <div class="content-list-item-next">[Lire la suite...]</div>
                                 </div>
                             </div>
