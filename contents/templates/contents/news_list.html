@@ -54,7 +54,7 @@
                         <a href="{% url 'news-detail' news.uuid %}" class="text-body">
                             <div class="content-list-item row">
                                 <div class="content-list-item-img-block col-1">
-                                    {% with 'contents/icons/'|add:'icon-content-'|add:news.category|add:'.png' as image %}
+                                    {% with 'contents/icons/'|add:'icon-content-'|add:news.category|lower|add:'.png' as image %}
                                         <img src="{% static image %}"  class="content-list-item-img" />
                                     {% endwith %}
                                 </div>
