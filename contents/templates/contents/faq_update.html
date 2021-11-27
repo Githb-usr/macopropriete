@@ -6,7 +6,7 @@
 <main class="container">
     <section class="profile-header d-flex flex-column align-items-center text-green">
         <div class="d-flex profile-header-img-container justify-content-center align-items-center">
-            {% with 'dist/assets/img/'|add:'img-'|add:question.category|lower|add:'.png' as image %}
+            {% with 'contents/icons/'|add:'icon-content-'|add:question.category|lower|add:'.png' as image %}
                 <img src="{% static image %}"  class="content-list-item-img" />
             {% endwith %}
         </div>
