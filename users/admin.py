@@ -3,7 +3,6 @@
 
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-# from django.core import mail
 from django.utils import timezone
 
 from pages.utils import generic_send_mail

@@ -1,0 +1,72 @@
+<!-- lachana/templates/contents/news_list.html -->
+
+{% extends 'base_private_template.html' %}
+{% block content %}
+<main class="container text-body">
+    <div class="main-section">
+        <div class ="d-flex justify-content-between align-items-start">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb d-flex flex-row text-darkgreen">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
+                    <li class="nav-item">
+                        <a href="/" class="breadcrumb-link">Accueil</a>/
+                    </li>
+                    <li class="nav-item">
+                        <span class="breadcrumb-link">Les évènements</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- End breadcrumb -->
+            {% if user.is_staff %}
+                <div class="d-flex admin-btn-zone justify-content-end">
+                    <button class="col-lg-5 dark-btn font-0 align-self-center"
+                            onclick="window.location.href='{% url 'event-create' %}';">
+                        Créer un évènement
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+        <div class="page-title-block">
+            <h1 class="page-title">Les évènements</h1>
+            <h2 class="event-page-subtitle">
+                <span class="events-subtitle-current-page">A venir</span> / <a href="{% url 'event-list-old' %}" class="events-subtitle-links">Terminés</a>
+            </h2>
+        </div>
+        {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
+        {% if messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="messages alert alert-{{ message.tags }} d-flex align-items-center alert-dismissible fade show" role="alert" {% endif %}>
+                    <i class="bi bi-check-circle-fill comment-message"></i>  {{ message }}
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if not event_list_new %}
+            <section class="intro-section">
+                <div class="main-instructions d-flex justify-content-center">
+                    <span class="font-weight-bold text-body text-danger">
+                        Il n'y a aucun évènement à venir à afficher pour le moment.
+                    </span>
+                </div>
+            </section>
+        {% else %}
+            <section class="event-list-new-container">
+                <div class="event-warning text-body">Les évènements à venir sont triés du plus proche au plus éloigné dans le temps.</div>
+                <div class="row event-list">
+                    {% for event in event_list_new %}
+                        <a href="{% url 'event-detail' event.uuid %}" class="d-flex event-block-link">
+                            <div class="d-flex flex-column col-lg-4 event-block event-block-{{ event.category|lower }} align-content-center justify-content-center">
+                                <div class="event-date">{{ event.start_date|date:"j.m.Y" }}</div>
+                                <div class="event-title align-item-start">{{ event.title }}</div>
+                                <i class="bi bi-arrow-right-circle mt-auto"></i>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+        {% include "pagination.html" with page_range=page_range_bottom pagination_css="pagination-bottom" %}
+    </div>
+</main>
+{% endblock content %}
+{% block contact %}{% endblock contact %}

@@ -4,7 +4,7 @@
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 
-from pages.choices import SUBJECTS, USER_TYPE
+from pages.settings import SUBJECTS, USER_TYPE
 
 class ContactForm(forms.Form):
     first_name = forms.CharField(max_length = 50, label='Prénom')
