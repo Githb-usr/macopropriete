@@ -38,14 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'condominium',
-    'contents',
-    'pages',
-    'users',
     'crispy_forms',
     'crispy_bootstrap5',
     'ckeditor',
     'ckeditor_uploader',
+    'comments',
+    'condominium',
+    'contentevent',
+    'contentfaq',
+    'contentnews',
+    'incidents',
+    'pages',
+    'photos',
+    'users',
 ]
 
 MIDDLEWARE = [

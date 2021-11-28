@@ -21,7 +21,9 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('condominium.urls'), name='condominium'),
-    path('', include('contents.urls'), name='contents'),
+    path('', include('contentevent.urls'), name='contentevent'),
+    path('', include('contentfaq.urls'), name='contentfaq'),
+    path('', include('contentnews.urls'), name='contentnews'),
     path('', include('pages.urls'), name='pages'),
     path('', include('users.urls'), name='users'),
     path('ckeditor/', include('ckeditor_uploader.urls')),

@@ -1,0 +1,31 @@
+<!-- lachana/contents/templates/contents/event_update.html -->
+{% extends 'base_private_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<main class="container">
+    <section class="profile-header d-flex flex-column align-items-center text-green">
+        <div class="d-flex profile-header-img-container justify-content-center align-items-center">
+            {% with 'global_static/dist/assets/icons/'|add:'icon-content-'|add:event.category|lower|add:'.png' as image %}
+                <img src="{% static image %}"  class="content-list-item-img" />
+            {% endwith %}
+        </div>
+        <h1 class="profile-header-title">{{ event.title }}</h1>
+        <div class="profile-header-subtitle">Modifier l'évènement</div>
+    </section>
+    <section class="d-flex flex-column profile-update-content text-body">
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ event_form.media }}
+            {{ event_form|crispy }}
+            {{ event_update_form|crispy }}
+            <button class="dark-btn update-validate-btn" type="submit">Valider</button>
+            <button class="light-btn update-cancel-btn"
+                    onclick="window.location.href='{% url 'event-detail' uuid=event.uuid %}';">
+                Annuler
+            </button>
+        </form>
+        
+    </section>
+</main>
+{% endblock content %}

@@ -3,13 +3,12 @@
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, UserCreationForm, UserChangeForm
-from django.contrib.auth import get_user_model
 
 from users.models import User
 
 class CustomUserCreationForm(UserCreationForm):
     """
-    Form used for create new user by staff
+    Create new user by staff
     """
     class Meta(UserCreationForm.Meta):
         model = User
@@ -17,7 +16,7 @@ class CustomUserCreationForm(UserCreationForm):
 
 class CustomUserChangeForm(UserChangeForm):
     """
-    Form used for change user by staff
+    Update user by staff
     """
     class Meta(UserChangeForm.Meta):
         model = User
@@ -25,7 +24,7 @@ class CustomUserChangeForm(UserChangeForm):
 
 class UserLoginForm(AuthenticationForm):
     """
-    Form used for the user login
+    User login
     """
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
@@ -50,7 +49,7 @@ class UserLoginForm(AuthenticationForm):
 
 class ResetPasswordForm(PasswordResetForm):
     """
-    Form used for the password reset
+    Password reset
     """
     def __init__(self, *args, **kwargs):
         super(ResetPasswordForm, self).__init__(*args, **kwargs)
@@ -67,7 +66,7 @@ class ResetPasswordForm(PasswordResetForm):
 
 class ProfileUpdateForm(forms.ModelForm):
     """
-    Form used for the profile update
+    Profile update
     """
     class Meta: 
         model = User
