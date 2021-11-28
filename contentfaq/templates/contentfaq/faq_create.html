@@ -1,0 +1,27 @@
+<!-- lachana/contentfaq/templates/contentfaq/faq_create.html -->
+{% extends 'base_private_template.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<main class="container">
+    <section class="profile-header d-flex flex-column align-items-center text-green">
+        <h1 class="header-title">Créer une question</h1>
+        <p class="header-intro text-start">
+            Remplissez et validez le formulaire ci-dessous.
+        </p>
+    </section>
+    <section class="d-flex flex-column profile-update-content text-body">
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ faq_form.media }}
+            {{ faq_form|crispy }}
+            <button class="dark-btn update-validate-btn"type="submit">Valider</button>
+            <button class="light-btn update-cancel-btn"
+                    onclick="window.location.href='{% url 'faq-cat-list' %}';">
+                Annuler
+            </button>
+        </form>
+        
+    </section>
+</main>
+{% endblock content %}
