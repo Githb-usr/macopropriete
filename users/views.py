@@ -7,7 +7,7 @@ from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordCha
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import UpdateView
