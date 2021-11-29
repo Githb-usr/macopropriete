@@ -14,17 +14,18 @@ class EventForm(ModelForm):
         widget=widgets.SplitDateTimeWidget(
             date_attrs={'type': 'date', 'style': 'width:25%;'},
             time_attrs={'type': 'time', 'style': 'width:25%;'},
-            date_format='%d/%m/%Y',
-            time_format="'%H:%M'"),
+            time_format='%H:%M',
+        ),
     )
     end_date = SplitDateTimeField(
         label='Fin de l\'évènement (Date / Heure)',
         widget=widgets.SplitDateTimeWidget(
             date_attrs={'type': 'date', 'style': 'width:25%;'},
             time_attrs={'type': 'time', 'style': 'width:25%;'},
-            date_format='%d/%m/%Y',
-            time_format="'%H:%M'"),
+            time_format='%H:%M',
+        ),
     )
+
     class Meta: 
         model = models.Event
         fields = ('category', 'title', 'content', 'start_date', 'end_date', 'status', )

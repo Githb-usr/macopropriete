@@ -32,7 +32,7 @@
                         <div class="collapse navbar-collapse" id="userNavbarResponsive">
                             <div class="col-lg-5 col-sm-12" id="user-menu">
                                 <ul class="navbar-nav d-flex">
-                                    {% if user.is_staff %}
+                                    {% if user.is_superuser %}
                                     <li class="nav-item ml1">
                                         <a href="/admin/" class="nav-link d-flex align-items-center"><i class="fas fa-cog" title="Administration du site"></i>Administration</a>
                                     </li>
