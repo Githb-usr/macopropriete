@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm,\
+    UserCreationForm, UserChangeForm
 
 from users.models import User
 
@@ -68,6 +69,6 @@ class ProfileUpdateForm(forms.ModelForm):
     """
     Profile update
     """
-    class Meta: 
+    class Meta:
         model = User
         fields = ('avatar', 'about', 'contact_email', 'phone_number')

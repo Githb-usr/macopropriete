@@ -46,7 +46,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('status', 'VALIDATED')
-        
+
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Un super utilisateur doit avoir is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
@@ -95,14 +95,38 @@ class User(AbstractUser):
         default=PENDING,
         verbose_name='Statut'
     )
-    is_resident = models.BooleanField(default=True, verbose_name='Résident')
-    is_union_council = models.BooleanField(default=False, verbose_name='Membre du Conseil Syndical')
-    is_active = models.BooleanField(default=True, verbose_name='Utilisateur actif')
-    is_staff = models.BooleanField(default=False, verbose_name='Administrateur')
-    is_superuser = models.BooleanField(default=False, verbose_name='Super administrateur')
-    last_login = models.DateTimeField(auto_now=True, verbose_name='Dernière connexion')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Dernière modification')
-    date_joined = models.DateTimeField(default=timezone.now, verbose_name='Inscription')
+    is_resident = models.BooleanField(
+        default=True,
+        verbose_name='Résident',
+    )
+    is_union_council = models.BooleanField(
+        default=False,
+        verbose_name='Membre du Conseil Syndical',
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name='Utilisateur actif',
+    )
+    is_staff = models.BooleanField(
+        default=False,
+        verbose_name='Administrateur',
+    )
+    is_superuser = models.BooleanField(
+        default=False,
+        verbose_name='Super administrateur',
+    )
+    last_login = models.DateTimeField(
+        auto_now=True,
+        verbose_name='Dernière connexion',
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name='Dernière modification',
+    )
+    date_joined = models.DateTimeField(
+        default=timezone.now,
+        verbose_name='Inscription',
+    )
     avatar = models.ImageField(
         validators=[FileExtensionValidator(['gif', 'jpeg', 'jpg', 'png'])],
         upload_to='users/',
@@ -120,7 +144,7 @@ class User(AbstractUser):
         max_length=255,
         blank=True,
         null=True,
-        verbose_name='Adresse email de contact'
+        verbose_name='Adresse email de contact',
     )
     phone_number_regex = RegexValidator(regex=r"^0\d{9}$")
     phone_number = models.CharField(
@@ -128,18 +152,57 @@ class User(AbstractUser):
         max_length=10,
         blank=True,
         null=True,
-        verbose_name='Téléphone'
+        verbose_name='Téléphone',
     )
-    uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    news_to_update = models.ManyToManyField(News, through='contentnews.NewsUpdate', related_name='news_update')
-    news_to_delete = models.ManyToManyField(News, through='contentnews.NewsDelete', related_name='news_delete')
-    event_to_update = models.ManyToManyField(Event, through='contentevent.EventUpdate', related_name='event_update')
-    event_to_delete = models.ManyToManyField(Event, through='contentevent.EventDelete', related_name='event_delete')
-    faq_to_update = models.ManyToManyField(Faq, through='contentfaq.FaqUpdate', related_name='faq_update')
-    faq_to_delete = models.ManyToManyField(Faq, through='contentfaq.FaqDelete', related_name='faq_delete')
-    incident_to_delete = models.ManyToManyField(Incident, through='incidents.IncidentDelete', related_name='incident_delete')
-    comment_to_delete = models.ManyToManyField(Comment, through='comments.CommentDelete', related_name='comment_delete')
-    lot_owned = models.ManyToManyField(Lot, through='condominium.Ownership', related_name='lot_owned')
+    uuid = models.UUIDField(
+        default=uuid.uuid4,
+        unique=True
+    )
+    news_to_update = models.ManyToManyField(
+        News,
+        through='contentnews.NewsUpdate',
+        related_name='news_update',
+    )
+    news_to_delete = models.ManyToManyField(
+        News,
+        through='contentnews.NewsDelete',
+        related_name='news_delete',
+    )
+    event_to_update = models.ManyToManyField(
+        Event,
+        through='contentevent.EventUpdate',
+        related_name='event_update',
+    )
+    event_to_delete = models.ManyToManyField(
+        Event,
+        through='contentevent.EventDelete',
+        related_name='event_delete',
+    )
+    faq_to_update = models.ManyToManyField(
+        Faq,
+        through='contentfaq.FaqUpdate',
+        related_name='faq_update',
+    )
+    faq_to_delete = models.ManyToManyField(
+        Faq,
+        through='contentfaq.FaqDelete',
+        related_name='faq_delete',
+    )
+    incident_to_delete = models.ManyToManyField(
+        Incident,
+        through='incidents.IncidentDelete',
+        related_name='incident_delete',
+    )
+    comment_to_delete = models.ManyToManyField(
+        Comment,
+        through='comments.CommentDelete',
+        related_name='comment_delete',
+    )
+    lot_owned = models.ManyToManyField(
+        Lot,
+        through='condominium.Ownership',
+        related_name='lot_owned',
+    )
 
     objects = UserManager()
 
@@ -149,7 +212,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
-    
+
     def get_full_name(self):
         if self.first_name:
             return f'{self.first_name} {self.last_name}'

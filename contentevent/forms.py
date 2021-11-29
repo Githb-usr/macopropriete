@@ -26,16 +26,16 @@ class EventForm(ModelForm):
         ),
     )
 
-    class Meta: 
+    class Meta:
         model = models.Event
         fields = ('category', 'title', 'content', 'start_date', 'end_date', 'status', )
 
 class EventUpdateForm(ModelForm):
-    class Meta: 
+    class Meta:
         model = models.EventUpdate
         fields = ('update_reason',)
 
 class EventDeleteForm(ModelForm):
-    class Meta: 
+    class Meta:
         model = models.EventDelete
         fields = ('deletion_reason',)

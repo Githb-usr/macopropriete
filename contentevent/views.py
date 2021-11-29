@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import datetime
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.utils import timezone
@@ -9,7 +8,8 @@ from django.views.generic import DetailView, ListView
 
 from contentevent.forms import EventForm, EventDeleteForm, EventUpdateForm
 from contentevent.models import Event
-from contentevent.settings import EVENT_CREATION_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_UPDATE_SUCCESS
+from contentevent.settings import EVENT_CREATION_SUCCESS, EVENT_DELETE_SUCCESS,\
+    EVENT_UPDATE_SUCCESS
 
 class EventListNewView(ListView):
     model = Event
@@ -24,8 +24,16 @@ class EventListNewView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
-        context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
-        context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        context['page_range_top'] = context['paginator'].get_elided_page_range(
+            number=page_number,
+            on_each_side=1,
+            on_ends=1
+        )
+        context['page_range_bottom'] = context['paginator'].get_elided_page_range(
+            number=page_number,
+            on_each_side=1,
+            on_ends=1
+        )
         return context
 
 class EventListOldView(ListView):
@@ -41,15 +49,23 @@ class EventListOldView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         page_number = self.request.GET.get('page', 1)
-        context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
-        context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
+        context['page_range_top'] = context['paginator'].get_elided_page_range(
+            number=page_number,
+            on_each_side=1,
+            on_ends=1
+        )
+        context['page_range_bottom'] = context['paginator'].get_elided_page_range(
+            number=page_number,
+            on_each_side=1,
+            on_ends=1
+        )
         return context
 
 class EventDetailView(DetailView):
     model = Event
     template_name = 'contentevent/event_detail.html'
     context_object_name = 'event_detail'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
@@ -68,13 +84,14 @@ def event_create_view(request):
             event = event_form.save(commit=False)
             event.author = request.user
             event.save()
-            messages.success(request, EVENT_CREATION_SUCCESS) # Adding a confirmation message
+            # Adding a confirmation message
+            messages.success(request, EVENT_CREATION_SUCCESS)
             return redirect('event-detail', uuid=event.uuid)
 
     context = {
         'event_form': event_form,
     }
-            
+
     return render(request, 'contentevent/event_create.html', context=context)
 
 def event_update_view(request, uuid):
@@ -99,7 +116,8 @@ def event_update_view(request, uuid):
             event_update.event = event
             event_update.updater = request.user
             event_update.save()
-            messages.success(request, EVENT_UPDATE_SUCCESS) # Adding a confirmation message
+            # Adding a confirmation message
+            messages.success(request, EVENT_UPDATE_SUCCESS)
             return redirect('event-detail', uuid=event.uuid)
 
     context = {
@@ -107,7 +125,7 @@ def event_update_view(request, uuid):
         'event_form': event_form,
         'event_update_form': event_update_form,
     }
-            
+
     return render(request, 'contentevent/event_update.html', context=context)
 
 def event_delete_view(request, uuid):
@@ -124,15 +142,16 @@ def event_delete_view(request, uuid):
         event_delete.save()
         event.status = 'DELETED'
         event.save()
-        messages.success(request, EVENT_DELETE_SUCCESS) # Adding a confirmation message
+        # Adding a confirmation message
+        messages.success(request, EVENT_DELETE_SUCCESS)
         if event.start_date <= current_datetime:
             return redirect('event-list-old')
-        else: 
+        else:
             return redirect('event-list-new')
-        
+
     context = {
         'event': event,
         'event_delete_form': event_delete_form,
     }
-            
+
     return render(request, 'contentevent/event_delete.html', context=context)
