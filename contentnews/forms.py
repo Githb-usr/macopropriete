@@ -9,16 +9,16 @@ class NewsForm(ModelForm):
     """
     Form used for create a news
     """
-    class Meta: 
+    class Meta:
         model = models.News
         fields = ('category', 'title', 'content', 'status', )
 
 class NewsUpdateForm(ModelForm):
-    class Meta: 
+    class Meta:
         model = models.NewsUpdate
         fields = ('update_reason',)
 
 class NewsDeleteForm(ModelForm):
-    class Meta: 
+    class Meta:
         model = models.NewsDelete
         fields = ('deletion_reason',)
