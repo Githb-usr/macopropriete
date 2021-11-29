@@ -25,16 +25,25 @@ class UserAdmin(admin.ModelAdmin):
                     'avatar', 'about', 'is_resident', 'is_union_council', 'address',)
     fieldsets = (
         ('Compte', {'fields': ('email', 'password', 'status', 'uuid')}),
-        ('Personne', {'fields': ('user_type', 'first_name', 'last_name', 'address', 'contact_email', 'phone_number',
-                    'avatar', 'about',)}),
-        ('Statuts', {'fields': ('is_active', 'is_resident', 'is_union_council', 'is_staff',)}),
+        ('Personne', {'fields': ('user_type', 'first_name', 'last_name',
+                                 'address', 'contact_email', 'phone_number',
+                                 'avatar', 'about',)}),
+        ('Statuts',
+            {'fields': ('is_active', 'is_resident',
+                        'is_union_council', 'is_staff',)}),
     )
-    list_editable = ('user_type', 'first_name', 'last_name', 'contact_email', 'phone_number', 
-                     'is_resident', 'is_union_council',)
-    list_filter = ('date_joined', 'is_active','is_resident', 'is_union_council', 'is_staff',)
+    list_editable = (
+        'user_type', 'first_name', 'last_name',
+        'contact_email', 'phone_number',
+        'is_resident', 'is_union_council',
+    )
+    list_filter = (
+        'date_joined', 'is_active', 'is_resident',
+        'is_union_council', 'is_staff',
+    )
     ordering = ('last_name',)
     search_fields = ('email', 'first_name', 'last_name',)
-    
+
     def save_model(self, request, obj, form, change):
         if not obj.password:
             user_password = get_random_string(10)
@@ -51,9 +60,10 @@ class UserAdmin(admin.ModelAdmin):
                 'password': user_password,
                 'user_name': obj.get_full_name,
                 'user_uuid': obj.uuid,
-            }            
+            }
             generic_send_mail(message_subject, html_page, recipients, email_context)
 
         super().save_model(request, obj, form, change)
+
 
 admin.site.register(User, UserAdmin)
