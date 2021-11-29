@@ -8,7 +8,7 @@ PARTY = 'PARTY'
 WEBSITE = 'WEBSITE'
 WORKS = 'WORKS'
 SUBJECTS = [
-    ('','---------'),
+    ('', '---------'),
     (CONDOMINIUM, 'La copropriété'),
     (WEBSITE, 'Le site'),
     (MEETING, 'Les réunions'),
@@ -22,7 +22,7 @@ OWNER_LESSOR = 'OWNER LESSOR'
 TENANT = 'TENANT'
 SYNDIC = 'SYNDIC'
 USER_TYPE = [
-    ('','---------'),
+    ('', '---------'),
     (OWNER_OCCUPIER, 'Copropriétaire occupant'),
     (OWNER_LESSOR, 'Copropriétaire bailleur'),
     (TENANT, 'Locataire'),
