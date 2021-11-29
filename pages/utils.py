@@ -20,4 +20,10 @@ def generic_send_mail(mail_subject, html_page, recipients, email_context):
     from_email = EMAIL_HOST_USER
     html_message = render_to_string(html_page, email_context)
     plain_message = strip_tags(html_message)
-    send_mail(subject, plain_message, from_email, [recipients], html_message=html_message)
+    send_mail(
+        subject,
+        plain_message,
+        from_email,
+        [recipients],
+        html_message=html_message
+    )

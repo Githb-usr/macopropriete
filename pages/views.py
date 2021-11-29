@@ -37,14 +37,14 @@ class ContactFormView(FormView):
         admin_message_subject = 'Parc de La Chana : nouveau message sur le thème "{0}"'.format(raw_message_subject)
         user_message_subject = 'Votre message envoyé au Parc de La Chana sur le thème "{0}"'.format(raw_message_subject)
         email_context = {
-                'date': timezone.now(),
-                'first_name': valid_data['first_name'],
-                'last_name': valid_data['last_name'],
-                'email_address': valid_data['email_address'],
-                'user_type': user_type,
-                'message_subject': raw_message_subject,
-                'message' : valid_data['message'],
-            }
+            'date': timezone.now(),
+            'first_name': valid_data['first_name'],
+            'last_name': valid_data['last_name'],
+            'email_address': valid_data['email_address'],
+            'user_type': user_type,
+            'message_subject': raw_message_subject,
+            'message': valid_data['message'],
+        }
 
         recipients = ADMIN_RECIPIENTS
         html_page = 'pages/contact_to_admin_mail.html'
@@ -52,9 +52,14 @@ class ContactFormView(FormView):
         if valid_data['cc_myself']:
             recipients = valid_data['email_address']
             html_page = 'pages/contact_copy_to_user_mail.html'
-            generic_send_mail(user_message_subject, html_page, recipients, email_context)
+            generic_send_mail(
+                user_message_subject,
+                html_page,
+                recipients,
+                email_context
+            )
 
-        return super(ContactFormView, self).form_valid(form)        
+        return super(ContactFormView, self).form_valid(form)
 
 class ContactSuccessView(TemplateView):
     template_name = 'pages/contact_success.html'

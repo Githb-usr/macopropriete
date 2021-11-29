@@ -5,4 +5,5 @@ get-pip.py
 global_static/ckeditor/
 staticfiles/
 theme/
+toxi.ini
 venvp13/

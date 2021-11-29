@@ -9,16 +9,16 @@ class FaqForm(ModelForm):
     """
     Form used for create a FAQ question
     """
-    class Meta: 
+    class Meta:
         model = models.Faq
         fields = ('category', 'question', 'answer', 'status', )
 
 class FaqUpdateForm(ModelForm):
-    class Meta: 
+    class Meta:
         model = models.FaqUpdate
         fields = ('update_reason',)
 
 class FaqDeleteForm(ModelForm):
-    class Meta: 
+    class Meta:
         model = models.FaqDelete
         fields = ('deletion_reason',)

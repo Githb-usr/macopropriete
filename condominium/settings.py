@@ -21,7 +21,7 @@ LOT_TYPE = [
     (INDIVIDUAL_GARAGE, 'Garage'),
 ]
 
-#Individual garage location
+# Individual garage location
 ROW_1 = 'ROW_1'
 ROW_2 = 'ROW_2'
 INDIVIDUAL_GARAGE_LOCATION = [

@@ -22,6 +22,7 @@ class ZoneAdmin(admin.ModelAdmin):
     """
     list_display = ('code', 'name', 'description', 'image',)
 
+
 admin.site.register(Condominium, CondominiumAdmin)
 admin.site.register(Lot, LotAdmin)
 admin.site.register(Zone, ZoneAdmin)

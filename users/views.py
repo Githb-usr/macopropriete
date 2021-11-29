@@ -3,7 +3,9 @@
 
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView, PasswordResetCompleteView, PasswordResetDoneView
+from django.contrib.auth.views import LoginView, PasswordChangeView,\
+    PasswordChangeDoneView, PasswordResetView, PasswordResetConfirmView,\
+    PasswordResetCompleteView, PasswordResetDoneView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import redirect
@@ -15,7 +17,8 @@ from global_login_required import login_not_required
 
 from users.forms import ResetPasswordForm, UserLoginForm
 from users.models import User
-from users.settings import ACCOUNT_DOES_NOT_EXIST, ALREADY_VALIDATED_ACCOUNT_MSG, VALIDATED_ACCOUNT_SUCCESS_MSG
+from users.settings import ACCOUNT_DOES_NOT_EXIST, ALREADY_VALIDATED_ACCOUNT_MSG,\
+    VALIDATED_ACCOUNT_SUCCESS_MSG
 
 @login_not_required
 def validate_user_account_view(request, uuid):
@@ -54,7 +57,7 @@ class ProfileView(DetailView):
     def get_object(self, queryset=None):
         # To use uuid in the route
         return User.objects.get(uuid=self.kwargs.get("uuid"))
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['uuid'] = self.kwargs.get("uuid")
@@ -65,7 +68,7 @@ class ProfileUpdateView(SuccessMessageMixin, UpdateView):
     fields = ['avatar', 'about', 'contact_email', 'phone_number']
     template_name = 'users/profile_update.html'
     success_message = 'Votre profil a bien été mis à jour !'
-    
+
     def get_object(self):
         # To use uuid in the route
         return User.objects.get(uuid=self.kwargs.get('uuid'))
