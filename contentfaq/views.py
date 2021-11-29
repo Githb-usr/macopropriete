@@ -8,7 +8,8 @@ from django.views.generic.base import TemplateView
 
 from contentfaq.forms import FaqForm, FaqDeleteForm, FaqUpdateForm
 from contentfaq.models import Faq
-from contentfaq.settings import FAQ_CATEGORY, QUESTION_CREATION_SUCCESS, QUESTION_DELETE_SUCCESS, QUESTION_UPDATE_SUCCESS
+from contentfaq.settings import FAQ_CATEGORY, QUESTION_CREATION_SUCCESS,\
+    QUESTION_DELETE_SUCCESS, QUESTION_UPDATE_SUCCESS
 from pages.utils import choice_translation
 
 class FaqCategoryListView(TemplateView):
@@ -19,7 +20,7 @@ class FaqCategoryView(ListView):
     paginate_by = 5
     template_name = 'contentfaq/faq_category.html'
     context_object_name = 'faq_category'
-    
+
     def get_queryset(self):
         try:
             return Faq.objects.filter(category=self.kwargs['category'].upper()).filter(status='ACTIVATED')
@@ -31,9 +32,17 @@ class FaqCategoryView(ListView):
         current_cat = choice_translation(FAQ_CATEGORY, self.kwargs['category'].upper())
         context['current_category'] = current_cat
         page_number = self.request.GET.get('page', 1)
-        context['page_range_top'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
-        context['page_range_bottom'] = context['paginator'].get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
-        
+        context['page_range_top'] = context['paginator'].get_elided_page_range(
+            number=page_number,
+            on_each_side=1,
+            on_ends=1
+        )
+        context['page_range_bottom'] = context['paginator'].get_elided_page_range(
+            number=page_number,
+            on_each_side=1,
+            on_ends=1
+        )
+
         return context
 
 def faq_create_view(request):
@@ -45,13 +54,14 @@ def faq_create_view(request):
             question = faq_form.save(commit=False)
             question.author = request.user
             question.save()
-            messages.success(request, QUESTION_CREATION_SUCCESS) # Adding a confirmation message
+            # Adding a confirmation message
+            messages.success(request, QUESTION_CREATION_SUCCESS)
             return redirect('faq-category', category=question.category.lower())
 
     context = {
         'faq_form': faq_form,
     }
-            
+
     return render(request, 'contentfaq/faq_create.html', context=context)
 
 def faq_update_view(request, uuid):
@@ -74,7 +84,8 @@ def faq_update_view(request, uuid):
             question_update.faq = question
             question_update.updater = request.user
             question_update.save()
-            messages.success(request, QUESTION_UPDATE_SUCCESS) # Adding a confirmation message
+            # Adding a confirmation message
+            messages.success(request, QUESTION_UPDATE_SUCCESS)
             return redirect('faq-category', category=question.category.lower())
 
     context = {
@@ -82,7 +93,7 @@ def faq_update_view(request, uuid):
         'faq_form': faq_form,
         'faq_update_form': faq_update_form,
     }
-            
+
     return render(request, 'contentfaq/faq_update.html', context=context)
 
 def faq_delete_view(request, uuid):
@@ -98,12 +109,13 @@ def faq_delete_view(request, uuid):
         faq_delete.save()
         question.status = 'DELETED'
         question.save()
-        messages.success(request, QUESTION_DELETE_SUCCESS) # Adding a confirmation message
+        # Adding a confirmation message
+        messages.success(request, QUESTION_DELETE_SUCCESS)
         return redirect('faq-category', category=question.category.lower())
-        
+
     context = {
         'question': question,
         'faq_delete_form': faq_delete_form,
     }
-            
+
     return render(request, 'contentfaq/faq_delete.html', context=context)

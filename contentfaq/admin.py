@@ -9,5 +9,5 @@ class FaqAdmin(admin.ModelAdmin):
     """
     model = Faq
     empty_value_display = '-empty-'
-    list_display = ('category', 'question', 'answer', 
+    list_display = ('category', 'question', 'answer',
                     'creation_date', 'last_edit', 'status',)
