@@ -1,62 +1,75 @@
 <!-- lachana/contentfaq/templates/contentfaq/faq_category.html -->
+
 {% extends 'base_private_template.html' %}
 {% load static %}
 {% block content %}
     <main class="container text-body">
         <div class="main-section">
-            <div class ="d-flex justify-content-between align-items-start">
-                <!-- Breadcrumb -->
-                <div class="breadcrumb d-flex flex-row text-darkgreen">
-                    <ul class="my-2 my-lg-0">
-                        <li class="nav-item">
-                            <a href="/" class="breadcrumb-link">Accueil</a>/
-                        </li>
-                        <li class="nav-item">
-                            <span class="breadcrumb-link">Vos questions</span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- End breadcrumb -->
-                {% if user.is_staff %}
-                    <div class="d-flex admin-btn-zone justify-content-end">
-                        <button class="col-lg-5 dark-btn font-0 align-self-center"
-                                onclick="window.location.href='{% url 'faq-create' %}';">
-                            Créer une question
-                        </button>
+            <section class="header-section">
+                <div class ="d-flex justify-content-between align-items-start page-header-misc">
+                    <!-- Breadcrumb -->
+                    <div class="breadcrumb d-flex flex-row text-darkgreen">
+                        <ul class="my-2 my-lg-0">
+                            <li class="nav-item">
+                                <a href="/" class="breadcrumb-link">Accueil</a>/
+                            </li>
+                            <li class="nav-item">
+                                <span class="breadcrumb-link">Vos questions</span>
+                            </li>
+                        </ul>
                     </div>
-                {% endif %}
-            </div>
-            <div class="page-title-block">
-                <h1 class="page-title">Vos questions</h1>
-            </div>
+                    <!-- End breadcrumb -->
+                    {% if user.is_staff %}
+                        <div class="d-flex justify-content-end admin-btn-zone">
+                            <button class="col-lg-4 dark-btn font-0 align-self-center"
+                                    onclick="window.location.href='{% url 'faq-create' %}';">
+                                Créer une question
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="page-title-block">
+                    <h1 class="page-title">Vos questions</h1>
+                </div>
+            </section>
             <section class="faq-category-list-container">
                 <div class="faq-category-list justify-content-center">
-                    <a href="{% url 'faq-category' category='buildings' %}" class="">
-                        <div class="d-flex faq-category">
+                    <a href="{% url 'faq-category' category='buildings' %}" class="faq-block-link">
+                        <div class="d-flex faq-category bg-color-theme-1">
                             <img src="{% static 'contentfaq/img/img-faq-cat-1.jpg' %}" alt="xxx" class="faq-category-img" />
                             <div class="faq-category-name">Les bâtiments</div>
                         </div>
                     </a>
-                    <div class="d-flex faq-category">
-                        <img src="{% static 'contentfaq/img/img-faq-cat-2.jpg' %}" alt="xxx" class="faq-category-img" />
-                        <div class="faq-category-name">Thème 2</div>
-                    </div>
-                    <div class="d-flex faq-category">
-                        <img src="{% static 'contentfaq/img/img-faq-cat-3.jpg' %}" alt="xxx" class="faq-category-img" />
-                        <div class="faq-category-name">Thème 3</div>
-                    </div>
-                    <div class="d-flex faq-category">
-                        <img src="{% static 'contentfaq/img/img-faq-cat-4.jpg' %}" alt="xxx" class="faq-category-img" />
-                        <div class="faq-category-name">Thème 4</div>
-                    </div>
-                    <div class="d-flex faq-category">
-                        <img src="{% static 'contentfaq/img/img-faq-cat-5.jpg' %}" alt="xxx" class="faq-category-img" />
-                        <div class="faq-category-name">Thème 5</div>
-                    </div>
-                    <div class="d-flex faq-category">
-                        <img src="{% static 'contentfaq/img/img-faq-cat-6.jpg' %}" alt="xxx" class="faq-category-img" />
-                        <div class="faq-category-name">Thème 6</div>
-                    </div>
+                    <a href="{% url 'faq-cat-list' %}" class="faq-block-link">
+                        <div class="d-flex faq-category bg-color-theme-2">
+                            <img src="{% static 'contentfaq/img/img-faq-cat-2.jpg' %}" alt="xxx" class="faq-category-img" />
+                            <div class="faq-category-name">Thème 2</div>
+                        </div>
+                    </a>
+                    <a href="{% url 'faq-cat-list' %}" class="faq-block-link">
+                        <div class="d-flex faq-category bg-color-theme-3">
+                            <img src="{% static 'contentfaq/img/img-faq-cat-3.jpg' %}" alt="xxx" class="faq-category-img" />
+                            <div class="faq-category-name">Thème 3</div>
+                        </div>
+                    </a>
+                    <a href="{% url 'faq-cat-list' %}" class="faq-block-link">
+                        <div class="d-flex faq-category bg-color-theme-4">
+                            <img src="{% static 'contentfaq/img/img-faq-cat-4.jpg' %}" alt="xxx" class="faq-category-img" />
+                            <div class="faq-category-name">Thème 4</div>
+                        </div>
+                    </a>
+                    <a href="{% url 'faq-cat-list' %}" class="faq-block-link">
+                        <div class="d-flex faq-category bg-color-theme-5">
+                            <img src="{% static 'contentfaq/img/img-faq-cat-5.jpg' %}" alt="xxx" class="faq-category-img" />
+                            <div class="faq-category-name">Thème 5</div>
+                        </div>
+                    </a>
+                    <a href="{% url 'faq-cat-list' %}" class="faq-block-link">
+                        <div class="d-flex faq-category bg-color-theme-6">
+                            <img src="{% static 'contentfaq/img/img-faq-cat-6.jpg' %}" alt="xxx" class="faq-category-img" />
+                            <div class="faq-category-name">Thème 6</div>
+                        </div>
+                    </a>
                 </div>
             </section>
         </div>
