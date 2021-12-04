@@ -29,7 +29,7 @@ class ContactForm(forms.Form):
     )
     cc_myself = forms.BooleanField(
         required=False,
-        label='Recevoir une copie de mon message',
+        label='Recevoir une copie de votre message',
     )
     message = forms.CharField(
         widget=CKEditorWidget(),
