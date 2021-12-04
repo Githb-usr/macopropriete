@@ -3,15 +3,15 @@
 {% extends 'base_private_template.html' %}
 {% load static %}
 {% block content %}
-<main class="container text-body main-product_detail">
+<main class="container">
     <section class="main-section">
-        <div class ="d-flex justify-content-between align-items-start">
+        <div class ="d-flex justify-content-between align-items-start page-header-misc">
             <!-- Breadcrumb -->
-            <div class="row breadcrumb">
-                <ul class="navbar-nav ms-auto my-2 my-lg-0 d-flex">
+            <div class="breadcrumb d-flex flex-row text-darkgreen">
+                <ul class="my-2 my-lg-0">
                     <li class="nav-item">
                         <a href="/" 
-                        class="breadcrumb-link text-body">Accueil</a>>
+                        class="breadcrumb-link">Accueil</a>>
                     </li>
                     <li class="nav-item">
                         {% if event_detail.start_date > now %}
@@ -19,16 +19,16 @@
                         {% else %}
                             <a href="{% url 'event-list-old' %}"
                         {% endif %}
-                            class="breadcrumb-link text-body">Les évènements</a>>
+                            class="breadcrumb-link">Les évènements</a>>
                     </li>
                     <li class="nav-item">
-                        <span class="breadcrumb-link text-body">{{ event_detail.title }}</span>
+                        <span class="breadcrumb-link">{{ event_detail.title|truncatechars:15 }}</span>
                     </li>
                 </ul>
             </div>
             <!-- End breadcrumb -->
             {% if user.is_staff %}
-                <div class="d-flex admin-btn-zone justify-content-end">
+                <div class="d-flex admin-btn-zone">
                     <button class="col-lg-3 align-self-center dark-btn font-0 content-update-btn"
                             onclick="window.location.href='{% url 'event-update' uuid=event_detail.uuid %}';">
                         Modifier
@@ -51,16 +51,16 @@
                 </div>
             {% endfor %}
         {% endif %}
-        <article class="row event-detail justify-content-center text-muted">
+        <article class="row event-detail justify-content-center text-body">
             <div class="event-detail-date {{ event_detail.category|lower }}-color">{{ event_detail.start_date|date:"l j F Y"|capfirst }}</div>
             <div class="event-detail-title {{ event_detail.category|lower }}-color">{{ event_detail.title }}</div>
             <div class="row event-detail-category {{ event_detail.category|lower }}-color">
-                <div class="col-lg-3">
+                <div class="col-lg-1">
                     {% with 'global_static/dist/assets/icons/'|add:'icon-content-'|add:event_detail.category|lower|add:'.png' as image %}
                         <img src="{% static image %}"  class="content-list-item-img" />
                     {% endwith %}
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-10">
                     <div class="event-detail-marker">Heure de début : {{ event_detail.start_date|time:"H:i" }}</div>
                     <div class="event-detail-marker">Heure de fin   : {{ event_detail.end_date|time:"H:i" }}</div>
                     <div class="event-detail-marker">Durée : {{ event_detail.start_date|timesince:event_detail.end_date }}</div>
@@ -72,9 +72,7 @@
                 </div>
             </div>
             <div class="event-detail-content">{{ event_detail.content|safe }}</div>
-            <div class="event-detail-img-block"><img src="{{event_detail.image.url}}" class="event-detail-img" /></div>
         </article>
-        <hr class="content-separator">
         <div class="row content-detail-btn justify-content-between">
             {% if event_detail.get_previous_by_creation_date %}
             <div class="col-lg-4 mt-4">

@@ -4,7 +4,7 @@
 {% block content %}
     <main class="container text-body">
         <div class="main-section">
-            <div class ="d-flex justify-content-between align-items-start">
+            <div class ="d-flex justify-content-between align-items-start page-header-misc">
                 <!-- Breadcrumb -->
                 <div class="breadcrumb d-flex flex-row text-darkgreen">
                     <ul class="my-2 my-lg-0">
@@ -21,8 +21,8 @@
                 </div>
                 <!-- End breadcrumb -->
                 {% if user.is_staff %}
-                    <div class="d-flex admin-btn-zone justify-content-end">
-                        <button class="col-lg-5 dark-btn font-0 align-self-center"
+                    <div class="d-flex justify-content-end admin-btn-zone">
+                        <button class="col-lg-4 dark-btn font-0 align-self-center"
                                 onclick="window.location.href='{% url 'faq-create' %}';">
                             Créer une question
                         </button>

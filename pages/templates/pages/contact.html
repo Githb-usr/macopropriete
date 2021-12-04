@@ -3,25 +3,21 @@
 {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
-<section class="contact-section text-body">
-    <div class="page-title-block">
-        <h1 class="page-title">Contact</h1>
-    </div>
-    <div class="contact-intro">
-        <p>
+<main class="container">
+    <section class="page-header d-flex flex-column align-items-center text-green">
+        <h1 class="page-header-title">Contact</h1>
+        <p class="page-header-intro">
             Vous pouvez utiliser ce formulaire pour nous contacter, si le site ne vous a pas permis de trouver une réponse à votre question.
+            <br>Attention, tous les champs sont obligatoires.
         </p>
-        <p>
-            Attention, tous les champs sont obligatoires.
-        </p>
-    </div>
-    <div class="contact-form">
+    </section>
+    <section class="contact-form d-flex">
         <form method="post">
         {% csrf_token %}
             {{ form.media }}
             {{ form|crispy }}
             <button type="submit" class="dark-btn">Envoyer</button>
         </form>
-    </div>
-</section>
+    </section>
+</main>
 {% endblock content %}

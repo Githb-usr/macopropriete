@@ -11,7 +11,7 @@ class NewsForm(ModelForm):
     """
     class Meta:
         model = models.News
-        fields = ('category', 'title', 'content', 'status', )
+        fields = ('category', 'title', 'content', )
 
 class NewsUpdateForm(ModelForm):
     class Meta:
