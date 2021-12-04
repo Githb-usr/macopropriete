@@ -4,10 +4,11 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <main class="container">
-    <section class="profile-header d-flex flex-column align-items-center text-green">
-        <h1 class="profile-header-title">Créer une news</h1>
-        <p class="header-intro text-start">
-            Remplissez et validez le formulaire ci-dessous.<br>Les champs marqués d'une étoile * sont obligatoires.
+    <section class="page-header d-flex flex-column align-items-center text-green">
+        <h1 class="page-header-title">Créer une news</h1>
+        <p class="page-header-intro text-start">
+            Remplissez et validez le formulaire ci-dessous.
+            <br>Les champs marqués d'une étoile * sont obligatoires.
         </p>
     </section>
     <section class="d-flex flex-column profile-update-content text-body">
@@ -21,7 +22,6 @@
                 Annuler
             </button>
         </form>
-        
     </section>
 </main>
 {% endblock content %}
