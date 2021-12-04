@@ -29,45 +29,45 @@
                 <div class="current-connected-user-infos">Informations publiques (visibles de tous les personnes inscrites sur le site)</div>
             {% endif %}
             <hr class="profile-separator">
-            <div class="profile-label-about">A propos de moi</div>
+            <div class="profile-label-about">A propos de moi :</div>
             {% if user.about %}
                 <div class="profile-value">{{user.about}}</div>
             {% else %}
                 <div class="profile-value empty-value">Non renseigné</div>
             {% endif %}
             <hr class="profile-separator">
-            <div class="d-flex flex-row">
+            <div class="profile-data d-flex">
             <div class="profile-label">Résident de la copropriété :</div>
             {% if user.is_resident %}
                 <div class="profile-value">
-                    <i class="bi bi-check-square"></i>Oui
-                    <i class="bi bi-square"></i>Non
+                    <i class="bi bi-check-square"> Oui</i>
+                    <i class="bi bi-square"> Non</i>
                 </div>
             {% else %}
                 <div class="profile-value">
-                    <i class="bi bi-square"></i>Oui
-                    <i class="bi bi-check-square"></i>Non
+                    <i class="bi bi-square"> Oui</i>
+                    <i class="bi bi-check-square"> Non</i>
                 </div>
             {% endif %}
             </div>
             <hr class="profile-separator">
             {% if user.is_resident %}
-                <div class="d-flex flex-row">
+                <div class="profile-data d-flex">
                     <div class="profile-label">Bâtiment :</div><div class="profile-value">{{user.get_address_display}}</div>
                 </div>
             {% endif %}
             <hr class="profile-separator">
-            <div class="d-flex flex-row">
+            <div class="profile-data d-flex">
                 <div class="profile-label">Membre du conseil syndical :</div>
                 {% if user.is_union_council %}
                     <div class="profile-value">
-                        <i class="bi bi-check-square"></i>Oui
-                        <i class="bi bi-square"></i>Non
+                        <i class="bi bi-check-square"> Oui</i>
+                        <i class="bi bi-square"> Non</i>
                     </div>
                 {% else %}
                     <div class="profile-value">
-                        <i class="bi bi-square"></i>Oui
-                        <i class="bi bi-check-square"></i>Non
+                        <i class="bi bi-square"> Oui</i>
+                        <i class="bi bi-check-square"> Non</i>
                     </div>
                 {% endif %}
             </div>
@@ -78,12 +78,12 @@
             <div class="d-flex flex-column profile-private-content text-body">
                 <div class="current-connected-user-infos">Informations privées (visibles de vous et du Conseil Syndical seulement)</div>
                 <hr class="profile-separator">
-                <div class="d-flex flex-row">
+                <div class="profile-data d-flex">
                     <div class="profile-label">Email de connexion :</div>
                     <div class="profile-value">{{user.email}}</div>
                 </div>
                 <hr class="profile-separator">
-                <div class="d-flex flex-row">
+                <div class="profile-data d-flex">
                     <div class="profile-label">Email de contact :</div>
                     {% if user.contact_email %}
                         <div class="profile-value">{{user.contact_email}}</div>
@@ -92,7 +92,7 @@
                     {% endif %}
                 </div>
                 <hr class="profile-separator">
-                <div class="d-flex flex-row">
+                <div class="profile-data d-flex">
                     <div class="profile-label">Téléphone :</div>
                     {% if user.phone_number %}
                         <div class="profile-value">{{user.phone_number}}</div>
@@ -101,16 +101,16 @@
                     {% endif %}
                 </div>
                 <hr class="profile-separator">
-                <div class="d-flex flex-row">
-                    <div class="profile-label last-block-element">Dernière connexion le :</div><div class="profile-value last-block-element">{{user.last_login}}</div>
+                <div class="profile-data d-flex">
+                    <div class="profile-label last-block-element">Dernière connexion le :</div><div class="profile-value last-block-element">{{ user.last_login|date:"l d/m/Y" }}</div>
                 </div>
                 <hr class="profile-separator">
-                <div class="d-flex flex-row">
-                    <div class="profile-label">Création du compte le :</div><div class="profile-value">{{user.date_joined}}</div>
+                <div class="profile-data d-flex">
+                    <div class="profile-label">Création du compte le :</div><div class="profile-value">{{ user.date_joined|date:"l d/m/Y" }}</div>
                 </div>
                 <hr class="profile-separator">
 
-                <div class="d-flex flex-row justify-content-around">
+                <div class="profile-action-btn d-flex justify-content-around">
                     <button class="col-lg-5 align-self-center dark-btn profile-btn"
                             onclick="window.location.href='{% url 'profile-update' uuid=user.uuid %}';">
                         Modifier mes informations
