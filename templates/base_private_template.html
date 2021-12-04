@@ -28,7 +28,7 @@
                 <!-- Navigation-->
                 <nav class="navbar container flex-column navbar-expand-lg navbar-light fixed-top" id="mainNav">
                     <div class="menu-line-1 row bg-primary text-white">
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        {% comment %} <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> {% endcomment %}
                         <div class="collapse navbar-collapse" id="userNavbarResponsive">
                             <div class="col-lg-5 col-sm-12" id="user-menu">
                                 <ul class="navbar-nav d-flex">
@@ -53,7 +53,7 @@
                         </div>
                         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#websiteNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="websiteNavbarResponsive">
-                            <div class="col-lg-7 col-sm-12" id="site-menu">
+                            <div class="col-lg-7 col-sm-12 d-flex justify-content-end" id="site-menu">
                                 <ul class="row navbar-nav d-flex">
                                     <li class="col-3 nav-item ml2">
                                         <a href="{% url 'news-list' %}" class="nav-link">
@@ -78,6 +78,48 @@
                         </div>
                     </div>
                 </nav>
+                <nav class="navbar container navbar-expand-lg navbar-light fixed-top" id="responsiveMainNav">
+                    <a href="/" class="d-flex navbar-brand navbar-logo">
+                        <img src="{% static 'global_static/dist/assets/logos/logo-condominium.png' %}" alt="Logo Parc de la Chana" id="logo-condominium" />
+                    </a>
+                    <button class="d-flex navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#websiteNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="websiteNavbarResponsive">
+                        <ul class="navbar-nav d-flex">
+                            <li class="nav-item">
+                                <a href="{% url 'profile' user.uuid %}" class="nav-link d-flex align-items-center">
+                                    <div class="menu-text">Mon profil</div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'news-list' %}" class="nav-link d-flex align-items-center">
+                                    <div class="menu-text">Les news</div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'event-list-new' %}" class="nav-link d-flex align-items-center">
+                                    <div class="menu-text">Les évènements</div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'faq-cat-list' %}" class="nav-link d-flex align-items-center">
+                                    <div class="menu-text">Vos questions</div>
+                                </a>
+                            </li>
+                            {% if user.is_superuser %}
+                            <li class="nav-item">
+                                <a href="/admin/" class="nav-link d-flex align-items-center">
+                                    <div class="menu-text">Administration</div>
+                                </a>
+                            </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link d-flex align-items-center">
+                                    <div class="menu-text">Déconnexion</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             {% endblock nav %}
             <div class="content-wrap">
                 {% block header %}{% endblock header %}
@@ -85,19 +127,17 @@
             </div>
             {% block footer %}
                 <!-- Footer-->
-                <footer class="bg-primary py-3">
-                    <div class="container px-4 px-lg-5">
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-12 text-white">
-                                <a href="{% url 'legal-notices' %}">Mentions légales</a>
-                            </div>
-                            <div class="col-lg-2 col-sm-12 text-center text-white">
-                                <a href="{% url 'contact' %}">Contact</a>
-                            </div>
-                            <div class="col-lg-8 col-sm-12 text-white" id="footer-copyright">
-                                Copyright &copy; 2021 - Copropriété Parc de la Chana
-                            </div>
+                <footer class="d-flex bg-primary py-3">
+                    <div class="d-flex justify-content-between f-link">
+                        <div class="text-white f-legal-notices">
+                            <a href="{% url 'legal-notices' %}">Mentions légales</a>
                         </div>
+                        <div class="text-white f-contact">
+                            <a href="{% url 'contact' %}">Contact</a>
+                        </div>
+                    </div>
+                    <div class="col-12 text-white f-copyright">
+                        Copyright &copy; 2021 - Copropriété Parc de la Chana
                     </div>
                 </footer>
             {% endblock footer %}

@@ -11,7 +11,7 @@ class FaqForm(ModelForm):
     """
     class Meta:
         model = models.Faq
-        fields = ('category', 'question', 'answer', 'status', )
+        fields = ('category', 'question', 'answer', )
 
 class FaqUpdateForm(ModelForm):
     class Meta:

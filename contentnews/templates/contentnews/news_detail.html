@@ -2,28 +2,28 @@
 {% extends 'base_private_template.html' %}
 {% load static %}
 {% block content %}
-<main class="container main-product_detail">
+<main class="container">
     <section class="main-section">
-        <div class ="d-flex justify-content-between align-items-start">
+        <div class ="d-flex justify-content-between align-items-start page-header-misc">
             <!-- Breadcrumb -->
             <div class="breadcrumb d-flex flex-row text-darkgreen">
                 <ul class="my-2 my-lg-0">
                     <li class="nav-item">
                         <a href="/" 
-                        class="breadcrumb-link">Accueil</a>/
+                        class="breadcrumb-link">Accueil</a>>
                     </li>
                     <li class="nav-item">
                         <a href="{% url 'news-list' %}" 
-                        class="breadcrumb-link">Les news</a>/
+                        class="breadcrumb-link">Les news</a>>
                     </li>
                     <li class="nav-item">
-                        <span class="breadcrumb-link">{{ news_detail.title }}</span>
+                        <span class="breadcrumb-link">{{ news_detail.title|truncatechars:20 }}</span>
                     </li>
                 </ul>
             </div>
             <!-- End breadcrumb -->
             {% if user.is_staff %}
-                <div class="d-flex admin-btn-zone justify-content-end">
+                <div class="d-flex admin-btn-zone">
                     <button class="col-lg-3 align-self-center dark-btn font-0 content-update-btn"
                             onclick="window.location.href='{% url 'news-update' uuid=news_detail.uuid %}';">
                         Modifier
@@ -47,15 +47,15 @@
             {% endfor %}
         {% endif %}
         <article class="news-detail justify-content-center text-body">
-            <div class="news-detail-date">News du {{ news_detail.creation_date|date }}</div>
+            <div class="news-detail-date">News du {{ news_detail.creation_date|date:"j F Y" }}</div>
             <div class="news-detail-title">{{ news_detail.title }}</div>
             <div class="news-detail-category">Catégorie : {{ news_detail.get_category_display }}</div>
             <div class="news-detail-content">{{ news_detail.content|safe }}</div>
         </article>
-        <div class="row content-detail-btn justify-content-between">
+        <div class="row content-detail-btn justify-content-between content-detail-nav">
             {% if news_detail.get_previous_by_creation_date %}
             <div class="col-lg-3 mt-4">
-                <button class="d-flex align-items-center light-btn font-0"
+                <button class="d-flex align-items-center light-btn font-0 content-nav-previous-btn"
                         onclick="window.location.href='{% url 'news-detail' news_detail.get_previous_by_creation_date.uuid %}';"
                         data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="Voir la news précédente (plus ancienne)">
@@ -75,7 +75,7 @@
             </div>
             {% if news_detail.get_next_by_creation_date %}
             <div class="col-lg-3 mt-4 d-flex justify-content-end">
-                <button class="d-flex align-items-center light-btn font-0"
+                <button class="d-flex align-items-center light-btn font-0 content-nav-next-btn"
                         onclick="window.location.href='{% url 'news-detail' news_detail.get_next_by_creation_date.uuid %}';"
                         data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="Voir la news suivante (plus récente)">

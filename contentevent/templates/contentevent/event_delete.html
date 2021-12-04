@@ -7,13 +7,15 @@
     <section class="profile-header d-flex flex-column align-items-center text-green">
         <div class="d-flex profile-header-img-container justify-content-center align-items-center">
             {% with 'global_static/dist/assets/icons/'|add:'icon-content-'|add:event.category|lower|add:'.png' as image %}
-                <img src="{% static image %}"  class="content-list-item-img" />
+                <img src="{% static image %}"  class="content-list-item-img-header" />
             {% endwith %}
         </div>
         <h1 class="profile-header-title">{{ event.title }}</h1>
         <div class="profile-header-subtitle">Supprimer l'évènement</div>
-        <p class="header-intro text-start">
-            Etes-vous sûr(e) de vouloir supprimer cet évènement ? Si oui, remplissez et validez le formulaire ci-dessous.<br>Les champs marqués d'une étoile * sont obligatoires.
+        <p class="page-header-intro text-start">
+            Etes-vous sûr(e) de vouloir supprimer cet évènement ?
+            <br>Si oui, remplissez et validez le formulaire ci-dessous.
+            <br>Les champs marqués d'une étoile * sont obligatoires.
         </p>
     </section>
     <section class="d-flex flex-column profile-update-content text-body">

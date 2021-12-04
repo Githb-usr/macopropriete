@@ -7,7 +7,7 @@
     <section class="profile-header d-flex flex-column align-items-center text-green">
         <div class="d-flex profile-header-img-container justify-content-center align-items-center">
             {% with 'global_static/dist/assets/icons/'|add:'icon-content-'|add:news.category|add:'.png' as image %}
-                <img src="{% static image %}"  class="content-list-item-img" />
+                <img src="{% static image %}"  class="content-list-item-img-header" />
             {% endwith %}
         </div>
         <h1 class="profile-header-title">{{ news.title }}</h1>
