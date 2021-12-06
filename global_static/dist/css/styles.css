@@ -11407,10 +11407,7 @@ nav, nav.container {
 
 nav.container {
   margin-top: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
 }
 
 .menu-line-1, .menu-line-2 {
@@ -11422,12 +11419,21 @@ nav.container {
   height: 3rem;
 }
 
-div#userNavbarResponsive {
-  padding-right: 0.5rem;
+div#userNavbar {
+  display: flex !important;
+  flex-direction: row;
+  flex-basis: auto;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-div#userNavbarResponsive, div#websiteNavbarResponsive {
+div#userNavbar, div#websiteNavbar {
   justify-content: flex-end;
+}
+
+div#user-menu ul, div#site-menu ul {
+  flex-direction: row;
 }
 
 #user-menu {
@@ -11445,15 +11451,21 @@ div#userNavbarResponsive, div#websiteNavbarResponsive {
   padding-right: 0;
 }
 
-div#websiteNavbarResponsive {
-  width: 80%;
-  padding-right: 0;
+div#websiteNavbar {
+  display: flex;
+  flex-direction: row;
+  flex-basis: auto;
+  align-items: center;
+  width: 85%;
+  margin: 0;
+  padding: 0;
 }
 
 div.navbar-logo {
   display: flex;
   width: 15%;
   padding: 0.5rem 0;
+  align-items: center;
 }
 
 div.navbar-logo a {
@@ -11468,6 +11480,8 @@ div.navbar-logo a {
 }
 
 ul.row {
+  display: flex;
+  align-items: center;
   padding-right: 0;
   margin-right: 0;
 }
@@ -11523,6 +11537,8 @@ a.nav-link:hover {
 #mainNav .navbar-nav .ml2 {
   display: flex;
   flex-direction: column;
+  width: 15%;
+  padding: 0;
   justify-content: center;
 }
 #mainNav .navbar-nav .ml2 .nav-link {
@@ -11531,7 +11547,7 @@ a.nav-link:hover {
   align-items: center;
   color: #000;
   padding-right: 0;
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
 }
 #mainNav .navbar-nav:last-child .nav-item {
   padding-right: 0;
@@ -11922,12 +11938,16 @@ input#id_start_date_0, input#id_start_date_1, input#id_end_date_0, input#id_end_
 }
 
 .index-welcome {
+  flex-direction: row;
+  width: 100%;
   margin-top: 0;
   padding-right: 0;
+  justify-content: space-between;
 }
 
 .index-welcome-title {
   width: 45%;
+  margin-right: 3%;
   color: #ADB386;
 }
 
@@ -11945,16 +11965,12 @@ input#id_start_date_0, input#id_start_date_1, input#id_end_date_0, input#id_end_
   margin-bottom: 3rem;
 }
 
-.index-welcome-text {
-  padding-right: 1rem;
-}
-
 .index-welcome-button {
   width: 9rem;
 }
 
 .index-welcome-carousel {
-  width: 55%;
+  width: 52%;
   padding-right: 0;
   margin-right: 0;
 }
@@ -12330,6 +12346,11 @@ main {
   padding: 0 0 3rem 0;
 }
 
+main.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .col, .col-4 {
   padding: 0;
   margin: 0;
@@ -12498,7 +12519,7 @@ div.messages button.btn-close-white, div.messages button.btn-close-white:hover {
 }
 
 div.breadcrumb {
-  width: 40%;
+  width: 100%;
   margin-bottom: 2rem;
   font-size: 0.8rem;
 }
@@ -12603,9 +12624,6 @@ p.page-header-intro {
   color: #fff;
 }
 
-/* ********************************* */
-/* Responsive : vertical smartphones */
-/* ********************************* */
 @media screen and (max-width: 767px) {
   .content-wrap {
     width: 100%;
@@ -12790,6 +12808,7 @@ p.page-header-intro {
   }
 
   .index-welcome {
+    flex-direction: column;
     margin-top: 0;
     padding-right: 0;
   }
@@ -13334,301 +13353,133 @@ p.page-header-intro {
     margin-bottom: 1rem;
   }
 }
-/* ******************** */
-/* Responsive : tablets */
-/* ******************** */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  #mainNav .navbar-brand {
-    font-size: 1.7rem;
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  main.container {
+    margin: 0;
+    padding: 0;
   }
 
-  #pb-img-logo {
-    width: 1.7rem;
+  .content-wrap {
+    width: 100%;
+    padding: 13rem 3rem 5rem 3rem;
   }
 
-  #nav-search-form {
-    margin-top: 1rem;
+  #responsiveMainNav {
+    display: none;
   }
 
-  #mainNav .navbar-nav {
-    flex-direction: row;
+  .menu-line-1, .menu-line-2 {
+    padding: 0 3rem 0 3rem;
   }
 
-  #mainNav .navbar-nav .nav-item .nav-link,
-#mainNav .navbar-nav .nav-item .nav-link:hover,
-#mainNav .navbar-nav .nav-item .nav-link:active {
-    color: #fff;
+  div#websiteNavbar li.nav-item {
+    width: 16%;
   }
 
-  #mainNav .nav-item, #mainNav .nav-item-large {
+  div#user-menu ul a, div#site-menu ul a {
+    justify-content: end;
+  }
+
+  div.navbar-logo {
+    display: flex;
+    width: 15%;
+    padding: 0;
+    align-items: center;
+  }
+
+  div.navbar-logo a {
     display: flex;
     align-content: center;
   }
 
-  .nav-item {
-    margin: 0 1.5rem;
+  .menu-icon {
+    width: 2.5rem;
   }
 
-  .nav-item-large {
-    margin: 0;
-  }
-
-  .connect-link, .register-link {
-    margin-top: 1rem;
-  }
-
-  .content-wrap {
-    padding-bottom: 8rem;
-  }
-
-  footer {
-    height: 8rem;
-  }
-
-  header.masthead {
-    padding-bottom: 1rem;
-  }
-
-  .index-title-block {
-    margin-top: 3.5rem;
-  }
-
-  .index-title-block h2, .index-title-block .h2 {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-  }
-
-  .large-search-form {
-    width: 100%;
-    margin: 1rem 0 0 0;
-  }
-
-  #portraits-intro div p {
-    margin: 0 0 0.5rem 0;
-    padding: 0;
-  }
-
-  .avatars {
-    justify-content: start;
-  }
-
-  .avatars .col-sm-12 {
-    width: 50%;
-    padding: 0;
-  }
-
-  .avatar-colette p, .avatar-remy p {
-    margin-top: 0.3rem;
-  }
-
-  #page-contact h2, #page-contact .h2 {
-    font-size: 1.5rem;
-  }
-
-  .contact-intro {
-    font-size: 1.05rem;
-    padding: 1rem 0 1rem 0;
-  }
-
-  #contact-phone {
-    margin-bottom: 1rem;
-  }
-
-  #contact-mail {
-    margin-bottom: 0.5rem;
-  }
-
-  #contact-phone i {
-    margin-bottom: 0.7rem;
-  }
-
-  main {
-    flex-grow: 1;
-    padding: 1rem 0 1rem 0;
-  }
-
-  .simple-header {
-    height: 13rem;
-  }
-
-  main section {
-    padding: 0 0 1rem 0;
-  }
-
-  .intro-section {
-    font-size: 1.2rem;
-  }
-
-  .fav-intro-section {
-    font-size: 1.05rem;
-  }
-
-  .main-instructions p {
-    padding: 0;
-  }
-
-  .regitration-main-section form ul {
-    padding-left: 1rem;
-  }
-
-  .regitration-main-section form #id_password2 {
-    margin-right: 3rem;
-  }
-
-  .regitration-main-section form button {
-    margin-top: 0;
-  }
-
-  .user-img {
-    width: 90%;
-    border: 1px #212529 solid;
-    margin: 0 1rem 1rem 1rem;
-  }
-
-  .user-image {
-    height: auto;
-    margin: 0 auto;
-    padding: 0.5rem;
-  }
-
-  .user-data-line {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
-  }
-
-  .product-list-intro-section {
-    font-size: 1.05rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .product-card {
-    position: relative;
-    width: 85%;
-    margin-bottom: 2rem;
-  }
-
-  .card-score {
-    position: absolute;
-    top: -1.25rem;
-    left: 94%;
-    width: 40px;
-    height: 40px;
-    border-radius: 30px;
-    padding-top: 0.2rem;
-    font-size: 1.6rem;
-  }
-
-  .product-list-intro-section .main-instructions {
-    flex-direction: column;
-  }
-
-  .product-list-intro-section .main-instructions div {
-    display: flex;
-    justify-content: center;
-  }
-
-  .initial-product-thumbnail {
-    margin: 0 0 0.5rem 0;
-  }
-
-  .product-detail-img {
-    background-color: #fff;
-    max-height: 25rem;
-    margin: 0;
-    padding: 1rem;
-  }
-
-  .main-product_detail {
-    margin: 0 0 0 1rem;
+  #mainNav .navbar-nav .nav-item .nav-link {
     padding: 0 1rem;
   }
 
-  .product-detail-data {
-    margin: 0 1rem;
-    padding-top: 0;
-  }
-
-  .product-detail-data h2, .product-detail-data .h2 {
-    font-size: 1.2rem;
-  }
-
-  .product-detail-identification {
-    width: 100%;
-  }
-
-  .product-detail-identification p {
-    margin: 0 0 0.7rem 0;
-  }
-
-  .product-detail-nutriment-title {
+  #mainNav .navbar-nav .ml2 {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
     padding: 0;
-    font-size: 1.1rem;
+    justify-content: end;
   }
 
-  .product-detail-nutriment {
-    padding-top: 1rem;
+  #mainNav .navbar-nav .nav-item .nav-link:last-child {
+    padding-right: 0;
   }
 
-  .product-detail-nutriment-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  footer {
+    padding: 0 3% 0 3%;
   }
 
-  .green-dot, .orange-dot, .red-dot {
-    width: 25px;
-    height: 25px;
-    border-radius: 25px;
-    margin-left: 0.6rem;
-    vertical-align: middle;
+  .index-welcome-title h1, .index-welcome-title .h1 {
+    font-size: 2.5rem;
   }
 
-  .product-detail-nutriscore {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
+  .index-welcome-title h1, .index-welcome-title .h1, .index-welcome-text p {
+    margin-bottom: 1.5rem;
   }
 
-  .nutriscore-img {
-    width: 35%;
-  }
-
-  .product_detail-links div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .product_detail-links div a {
-    width: 50%;
-    margin-bottom: 1rem;
-    justify-content: center;
-  }
-
-  hr.separator {
-    margin: 1rem 0 1.5rem 0;
-  }
-
-  .comment-separator {
-    width: 94%;
-  }
-
-  textarea#id_content {
+  div.breadcrumb {
     width: 100%;
-  }
-
-  .btn-comment {
-    margin-bottom: 2.5rem;
-  }
-
-  .pagination-comment-top {
     margin-bottom: 2rem;
+    font-size: 0.8rem;
   }
 
-  .pagination-comment-bottom {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  .breadcrumb ul {
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: left;
+  }
+
+  .breadcrumb ul li, .breadcrumb ul li a {
+    margin-right: 0.3rem;
+  }
+
+  .breadcrumb ul li a, .breadcrumb ul li a:hover {
+    color: #65725E;
+  }
+
+  .breadcrumb-link {
+    color: #65725E;
+    text-decoration: none;
+    line-height: 1.5;
+    text-align: center;
+    margin-right: 0.3rem;
+  }
+
+  section.news-list-section ul a {
+    display: block;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  article.event-detail {
+    padding: 0 1rem;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .content-wrap {
+    width: 80%;
+    padding: 13rem 4rem 6rem 4rem;
+  }
+
+  #responsiveMainNav {
+    display: none;
+  }
+
+  .menu-line-1, .menu-line-2 {
+    padding: 0 10% 0 10%;
+  }
+
+  footer {
+    padding: 0 11% 0 11%;
   }
 }
