@@ -13,8 +13,8 @@
                     {% endfor %}
                 </div>
             {% endif %}
-            <div class="index-welcome row d-flex justify-content-between">
-                <div class="index-welcome-title col-lg-5">
+            <div class="index-welcome d-flex">
+                <div class="index-welcome-title">
                     <h1><span class="span-100">Bienvenue</span> sur le site de notre copropriété</h1>
                     <div class="index-welcome-text text-body">
                         <p>
@@ -28,7 +28,7 @@
                         </button>
                     </div>
                 </div>
-                <div id="index-carousel" class="index-welcome-carousel col-lg-7 d-flex carousel slide carousel-fade" data-bs-ride="carousel">
+                <div id="index-carousel" class="index-welcome-carousel d-flex carousel slide carousel-fade" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="{% static 'pages/img/img-home-1.jpg' %}" class="d-block w-100 index-slide-img" alt="Le Tulipier">

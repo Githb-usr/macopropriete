@@ -28,9 +28,8 @@
                 <!-- Navigation-->
                 <nav class="navbar container flex-column navbar-expand-lg navbar-light fixed-top" id="mainNav">
                     <div class="menu-line-1 row bg-primary text-white">
-                        {% comment %} <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#userNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> {% endcomment %}
-                        <div class="collapse navbar-collapse" id="userNavbarResponsive">
-                            <div class="col-lg-5 col-sm-12" id="user-menu">
+                        <div id="userNavbar">
+                            <div class="col-12" id="user-menu">
                                 <ul class="navbar-nav d-flex">
                                     {% if user.is_superuser %}
                                     <li class="nav-item ml1">
@@ -51,23 +50,22 @@
                         <div class="navbar-logo">
                             <a href="/"><img src="{% static 'global_static/dist/assets/logos/logo-condominium.png' %}" alt="Logo Parc de la Chana" id="logo-condominium" /></a>
                         </div>
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#websiteNavbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="websiteNavbarResponsive">
-                            <div class="col-lg-7 col-sm-12 d-flex justify-content-end" id="site-menu">
+                        <div id="websiteNavbar">
+                            <div class="col-12 d-flex justify-content-end" id="site-menu">
                                 <ul class="row navbar-nav d-flex">
-                                    <li class="col-3 nav-item ml2">
+                                    <li class="nav-item ml2">
                                         <a href="{% url 'news-list' %}" class="nav-link">
                                             <img src="{% static 'global_static/dist/assets/icons/icon-menu-news-black.png' %}" alt="Icone menu news" class="menu-icon" id="icon-news" />
                                             <div class="menu-text">LES NEWS</div>
                                         </a>
                                     </li>
-                                    <li class="col-3 nav-item-large ml2">
+                                    <li class="nav-item-large ml2">
                                         <a href="{% url 'event-list-new' %}" class="nav-link">
                                             <img src="{% static 'global_static/dist/assets/icons/icon-menu-event-black.png' %}" alt="Icone menu évènements" class="menu-icon" id="icon-event" />
                                             <div class="menu-text">LES ÉVÈNEMENTS</div>
                                         </a>
                                     </li>
-                                    <li class="col-3 nav-item ml2">
+                                    <li class="nav-item ml2">
                                         <a href="{% url 'faq-cat-list' %}" class="nav-link">
                                             <img src="{% static 'global_static/dist/assets/icons/icon-menu-faq-black.png' %}" alt="Icone menu questions/réponses" class="menu-icon" id="icon-faq" />
                                             <div class="menu-text">VOS QUESTIONS</div>
