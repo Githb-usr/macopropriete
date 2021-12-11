@@ -42,22 +42,25 @@ class Comment(models.Model):
     )
     event = models.ForeignKey(
         Event,
+        null=True,
         on_delete=models.CASCADE,
         related_name='add_event_comment',
     )
     news = models.ForeignKey(
         News,
+        null=True,
         on_delete=models.CASCADE,
         related_name='add_news_comment',
     )
     incident = models.ForeignKey(
         Incident,
+        null=True,
         on_delete=models.CASCADE,
         related_name='add_incident_comment',
     )
 
     def __str__(self):
-        return 'Commentaire de {}'.format(self.user)
+        return 'Commentaire de {}'.format(self.author)
 
     def display_author(self):
         """

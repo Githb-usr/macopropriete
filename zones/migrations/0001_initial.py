@@ -13,13 +13,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Photo',
+            name='Zone',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='')),
-                ('caption', models.CharField(blank=True, max_length=128, verbose_name='Légende')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name="Date d'upload")),
+                ('code', models.CharField(max_length=10, verbose_name='Code')),
+                ('name', models.CharField(max_length=30, verbose_name='Nom')),
+                ('description', models.TextField(blank=True, max_length=512, null=True, verbose_name='Description')),
+                ('image', models.ImageField(blank=True, null=True, upload_to='zones/')),
                 ('uuid', models.UUIDField(default=uuid.uuid4, unique=True, verbose_name='UUID')),
             ],
+            options={
+                'verbose_name_plural': 'zones',
+            },
         ),
     ]

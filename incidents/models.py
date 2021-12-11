@@ -44,13 +44,13 @@ class Incident(models.Model):
         related_name='create_incident'
     )
     zone = models.ForeignKey(
-        'condominium.Zone',
+        'zones.Zone',
         on_delete=models.CASCADE,
         related_name='incident_zone'
     )
 
     def __str__(self):
-        return f'Incident - {self.incident_type}'
+        return f'Incident - {self.category}'
 
     def display_author(self):
         """

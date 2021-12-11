@@ -1,0 +1,5 @@
+[run]
+omit = __pycache__/*,.pytest_cache/*,.vscode/*,*/apps.py,config/*,deploy/*,venvp13/*,global_static/*,medias/*,*/settings.py,tests/*,theme/*,get-pip.py,*__init__.py,*migrations*
+
+[report]
+omit = __pycache__/*,.pytest_cache/*,.vscode/*,*/apps.py,config/*,deploy/*,venvp13/*,global_static/*,medias/*,*/settings.py,tests/*,theme/*,get-pip.py,*__init__.py,*migrations*
