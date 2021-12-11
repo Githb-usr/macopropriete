@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'comments',
-    'condominium',
     'contentevent',
     'contentfaq',
     'contentnews',
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     'pages',
     'photos',
     'users',
+    'zones',
 ]
 
 MIDDLEWARE = [

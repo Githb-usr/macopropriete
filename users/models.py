@@ -9,7 +9,6 @@ from django.utils import timezone
 import uuid
 
 from comments.models import Comment
-from condominium.models import Lot
 from contentevent.models import Event
 from contentfaq.models import Faq
 from contentnews.models import News
@@ -27,9 +26,6 @@ class UserManager(BaseUserManager):
         """
         Create and save a new user with email but no password required by default
         """
-        if not email:
-            raise ValueError('Vous devez entrer un email valide')
-
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -40,9 +36,6 @@ class UserManager(BaseUserManager):
         """
         Create and save a superuser
         """
-        if not email:
-            raise ValueError('Vous devez entrer un email valide')
-
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('status', 'VALIDATED')
@@ -198,11 +191,6 @@ class User(AbstractUser):
         through='comments.CommentDelete',
         related_name='comment_delete',
     )
-    lot_owned = models.ManyToManyField(
-        Lot,
-        through='condominium.Ownership',
-        related_name='lot_owned',
-    )
 
     objects = UserManager()
 
@@ -217,7 +205,7 @@ class User(AbstractUser):
         if self.first_name:
             return f'{self.first_name} {self.last_name}'
 
-        return self.email.split('@')[0]
+        return self.email.split('@')[0].capitalize()
 
     def get_absolute_url(self):
         return reverse('profile', kwargs={'uuid': self.uuid})
