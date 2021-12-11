@@ -3,7 +3,6 @@
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-from django.urls import reverse
 
 from zones.models import Zone
 from comments.models import Comment, CommentDelete
