@@ -1,0 +1,36 @@
+language: python
+python:
+  - "3.8"
+
+addons:
+  chrome: stable
+  firefox: latest
+
+# safelist
+branches:
+  only:
+    - develop
+    - main
+
+# stuff to do before executing the script
+install:
+    # command to install dependencies
+  - pip install -r requirements.txt
+  - install-webdrivers --path webdrivers
+
+env:
+  global:
+    - ENV=travis
+    - DB_NAME=macopro
+    - DB_USER=postgres
+    - DB_PASSWORD=toto
+    - DB_HOST=localhost
+    - DB_PORT=5432
+    - SECRET_KEY=f9QbQ2QttRWNKc7ZcaFs
+    - MOZ_HEADLESS=1
+
+services:
+  - postgresql
+
+script:
+  - python3 manage.py test tests
