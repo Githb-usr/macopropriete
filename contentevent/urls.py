@@ -17,22 +17,22 @@ urlpatterns = [
         name='event-list-old',
     ),
     path(
-        route='events/<uuid:uuid>/',
+        route='event/<uuid:uuid>/',
         view=views.EventDetailView.as_view(),
         name='event-detail',
     ),
     path(
-        route='events/create/',
+        route='event/create/',
         view=views.event_create_view,
         name='event-create',
     ),
     path(
-        route='events/<uuid:uuid>/update',
+        route='event/<uuid:uuid>/update',
         view=views.event_update_view,
         name='event-update',
     ),
     path(
-        route='events/<uuid:uuid>/delete',
+        route='event/<uuid:uuid>/delete',
         view=views.event_delete_view,
         name='event-delete',
     ),
