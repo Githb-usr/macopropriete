@@ -17,10 +17,7 @@ class NewsListView(ListView):
     context_object_name = 'news_list'
 
     def get_queryset(self):
-        try:
-            return News.objects.filter(status='ACTIVATED')
-        except News.objects.filter(status='ACTIVATED').DoesNotExist:
-            return News.objects.none()
+        return News.objects.filter(status='ACTIVATED')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,13 +35,11 @@ class NewsListView(ListView):
         return context
 
 class NewsDetailView(DetailView):
+    slug_url_kwarg = 'uuid'
+    slug_field = 'uuid'
     model = News
     template_name = 'contentnews/news_detail.html'
     context_object_name = 'news_detail'
-
-    def get_object(self, queryset=None):
-        # To use uuid in the route
-        return News.objects.get(uuid=self.kwargs.get("uuid"))
 
 def news_create_view(request):
     news_form = NewsForm()
