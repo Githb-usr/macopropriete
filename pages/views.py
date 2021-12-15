@@ -49,6 +49,7 @@ class ContactFormView(FormView):
         recipients = ADMIN_RECIPIENTS
         html_page = 'pages/contact_to_admin_mail.html'
         generic_send_mail(admin_message_subject, html_page, recipients, email_context)
+
         if valid_data['cc_myself']:
             recipients = valid_data['email_address']
             html_page = 'pages/contact_copy_to_user_mail.html'

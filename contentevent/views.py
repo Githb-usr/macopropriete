@@ -62,6 +62,8 @@ class EventListOldView(ListView):
         return context
 
 class EventDetailView(DetailView):
+    slug_url_kwarg = 'uuid'
+    slug_field = 'uuid'
     model = Event
     template_name = 'contentevent/event_detail.html'
     context_object_name = 'event_detail'
@@ -70,10 +72,6 @@ class EventDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
-
-    def get_object(self, queryset=None):
-        # To use uuid in the route
-        return Event.objects.get(uuid=self.kwargs.get("uuid"))
 
 def event_create_view(request):
     event_form = EventForm()
