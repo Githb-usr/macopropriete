@@ -50,13 +50,11 @@ class AccountValidationSuccessView(TemplateView):
     template_name = 'users/account_validation_success.html'
 
 class ProfileView(DetailView):
+    slug_url_kwarg = 'uuid'
+    slug_field = 'uuid'
     model = User
     template_name = 'users/profile.html'
     context_object_name = 'user_profile'
-
-    def get_object(self, queryset=None):
-        # To use uuid in the route
-        return User.objects.get(uuid=self.kwargs.get("uuid"))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -64,26 +62,18 @@ class ProfileView(DetailView):
         return context
 
 class ProfileUpdateView(SuccessMessageMixin, UpdateView):
+    slug_url_kwarg = 'uuid'
+    slug_field = 'uuid'
     model = User
     fields = ['avatar', 'about', 'contact_email', 'phone_number']
     template_name = 'users/profile_update.html'
     success_message = 'Votre profil a bien été mis à jour !'
-
-    def get_object(self):
-        # To use uuid in the route
-        return User.objects.get(uuid=self.kwargs.get('uuid'))
 
 class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
     model = User
     form_class = PasswordChangeForm
     template_name = 'users/change_password.html'
     success_url = reverse_lazy('password-update-done')
-    success_message = 'Votre mot de passe a bien été mis à jour !'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['uuid'] = User.objects.get(uuid=self.kwargs.get('uuid'))
-        return context
 
 class UpdatePasswordDoneView(PasswordChangeDoneView):
     template_name = "users/change_password_done.html"

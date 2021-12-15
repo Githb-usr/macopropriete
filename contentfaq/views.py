@@ -22,10 +22,7 @@ class FaqCategoryView(ListView):
     context_object_name = 'faq_category'
 
     def get_queryset(self):
-        try:
-            return Faq.objects.filter(category=self.kwargs['category'].upper()).filter(status='ACTIVATED')
-        except Faq.objects.filter(category=self.kwargs['category'].upper().filter(status='ACTIVATED')).DoesNotExist:
-            return Faq.objects.none()
+        return Faq.objects.filter(category=self.kwargs['category'].upper()).filter(status='ACTIVATED')
 
     def get_context_data(self, **kwargs):
         context = super(ListView, self).get_context_data(**kwargs)
