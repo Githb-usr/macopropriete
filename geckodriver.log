@@ -1,0 +1,650 @@
+1639665586492	geckodriver	INFO	Listening on 127.0.0.1:49591
+1639665589526	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilexYEbrU"
+*** You are running in headless mode.
+1639665589802	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilexYEbrU\\search.json.mozlz4", (void 0)))
+1639665590954	Marionette	INFO	Listening on port 49599
+1639665591101	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1639665716350	Marionette	INFO	Stopped listening on port 49599
+1639665819989	geckodriver	INFO	Listening on 127.0.0.1:49732
+1639665823063	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilesW5tHq"
+*** You are running in headless mode.
+1639665823303	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilesW5tHq\\search.json.mozlz4", (void 0)))
+1639665824242	Marionette	INFO	Listening on port 49740
+1639665824613	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49731/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639665919975	Marionette	INFO	Stopped listening on port 49740
+1639665989469	geckodriver	INFO	Listening on 127.0.0.1:49838
+1639665992484	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileb7ak3o"
+*** You are running in headless mode.
+1639665992736	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileb7ak3o\\search.json.mozlz4", (void 0)))
+1639665993655	Marionette	INFO	Listening on port 49846
+1639665994015	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49837/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639666120033	Marionette	INFO	Stopped listening on port 49846
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639666482957	geckodriver	INFO	Listening on 127.0.0.1:49968
+1639666486036	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile4xyAOp"
+*** You are running in headless mode.
+1639666486312	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile4xyAOp\\search.json.mozlz4", (void 0)))
+1639666487243	Marionette	INFO	Listening on port 49976
+1639666487617	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49967/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639666614733	Marionette	INFO	Stopped listening on port 49976
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639666662590	geckodriver	INFO	Listening on 127.0.0.1:50091
+1639666665635	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile3T9xpt"
+*** You are running in headless mode.
+1639666665877	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile3T9xpt\\search.json.mozlz4", (void 0)))
+1639666666850	Marionette	INFO	Listening on port 50099
+1639666667193	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50090/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639666763020	Marionette	INFO	Stopped listening on port 50099
+1639667574530	geckodriver	INFO	Listening on 127.0.0.1:50285
+1639667577603	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileXjulTH"
+*** You are running in headless mode.
+1639667577841	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileXjulTH\\search.json.mozlz4", (void 0)))
+1639667578812	Marionette	INFO	Listening on port 50295
+1639667579146	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50284/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50284/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50284/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50284/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639667646084	Marionette	INFO	Stopped listening on port 50295
+1639667692140	geckodriver	INFO	Listening on 127.0.0.1:50392
+1639667695212	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile8mGBvh"
+*** You are running in headless mode.
+1639667695460	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile8mGBvh\\search.json.mozlz4", (void 0)))
+1639667696424	Marionette	INFO	Listening on port 50403
+1639667696759	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50391/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50391/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50391/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50391/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639667763488	Marionette	INFO	Stopped listening on port 50403
+1639667785124	geckodriver	INFO	Listening on 127.0.0.1:50511
+1639667788209	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile6yWd0q"
+*** You are running in headless mode.
+1639667788468	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile6yWd0q\\search.json.mozlz4", (void 0)))
+1639667789374	Marionette	INFO	Listening on port 50521
+1639667789786	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50510/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50510/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50510/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50510/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639667887091	Marionette	INFO	Stopped listening on port 50521
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639667927281	geckodriver	INFO	Listening on 127.0.0.1:50617
+1639667930361	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilen9IEaU"
+*** You are running in headless mode.
+1639667930603	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilen9IEaU\\search.json.mozlz4", (void 0)))
+1639667931567	Marionette	INFO	Listening on port 50625
+1639667931904	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50616/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50616/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50616/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50616/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50616/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639668029365	Marionette	INFO	Stopped listening on port 50625
+1639668063638	geckodriver	INFO	Listening on 127.0.0.1:50726
+1639668066724	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile1Lic2E"
+*** You are running in headless mode.
+1639668066968	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile1Lic2E\\search.json.mozlz4", (void 0)))
+1639668067931	Marionette	INFO	Listening on port 50734
+1639668068284	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50725/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50725/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50725/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50725/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50725/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50725/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639668105608	Marionette	INFO	Stopped listening on port 50734
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639668214588	geckodriver	INFO	Listening on 127.0.0.1:50831
+1639668217640	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile84a89f"
+*** You are running in headless mode.
+1639668217880	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile84a89f\\search.json.mozlz4", (void 0)))
+1639668218823	Marionette	INFO	Listening on port 50839
+1639668219190	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50830/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50830/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50830/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50830/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50830/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50830/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639668255855	Marionette	INFO	Stopped listening on port 50839
+[Parent 5012, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639668686356	geckodriver	INFO	Listening on 127.0.0.1:64199
+1639668689454	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileBLruNZ"
+*** You are running in headless mode.
+1639668689717	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileBLruNZ\\search.json.mozlz4", (void 0)))
+1639668690639	Marionette	INFO	Listening on port 64209
+1639668691041	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:64198/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:64198/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:64198/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:64198/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:64198/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:64198/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:64198/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639668728310	Marionette	INFO	Stopped listening on port 64209
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639670141963	geckodriver	INFO	Listening on 127.0.0.1:49297
+1639670145044	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileFnSoRZ"
+*** You are running in headless mode.
+1639670145323	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileFnSoRZ\\search.json.mozlz4", (void 0)))
+1639670146294	Marionette	INFO	Listening on port 49305
+1639670146612	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49296/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49296/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49296/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639670180180	Marionette	INFO	Stopped listening on port 49305
+1639670387840	geckodriver	INFO	Listening on 127.0.0.1:49414
+1639670390914	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileTWdka3"
+*** You are running in headless mode.
+1639670391181	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileTWdka3\\search.json.mozlz4", (void 0)))
+1639670392117	Marionette	INFO	Listening on port 49422
+1639670392475	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49413/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49413/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49413/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49413/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49413/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49413/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49413/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639670400436	Marionette	INFO	Stopped listening on port 49422
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x39007A,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1639670477381	geckodriver	INFO	Listening on 127.0.0.1:49547
+1639670480460	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilew9gtBK"
+*** You are running in headless mode.
+1639670480704	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilew9gtBK\\search.json.mozlz4", (void 0)))
+1639670481620	Marionette	INFO	Listening on port 49555
+1639670482019	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49546/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49546/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49546/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49546/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49546/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49546/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49546/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639670519167	Marionette	INFO	Stopped listening on port 49555
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639671248305	geckodriver	INFO	Listening on 127.0.0.1:49765
+1639671251391	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile2GCFEu"
+*** You are running in headless mode.
+1639671251635	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile2GCFEu\\search.json.mozlz4", (void 0)))
+1639671252553	Marionette	INFO	Listening on port 49773
+1639671252954	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49764/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49764/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49764/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49764/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49764/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49764/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49764/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671290968	Marionette	INFO	Stopped listening on port 49773
+1639671338991	geckodriver	INFO	Listening on 127.0.0.1:49879
+1639671342018	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilehrD5uN"
+*** You are running in headless mode.
+1639671342303	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilehrD5uN\\search.json.mozlz4", (void 0)))
+1639671343262	Marionette	INFO	Listening on port 49890
+1639671343609	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671345921	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:49878/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671351605	Marionette	INFO	Stopped listening on port 49890
+1639671616674	geckodriver	INFO	Listening on 127.0.0.1:50020
+1639671619727	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilefEBP9K"
+*** You are running in headless mode.
+1639671619991	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilefEBP9K\\search.json.mozlz4", (void 0)))
+1639671620976	Marionette	INFO	Listening on port 50028
+1639671621285	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671623733	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671624426	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50019/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671659471	Marionette	INFO	Stopped listening on port 50028
+1639671712862	geckodriver	INFO	Listening on 127.0.0.1:50128
+1639671715924	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileVEBblZ"
+*** You are running in headless mode.
+1639671716162	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileVEBblZ\\search.json.mozlz4", (void 0)))
+1639671717068	Marionette	INFO	Listening on port 50136
+1639671717478	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671720067	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671720818	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50127/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639671755816	Marionette	INFO	Stopped listening on port 50136
+1639672024313	geckodriver	INFO	Listening on 127.0.0.1:50256
+1639672027388	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileAbhHqL"
+*** You are running in headless mode.
+1639672027630	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileAbhHqL\\search.json.mozlz4", (void 0)))
+1639672028540	Marionette	INFO	Listening on port 50264
+1639672028938	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672031899	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672032646	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50255/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672072197	Marionette	INFO	Stopped listening on port 50264
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639672124344	geckodriver	INFO	Listening on 127.0.0.1:50363
+1639672127426	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileszOXup"
+*** You are running in headless mode.
+1639672127669	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileszOXup\\search.json.mozlz4", (void 0)))
+1639672128641	Marionette	INFO	Listening on port 50371
+1639672128970	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672131432	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672132161	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+JavaScript error: http://localhost:50362/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672171974	Marionette	INFO	Stopped listening on port 50371
+1639672238301	geckodriver	INFO	Listening on 127.0.0.1:50469
+1639672241388	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile1HMmsD"
+1639672241628	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile1HMmsD\\search.json.mozlz4", (void 0)))
+1639672243378	Marionette	INFO	Listening on port 50477
+1639672243442	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:50468/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672246066	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: http://localhost:50468/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672246771	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:50468/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672263906	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639672286403	Marionette	INFO	Stopped listening on port 50477
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639672710671	geckodriver	INFO	Listening on 127.0.0.1:56062
+1639672713774	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilewWUO9y"
+1639672714038	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilewWUO9y\\search.json.mozlz4", (void 0)))
+1639672715913	Marionette	INFO	Listening on port 56070
+1639672715944	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:56061/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672718273	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639672723719	Marionette	INFO	Stopped listening on port 56070
+1639672814297	geckodriver	INFO	Listening on 127.0.0.1:61478
+1639672817371	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilezbcf7k"
+1639672817629	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilezbcf7k\\search.json.mozlz4", (void 0)))
+1639672819246	Marionette	INFO	Listening on port 61486
+1639672819405	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:61477/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672822607	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639672828507	Marionette	INFO	Stopped listening on port 61486
+1639672848652	geckodriver	INFO	Listening on 127.0.0.1:61572
+1639672851742	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile6rl7IM"
+1639672851984	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile6rl7IM\\search.json.mozlz4", (void 0)))
+1639672853525	Marionette	INFO	Listening on port 61580
+1639672853784	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:61571/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672857099	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639672862833	Marionette	INFO	Stopped listening on port 61580
+1639672902531	geckodriver	INFO	Listening on 127.0.0.1:61672
+1639672905649	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilewKyDOa"
+1639672905894	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilewKyDOa\\search.json.mozlz4", (void 0)))
+1639672907447	Marionette	INFO	Listening on port 61680
+1639672907687	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:61671/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639672910596	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639672946100	Marionette	INFO	Stopped listening on port 61680
+1639673201984	geckodriver	INFO	Listening on 127.0.0.1:61812
+1639673205060	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileefdhkE"
+1639673205285	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileefdhkE\\search.json.mozlz4", (void 0)))
+1639673207323	Marionette	INFO	Listening on port 61820
+1639673207724	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:61811/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639673210122	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639673216175	Marionette	INFO	Stopped listening on port 61820
+1639673240926	geckodriver	INFO	Listening on 127.0.0.1:61907
+1639673244006	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile8gZTeO"
+1639673244245	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile8gZTeO\\search.json.mozlz4", (void 0)))
+1639673245952	Marionette	INFO	Listening on port 61916
+1639673246053	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:61906/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639673248938	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639673254652	Marionette	INFO	Stopped listening on port 61916
+1639673300487	geckodriver	INFO	Listening on 127.0.0.1:62008
+1639673303557	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilezroAIs"
+1639673303782	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilezroAIs\\search.json.mozlz4", (void 0)))
+1639673305354	Marionette	INFO	Listening on port 62016
+1639673305572	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62007/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639673308499	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639673348995	Marionette	INFO	Stopped listening on port 62016
+1639673540665	geckodriver	INFO	Listening on 127.0.0.1:62121
+1639673543731	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileMxK6SG"
+1639673543963	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileMxK6SG\\search.json.mozlz4", (void 0)))
+1639673545780	Marionette	INFO	Listening on port 62129
+1639673545903	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62120/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639673548739	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639673589419	Marionette	INFO	Stopped listening on port 62129
+1639673661835	geckodriver	INFO	Listening on 127.0.0.1:62224
+1639673664901	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilenv4INL"
+1639673665126	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilenv4INL\\search.json.mozlz4", (void 0)))
+1639673666691	Marionette	INFO	Listening on port 62232
+1639673666920	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62223/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639673669831	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639673705765	Marionette	INFO	Stopped listening on port 62232
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639673730030	geckodriver	INFO	Listening on 127.0.0.1:62321
+1639673733076	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilekW6LOE"
+1639673733307	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilekW6LOE\\search.json.mozlz4", (void 0)))
+1639673734895	Marionette	INFO	Listening on port 62331
+1639673735100	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62320/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639673737986	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639673773392	Marionette	INFO	Stopped listening on port 62331
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639673977178	geckodriver	INFO	Listening on 127.0.0.1:62469
+1639673980251	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileaRldEe"
+1639673980474	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileaRldEe\\search.json.mozlz4", (void 0)))
+1639673982111	Marionette	INFO	Listening on port 62477
+1639673982289	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62468/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639673985500	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639674023476	Marionette	INFO	Stopped listening on port 62477
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639674074942	geckodriver	INFO	Listening on 127.0.0.1:62592
+1639674078010	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofiletjUt04"
+1639674078234	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofiletjUt04\\search.json.mozlz4", (void 0)))
+1639674080036	Marionette	INFO	Listening on port 62600
+1639674080058	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62591/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639674082904	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639674119607	Marionette	INFO	Stopped listening on port 62600
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639674208053	geckodriver	INFO	Listening on 127.0.0.1:62708
+1639674211132	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileILr93i"
+1639674211391	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileILr93i\\search.json.mozlz4", (void 0)))
+1639674213187	Marionette	INFO	Listening on port 62718
+1639674213282	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62707/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639674215784	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639674217452	Marionette	INFO	Stopped listening on port 62718
+[Parent 21088, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639674238062	geckodriver	INFO	Listening on 127.0.0.1:62793
+1639674241154	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileWQwBoQ"
+1639674241379	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileWQwBoQ\\search.json.mozlz4", (void 0)))
+1639674243042	Marionette	INFO	Listening on port 62803
+1639674243196	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:62792/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639674245951	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639674247531	Marionette	INFO	Stopped listening on port 62803
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639674303358	geckodriver	INFO	Listening on 127.0.0.1:57986
+1639674306440	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilekem64G"
+1639674306670	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofilekem64G\\search.json.mozlz4", (void 0)))
+1639674308254	Marionette	INFO	Listening on port 57994
+1639674308483	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:57985/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639674311075	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639674312849	Marionette	INFO	Stopped listening on port 57994
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639674361661	geckodriver	INFO	Listening on 127.0.0.1:58073
+1639674364727	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile6DIy75"
+1639674364951	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofile6DIy75\\search.json.mozlz4", (void 0)))
+1639674366656	Marionette	INFO	Listening on port 58081
+1639674366764	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:58072/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639674369602	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639674375624	Marionette	INFO	Stopped listening on port 58081
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1639680420347	geckodriver	INFO	Listening on 127.0.0.1:63731
+1639680423422	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileEnS5h4"
+1639680423648	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Leto\\AppData\\Local\\Temp\\rust_mozprofileEnS5h4\\search.json.mozlz4", (void 0)))
+1639680425262	Marionette	INFO	Listening on port 63739
+1639680425453	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: http://localhost:63730/static/global_static/dist/js/scripts.js, line 60: ReferenceError: SimpleLightbox is not defined
+1639680428289	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'interactive'.
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+JavaScript error: https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js, line 6: TypeError: n is null
+1639680433556	Marionette	INFO	Stopped listening on port 63739
+[Parent 19356, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
