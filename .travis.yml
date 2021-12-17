@@ -26,6 +26,11 @@ env:
     - DB_PASSWORD=toto
     - DB_HOST=localhost
     - DB_PORT=5432
+    - EMAIL_HOST=smtp.gmail.com
+    - EMAIL_HOST_USER=email@gmail.com
+    - EMAIL_HOST_PASSWORD=password2021
+    - EMAIL_PORT=587
+    - ADMIN_RECIPIENTS='contact@email.com'
     - SECRET_KEY=f9QbQ2QttRWNKc7ZcaFs
     - MOZ_HEADLESS=1
 
