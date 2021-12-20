@@ -24,13 +24,17 @@ This application is intended to facilitate communication between the inhabitants
 * Run the following command to install the necessary libraries :
   - pip install -r requirements.txt
 * Create an .env file with these environment variables (replace the xxx with your values):
-  - DJANGO_SETTINGS_MODULE=config.settings
   - SECRET_KEY=xxx
   - DB_NAME=xxx
   - DB_USER=xxx
   - DB_PASSWORD=xxx
   - DB_HOST=xxx
   - DB_PORT=xxx
+  - EMAIL_HOST=xxx
+  - EMAIL_HOST_USER=xxx
+  - EMAIL_HOST_PASSWORD=xxx
+  - EMAIL_PORT=xxx
+  - ADMIN_RECIPIENTS='xxx'
 * Generate the static files:
   - [python3] manage.py collectstatic
 * Create the database tables:

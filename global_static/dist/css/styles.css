@@ -11486,10 +11486,6 @@ ul.row {
   margin-right: 0;
 }
 
-a.nav-link:hover {
-  color: #ADB386;
-}
-
 .menu-icon {
   width: 2.8rem;
   display: block;
@@ -11522,7 +11518,7 @@ a.nav-link:hover {
   padding: 0.75rem 0;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link:active, #mainNav .navbar-nav .nav-item-large .nav-link:hover, #mainNav .navbar-nav .nav-item-large .nav-link:active {
-  color: #ADB386;
+  color: #4D4D4D;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item-large .nav-link.active {
   color: #ADB386 !important;
@@ -11549,6 +11545,9 @@ a.nav-link:hover {
   padding-right: 0;
   margin-top: 0.6rem;
 }
+#mainNav .navbar-nav .ml2 .nav-link:hover, #mainNav .navbar-nav .ml2 .nav-link:active {
+  color: #4D4D4D;
+}
 #mainNav .navbar-nav:last-child .nav-item {
   padding-right: 0;
   margin-right: 0;
@@ -11558,27 +11557,23 @@ a.nav-link:hover {
     box-shadow: none;
     background-color: transparent;
   }
-  #mainNav .navbar-nav .nav-item .nav-link {
+  #mainNav .navbar-nav .ml1 .nav-link {
     padding: 0 1rem;
   }
-  #mainNav .navbar-nav .nav-item .nav-link:hover {
+  #mainNav .navbar-nav .ml1 .nav-link:hover {
     color: rgba(255, 255, 255, 0.7);
   }
-  #mainNav .navbar-nav .nav-item:last-child .nav-link {
+  #mainNav .navbar-nav .ml1:last-child .nav-link {
     padding-right: 0;
   }
-  #mainNav.navbar-shrink {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+  #mainNav .navbar-nav .ml2 .nav-link {
+    padding: 0 1rem;
   }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link .ml1 {
-    color: #000;
+  #mainNav .navbar-nav .ml2 .nav-link:hover {
+    color: #4D4D4D;
   }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link .ml2 {
-    color: #000;
-  }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
-    color: #ADB386;
+  #mainNav .navbar-nav .ml2:last-child .nav-link {
+    padding-right: 0;
   }
 }
 
