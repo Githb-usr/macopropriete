@@ -189,6 +189,26 @@ CKEDITOR_ALLOW_NONIMAGE_FILES = False
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Source', 'ExportPdf', 'Print'],
+            ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'RemoveFormat'],
+            ['BulletedList', 'NumberedList', 'Outdent', 'Indent'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Anchor', 'Image', 'Smiley', 'Blockquote', 'Table', 'HorizontalRule', 'SpecialChar'],
+            ['TextColor', 'BGColor', 'Format', 'Font', 'FontSize'],
+        ]
+    },
+    'contact': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['ExportPdf', 'Print'],
+            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
+            ['BulletedList', 'NumberedList', 'Outdent', 'Indent'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Smiley', 'Blockquote'],
+            ['TextColor', 'BGColor', 'Format', 'Font', 'FontSize'],
+        ]
     },
 }

@@ -66,8 +66,10 @@
                     <div class="event-detail-marker">Durée : {{ event_detail.start_date|timesince:event_detail.end_date }}</div>
                     {% if event_detail.start_date > now %}
                         <div class="event-detail-marker">L'évènement a lieu dans {{ event_detail.start_date|timeuntil }}</div>
-                    {% else %}
+                    {% elif event_detail.end_date < now %}
                         <div class="event-detail-marker">L'évènement s'est terminé il y a {{ event_detail.end_date|timesince }}</div>
+                    {% else %}
+                        <div class="event-detail-marker">L'évènement est en cours</div>
                     {% endif %}
                 </div>
             </div>
@@ -88,9 +90,9 @@
             {% endif %}
             <div class="col-lg-4 mt-4 d-flex justify-content-center">
                 <button 
-                    {% if event_detail.start_date > now %}
+                    {% if event_detail.end_date > now %}
                         onclick="window.location.href='{% url 'event-list-new' %}';"
-                        title="Voir tous les évènements à venir"
+                        title="Voir tous les évènements à venir ou en cours"
                     {% else %}
                         onclick="window.location.href='{% url 'event-list-old' %}';"
                         title="Voir tous les évènements passés"

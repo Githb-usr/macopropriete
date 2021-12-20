@@ -32,7 +32,7 @@ class ContactForm(forms.Form):
         label='Recevoir une copie de votre message',
     )
     message = forms.CharField(
-        widget=CKEditorWidget(),
+        widget=CKEditorWidget(config_name='contact'),
         max_length=2500,
         label='Votre message',
     )

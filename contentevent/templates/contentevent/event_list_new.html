@@ -19,7 +19,7 @@
                 <!-- End breadcrumb -->
                 {% if user.is_staff %}
                     <div class="d-flex justify-content-end admin-btn-zone">
-                        <button class="col-lg-4 dark-btn font-0 align-self-center"
+                        <button class="col-lg-5 dark-btn font-0 align-self-center"
                                 onclick="window.location.href='{% url 'event-create' %}';">
                             Créer un évènement
                         </button>
@@ -29,7 +29,7 @@
             <div class="page-title-block">
                 <h1 class="page-title">Les évènements</h1>
                 <h2 class="event-page-subtitle">
-                    <span class="events-subtitle-current-page">A venir</span> / <a href="{% url 'event-list-old' %}" class="events-subtitle-links">Terminés</a>
+                    <span class="events-subtitle-current-page">A venir ou en cours</span> / <a href="{% url 'event-list-old' %}" class="events-subtitle-links">Terminés</a>
                 </h2>
             </div>
             {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
