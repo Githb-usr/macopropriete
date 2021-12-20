@@ -11741,6 +11741,7 @@ a.events-subtitle-links:hover, a.events-subtitle-links:active {
 a div.event-date {
   font-size: 1.8rem;
   line-height: 3rem;
+  letter-spacing: 0.15rem;
 }
 
 a div.event-title {
