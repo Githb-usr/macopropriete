@@ -154,8 +154,6 @@ PUBLIC_VIEWS = [
 ]
 
 PUBLIC_PATHS = [
-    # allow public access to any media on your application
-    '^%s.*' % MEDIA_URL,
     # allow public access to all django-allauth views
     r'^/login/.',
 ]
