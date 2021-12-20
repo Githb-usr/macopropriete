@@ -29,7 +29,7 @@
             <div class="page-title-block">
                 <h1 class="page-title">Les évènements</h1>
                 <h2 class="event-page-subtitle">
-                    <span class="events-subtitle-current-page">A venir</span> / <a href="{% url 'event-list-old' %}" class="events-subtitle-links">Terminés</a>
+                    <span class="events-subtitle-current-page">A venir ou en cours</span> / <a href="{% url 'event-list-old' %}" class="events-subtitle-links">Terminés</a>
                 </h2>
             </div>
             {% include "pagination.html" with page_range=page_range_top pagination_css="pagination-top" %}
