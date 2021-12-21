@@ -7,7 +7,7 @@ from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
 from config.settings.base import ADMIN_RECIPIENTS
-from pages.views import ContactFormView, IndexView
+from pages.views import IndexView
 
 class BaseTest(TestCase):
     def setUp(self):
@@ -19,7 +19,7 @@ class BaseTest(TestCase):
             email='caroline.dupont@free.fr',
             password='fhh456GG455t',
             status='VALIDATED',
-            )
+        )
 
         self.mail_no_copy = {
             'first_name': 'Laurent',
@@ -40,11 +40,11 @@ class BaseTest(TestCase):
             'cc_myself': 'True',
             'message': 'Lorem ipsum msg2',
         }
-        
+
         return super().setUp()
 
 class IndexViewTestCase(BaseTest):
-    
+
     def test_get_context_data(self):
         self.client.force_login(self.user)
         request = self.factory.get('/')
@@ -57,10 +57,10 @@ class IndexViewTestCase(BaseTest):
         self.assertEqual(context['user_uuid'], self.user.uuid)
 
 class ContactFormViewTestCase(BaseTest):
-    
+
     def test_form_valid_email(self):
         self.client.force_login(self.user)
-        response = self.client.post(self.contact_url, self.mail_no_copy)
+        self.client.post(self.contact_url, self.mail_no_copy)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, 'parcdelachana@gmail.com')
         self.assertEqual(mail.outbox[0].to, [ADMIN_RECIPIENTS])
@@ -68,7 +68,7 @@ class ContactFormViewTestCase(BaseTest):
 
     def test_form_valid_email_with_copy(self):
         self.client.force_login(self.user)
-        response = self.client.post(self.contact_url, self.mail_with_copy)
+        self.client.post(self.contact_url, self.mail_with_copy)
         self.assertEqual(len(mail.outbox), 2)
         self.assertEqual(mail.outbox[0].from_email, 'parcdelachana@gmail.com')
         self.assertEqual(mail.outbox[1].from_email, 'parcdelachana@gmail.com')

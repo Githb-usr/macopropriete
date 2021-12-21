@@ -14,13 +14,13 @@ class BaseTest(TestCase):
             email='nicolas.martin@free.fr',
             first_name='Nicolas',
             last_name='Martin',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='valerie.plouf@hop.com',
             first_name='Valérie',
             last_name='Plouf',
-            )
+        )
 
         self.event1 = Event.objects.create(
             category='MEETING',
@@ -30,22 +30,22 @@ class BaseTest(TestCase):
             end_date='2021-11-25 09:00:00+01',
             status='ACTIVATED',
             author=self.user1,
-            )
+        )
 
         self.event_update1 = EventUpdate.objects.create(
             event=self.event1,
             updater=self.user1,
             update_reason='Lorem ipsum event update',
-            )
+        )
 
         self.event_delete1 = EventDelete.objects.create(
             event=self.event1,
             deleter=self.user2,
             deletion_reason='Lorem ipsum event delete',
-            )
+        )
 
         return super().setUp()
-    
+
 class EventModelTestCase(BaseTest):
 
     def test_object_name(self):

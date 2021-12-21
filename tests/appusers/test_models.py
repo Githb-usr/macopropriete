@@ -15,22 +15,22 @@ class BaseTest(TestCase):
             email='nicolas.martin@free.fr',
             first_name='Nicolas',
             last_name='Martin',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='caroline.dupont@free.fr',
-            )
+        )
 
         return super().setUp()
 
-class UserManagerTestCase(BaseTest):    
+class UserManagerTestCase(BaseTest):
     def test_create_user_ok(self):
         test_user = get_user_model().objects.create_user(
             email='user@test.com',
             first_name='Laurent',
             last_name='Dupont',
             password='fhh456GG455t'
-            )
+        )
         self.assertEqual(test_user.email, 'user@test.com')
         self.assertEqual(test_user.first_name, 'Laurent')
         self.assertEqual(test_user.last_name, 'Dupont')
@@ -46,7 +46,7 @@ class UserManagerTestCase(BaseTest):
             first_name='Fabrice',
             last_name='Dupin',
             password='fhh456GG455t'
-            )
+        )
         self.assertEqual(test_superuser.email, 'superuser@test.com')
         self.assertEqual(test_superuser.first_name, 'Fabrice')
         self.assertEqual(test_superuser.last_name, 'Dupin')
@@ -63,7 +63,7 @@ class UserManagerTestCase(BaseTest):
                 password='fhh456GG455t',
                 is_staff=False,
                 is_superuser=False,
-                )
+            )
         is_staff_error = cm.exception
         self.assertEqual(str(is_staff_error), 'Un super utilisateur doit avoir is_staff=True.')
 
@@ -73,12 +73,12 @@ class UserManagerTestCase(BaseTest):
                 email='superuser@test.com',
                 password='fhh456GG455t',
                 is_superuser=False,
-                )
+            )
         is_superuser_error = cm.exception
         self.assertEqual(str(is_superuser_error), 'Un super utilisateur doit avoir is_superuser=True.')
 
 class UserModelTestCase(BaseTest):
-    
+
     def test_object_name_is_email(self):
         user = User.objects.get(id=self.user1.pk)
         expected_object_name = user.email

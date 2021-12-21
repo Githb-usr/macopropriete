@@ -12,7 +12,7 @@ class BaseTest(TestCase):
             code='Z1',
             name='Zone 1',
             description='Lorem ipsum zone',
-            )
+        )
 
         return super().setUp()
 

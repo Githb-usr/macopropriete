@@ -13,18 +13,18 @@ class BaseTest(TestCase):
     def setUp(self):
         # Set up non-modified objects used by all test methods
         self.no_user_uuid = '9638abfb-8aa0-482f-8850-2d8d8f0f275f'
-        
+
         User = get_user_model()
         self.user1 = User.objects.create_user(
             email='nicolas.martin@free.fr',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='caroline.dupont@free.fr',
             password='fhh456GG455t',
             status='VALIDATED',
-            )
-        
+        )
+
         return super().setUp()
 
 class ValidateUserAccountViewTestCase(BaseTest):
