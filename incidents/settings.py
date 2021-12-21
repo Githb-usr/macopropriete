@@ -13,7 +13,7 @@ INCIDENT_CATEGORY = [
     (ACCIDENT, 'Accident'),
     (DAMAGE, 'Dégradation'),
     (WATER_LEAKAGE, 'Fuite d\'eau'),
-    (BREAKDOWN, 'Panne'),        
+    (BREAKDOWN, 'Panne'),
     (MISCELLANEOUS, 'Divers'),
 ]
 
