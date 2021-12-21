@@ -12022,11 +12022,16 @@ input#id_start_date_0, input#id_start_date_1, input#id_end_date_0, input#id_end_
   font-style: italic;
   text-decoration: none;
 }
+#legal-notices h1, #legal-notices .h1, #legal-notices h2, #legal-notices .h2 {
+  color: #ADB386;
+}
 #legal-notices h2, #legal-notices .h2 {
   font-size: 1.5rem;
 }
-#legal-notices a {
+#legal-notices a, #legal-notices strong {
   color: #65725E;
+}
+#legal-notices a {
   text-decoration: underline;
 }
 #legal-notices section:last-child {
