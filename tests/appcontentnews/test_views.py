@@ -3,7 +3,6 @@
 
 from django.contrib.messages import get_messages
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
@@ -21,13 +20,13 @@ class BaseTest(TestCase):
             email='caroline.dupont@free.fr',
             password='fhh456GG455t',
             status='VALIDATED',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='nicolas.martin@free.fr',
             password='265fj1fdhj5fj',
             status='VALIDATED',
-            )
+        )
 
         self.news_data_ok = {
             'category': 'WORKS',
@@ -69,7 +68,7 @@ class BaseTest(TestCase):
             content='Lorem ipsum news1',
             status='ACTIVATED',
             author=self.user1
-            )
+        )
 
         self.news2 = News.objects.create(
             category='WEBSITE',
@@ -77,7 +76,7 @@ class BaseTest(TestCase):
             content='Lorem ipsum news2',
             status='ACTIVATED',
             author=self.user1
-            )
+        )
 
         self.news3 = News.objects.create(
             category='CONDOMINIUM',
@@ -85,7 +84,7 @@ class BaseTest(TestCase):
             content='Lorem ipsum news3',
             status='ACTIVATED',
             author=self.user2
-            )
+        )
 
     def delete_all_news(self):
         self.news1 = News.objects.update_or_create(status='DELETED', author=self.user1)
@@ -93,7 +92,7 @@ class BaseTest(TestCase):
         self.news3 = News.objects.update_or_create(status='DELETED', author=self.user2)
 
 class NewsListViewTestCase(BaseTest):
-    
+
     def test_get_queryset(self):
         self.create_test_news()
         self.client.force_login(self.user2)

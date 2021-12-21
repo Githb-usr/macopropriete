@@ -14,13 +14,13 @@ class BaseTest(TestCase):
             email='nicolas.martin@free.fr',
             first_name='Nicolas',
             last_name='Martin',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='valerie.plouf@hop.com',
             first_name='Valérie',
             last_name='Plouf',
-            )
+        )
 
         self.faq1 = Faq.objects.create(
             category='MEETING',
@@ -28,22 +28,22 @@ class BaseTest(TestCase):
             answer='Lorem ipsum Faq',
             status='ACTIVATED',
             author=self.user1,
-            )
+        )
 
         self.faq_update1 = FaqUpdate.objects.create(
             faq=self.faq1,
             updater=self.user1,
             update_reason='Lorem ipsum Faq update',
-            )
+        )
 
         self.faq_delete1 = FaqDelete.objects.create(
             faq=self.faq1,
             deleter=self.user2,
             deletion_reason='Lorem ipsum Faq delete',
-            )
+        )
 
         return super().setUp()
-    
+
 class FaqModelTestCase(BaseTest):
 
     def test_object_name(self):

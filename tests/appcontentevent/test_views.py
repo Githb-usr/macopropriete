@@ -21,13 +21,13 @@ class BaseTest(TestCase):
             email='caroline.dupont@free.fr',
             password='fhh456GG455t',
             status='VALIDATED',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='nicolas.martin@free.fr',
             password='265fj1fdhj5fj',
             status='VALIDATED',
-            )
+        )
 
         self.event1 = Event.objects.create(
             category='MEETING',
@@ -37,7 +37,7 @@ class BaseTest(TestCase):
             end_date='2021-09-28 12:00:00+01',
             status='ACTIVATED',
             author=self.user1
-            )
+        )
 
         self.event2 = Event.objects.create(
             category='WEBSITE',
@@ -47,7 +47,7 @@ class BaseTest(TestCase):
             end_date='2021-10-05 14:30:00+01',
             status='ACTIVATED',
             author=self.user1
-            )
+        )
 
         self.event3 = Event.objects.create(
             category='CONDOMINIUM',
@@ -57,7 +57,7 @@ class BaseTest(TestCase):
             end_date='2021-11-12 10:00:00+01',
             status='ACTIVATED',
             author=self.user2
-            )
+        )
 
         self.event4 = Event.objects.create(
             category='MEETING',
@@ -67,7 +67,7 @@ class BaseTest(TestCase):
             end_date='2022-01-28 12:00:00+01',
             status='ACTIVATED',
             author=self.user1
-            )
+        )
 
         self.event5 = Event.objects.create(
             category='WEBSITE',
@@ -77,7 +77,7 @@ class BaseTest(TestCase):
             end_date='2022-02-05 14:30:00+01',
             status='ACTIVATED',
             author=self.user1
-            )
+        )
 
         self.event6 = Event.objects.create(
             category='CONDOMINIUM',
@@ -87,7 +87,7 @@ class BaseTest(TestCase):
             end_date='2022-03-12 10:00:00+01',
             status='ACTIVATED',
             author=self.user2
-            )
+        )
 
         self.event7_data_ok = {
             'category': 'WORKS',
@@ -134,10 +134,11 @@ class EventListNewViewTestCase(BaseTest):
         view = EventListNewView()
         view.request = request
         current_datetime = timezone.now()
-        test_request = Event.objects.filter(start_date__gt=current_datetime).filter(status='ACTIVATED').order_by('start_date')
+        test_request = Event.objects.filter(start_date__gt=current_datetime)\
+            .filter(status='ACTIVATED').order_by('start_date')
         self.assertQuerysetEqual(view.get_queryset(), test_request)
         self.assertEqual(len(test_request), 3)
-    
+
     def test_get_context_data(self):
         self.client.force_login(self.user2)
         response = self.client.get(reverse('event-list-new'))
@@ -153,10 +154,11 @@ class EventListOldViewTestCase(BaseTest):
         view = EventListOldView()
         view.request = request
         current_datetime = timezone.now()
-        test_request = Event.objects.filter(start_date__lt=current_datetime).filter(status='ACTIVATED').order_by('-start_date')
+        test_request = Event.objects.filter(start_date__lt=current_datetime)\
+            .filter(status='ACTIVATED').order_by('-start_date')
         self.assertQuerysetEqual(view.get_queryset(), test_request)
         self.assertEqual(len(test_request), 3)
-    
+
     def test_get_context_data(self):
         self.client.force_login(self.user2)
         response = self.client.get(reverse('event-list-old'))

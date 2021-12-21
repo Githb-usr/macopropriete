@@ -15,34 +15,34 @@ class BaseTest(TestCase):
             email='nicolas.martin@free.fr',
             first_name='Nicolas',
             last_name='Martin',
-            )
+        )
 
         self.zone1 = Zone.objects.create(
             code='Z1',
             name='Zone 1',
             description='Lorem ipsum zone',
-            )
+        )
 
         self.incident1 = Incident.objects.create(
             category='DAMAGE',
             content='Lorem ipsum',
             author=self.user1,
             zone=self.zone1,
-            )
+        )
 
         self.incident_delete1 = IncidentDelete.objects.create(
             incident=self.incident1,
             deleter=self.user1,
             deletion_reason='Lorem ipsum delete',
-            )
+        )
 
         self.incident_tracking1 = IncidentTracking.objects.create(
             incident=self.incident1,
             status='PENDING',
-            )
+        )
 
         return super().setUp()
-    
+
 class IncidentModelTestCase(BaseTest):
 
     def test_object_name(self):
@@ -63,7 +63,7 @@ class IncidentDeleteModelTestCase(BaseTest):
         self.assertEquals(expected_deleter_name, 'Nicolas Martin')
 
 class IncidentTrackingModelTestCase(BaseTest):
-    
+
     def test_object_name(self):
         incident_tracking = IncidentTracking.objects.get(id=self.incident_tracking1.pk)
         expected_object_name = incident_tracking.status
