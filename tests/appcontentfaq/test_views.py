@@ -3,7 +3,7 @@
 
 from django.contrib.messages import get_messages
 from django.contrib.auth import get_user_model
-from django.test import RequestFactory, TestCase
+from django.test import TestCase
 from django.urls import reverse
 
 from contentfaq.models import Faq
@@ -16,40 +16,40 @@ class BaseTest(TestCase):
         # Set up non-modified objects used by all test methods
         self.faq_create_view_url = reverse('faq-create')
         self.view = FaqCategoryView()
-        
+
         User = get_user_model()
         self.user1 = User.objects.create_user(
             email='caroline.dupont@free.fr',
             password='fhh456GG455t',
             status='VALIDATED',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='nicolas.martin@free.fr',
             password='265fj1fdhj5fj',
             status='VALIDATED',
-            )
+        )
 
         self.faq1 = Faq.objects.create(
             category='BUILDINGS',
             question='FAQ 1',
             answer='Lorem ipsum FAQ1',
             author=self.user1
-            )
+        )
 
         self.faq2 = Faq.objects.create(
             category='BUILDINGS',
             question='FAQ 2',
             answer='Lorem ipsum FAQ2',
             author=self.user1
-            )
+        )
 
         self.faq3 = Faq.objects.create(
             category='BUILDINGS',
             question='FAQ 3',
             answer='Lorem ipsum FAQ3',
             author=self.user2
-            )
+        )
 
         self.faq4_data_ok = {
             'category': 'BUILDINGS',

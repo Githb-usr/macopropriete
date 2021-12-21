@@ -19,7 +19,8 @@ class EventListNewView(ListView):
 
     def get_queryset(self):
         current_datetime = timezone.now()
-        return Event.objects.filter(end_date__gt=current_datetime).filter(status='ACTIVATED').order_by('start_date')
+        return Event.objects.filter(end_date__gt=current_datetime)\
+            .filter(status='ACTIVATED').order_by('start_date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,7 +45,8 @@ class EventListOldView(ListView):
 
     def get_queryset(self):
         current_datetime = timezone.now()
-        return Event.objects.filter(end_date__lt=current_datetime).filter(status='ACTIVATED').order_by('-start_date')
+        return Event.objects.filter(end_date__lt=current_datetime)\
+            .filter(status='ACTIVATED').order_by('-start_date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

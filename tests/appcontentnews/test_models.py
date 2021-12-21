@@ -15,13 +15,13 @@ class BaseTest(TestCase):
             email='nicolas.martin@free.fr',
             first_name='Nicolas',
             last_name='Martin',
-            )
+        )
 
         self.user2 = User.objects.create_user(
             email='valerie.plouf@hop.com',
             first_name='Valérie',
             last_name='Plouf',
-            )
+        )
 
         self.news1 = News.objects.create(
             category='MEETING',
@@ -29,22 +29,22 @@ class BaseTest(TestCase):
             content='Lorem ipsum news',
             status='ACTIVATED',
             author=self.user1,
-            )
+        )
 
         self.news_update1 = NewsUpdate.objects.create(
             news=self.news1,
             updater=self.user1,
             update_reason='Lorem ipsum news update',
-            )
+        )
 
         self.news_delete1 = NewsDelete.objects.create(
             news=self.news1,
             deleter=self.user2,
             deletion_reason='Lorem ipsum news delete',
-            )
+        )
 
         return super().setUp()
-    
+
 class NewsModelTestCase(BaseTest):
 
     def test_object_name(self):

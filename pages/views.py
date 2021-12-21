@@ -34,8 +34,10 @@ class ContactFormView(FormView):
         valid_data = form.cleaned_data
         user_type = choice_translation(USER_TYPE, valid_data['user_type'])
         raw_message_subject = choice_translation(SUBJECTS, valid_data['message_subject'])
-        admin_message_subject = 'Parc de La Chana : nouveau message sur le thème "{0}"'.format(raw_message_subject)
-        user_message_subject = 'Votre message envoyé au Parc de La Chana sur le thème "{0}"'.format(raw_message_subject)
+        admin_message_subject = 'Parc de La Chana : nouveau message sur le thème "{0}"'\
+            .format(raw_message_subject)
+        user_message_subject = 'Votre message envoyé au Parc de La Chana sur le thème "{0}"'\
+            .format(raw_message_subject)
         email_context = {
             'date': timezone.now(),
             'first_name': valid_data['first_name'],

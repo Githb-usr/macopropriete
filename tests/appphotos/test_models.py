@@ -15,16 +15,16 @@ class BaseTest(TestCase):
             first_name='Nicolas',
             last_name='Martin',
             password='fhh456GG455t'
-            )
+        )
 
         self.photo = Photo.objects.create(
             image='nicole.jpg',
             caption='Photo de Nicole',
             uploader=self.user
-            )
+        )
 
         return super().setUp()
-    
+
 class PhotoModelTestCase(BaseTest):
 
     def test_object_name_is_caption(self):
