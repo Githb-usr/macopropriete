@@ -10,4 +10,3 @@ ALLOWED_HOSTS = [
     '207.154.208.137',
     '.parcdelachana.fr',
 ]
-CKEDITOR_BASEPATH = '/staticfiles/ckeditor/ckeditor/'
