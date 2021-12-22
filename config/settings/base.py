@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-fr'
 TIME_ZONE = 'Europe/Paris'
-DATETIME_FORMAT = '%d/%m/%Y %H:%M'
+DATETIME_FORMAT = 'd/m/Y H:i'
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
